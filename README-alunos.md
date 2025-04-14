@@ -10,7 +10,7 @@ Curso com duração de 96 horas.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 01 | 14/04/2025 | [linguagem portugol](uc2-desenvolver-algoritmos/1.portugol/linguagem-portugol.md)<br>[tipo inteiro](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-inteiro)<br>[variáveis](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#declaração-de-variáveis)<br>[atribuições](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#atribuicoes)<br>[função escreva](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#escreva)<br>[tipo real](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-real) |
+| 01 | 14/04/2025 | [linguagem portugol](uc2-desenvolver-algoritmos/1.portugol/linguagem-portugol.md)<br>[git](git.md)<br>[tipo inteiro](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-inteiro)<br>[variáveis](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#declaração-de-variáveis)<br>[atribuições](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#atribuicoes)<br>[função escreva](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#escreva)<br>[tipo real](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-real) |
 
 ---
 
