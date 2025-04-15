@@ -30,8 +30,8 @@ real nome_variavel2
 logico nome_variavel3
 
 // ou para declarar varias variáveis de um mesmo tipo :
-cadeia var1,var2,var3,var4
-logico var4,var5,var6
+cadeia var1, var2, var3, var4
+logico var4, var5, var6
 ```
 
 É importante ressaltar que o nome de cada variável deve ser explicativo, facilitando assim a compreensão do conteúdo que está armazenado nela.
@@ -87,17 +87,12 @@ Existem alguns operandos no Portugol que podem ser utilizados para atribuição 
 São eles:
 
 ```portugol
-variavel1 += variavel2  // Equivalente a : variavel1 = variavel1 + variavel2;
-variavel1 -= variavel2  // Equivalente a : variavel1 = variavel1 - variavel2;
-variavel1 *= variavel2  // Equivalente a : variavel1 = variavel1 * variavel2;
-variavel1 /= variavel2  // Equivalente a : variavel1 = variavel1 / variavel2;
-variavel1 %= variavel2  // Equivalente a : variavel1 = variavel1 % variavel2;
-variavel1 & variavel2   // Equivalente a : variavel1 = variavel1 & variavel2;
-variavel1 ^= variavel2  // Equivalente a : variavel1 = variavel1 ^ variavel2;
-variavel1 |= variavel2  // Equivalente a : variavel1 = variavel1 | variavel2;
-variavel1++             // Equivalente a : variavel1 = variavel1 + 1;
-variavel1--             // Equivalente a : variavel1 = variavel1 - 1;
-```
+var1 += var2  // Equivalente a : var1 = var1 + var2;
+var1 -= var2  // Equivalente a : var1 = var1 - var2;
+var1 *= var2  // Equivalente a : var1 = var1 * var2;
+var1 /= var2  // Equivalente a : var1 = var1 / var2;
+var1++        // Equivalente a : var1 = var1 + 1;
+var1--        // Equivalente a : var1 = var1 - 1;
 
 Para melhor compreensão deste conceito, confira o exemplo completo abaixo.
 

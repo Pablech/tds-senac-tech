@@ -177,4 +177,3 @@ programa
 1. Calcule: (-2.5 multiplicado por 4.0) mais (18.0 dividido por -3.0) menos 1.5. Exiba o resultado.
 
 </details>
-

@@ -9,8 +9,6 @@ A instrução de saída de dados permite ao algoritmo exibir dados na tela do co
 Nesta seção, serão abordados as seguintes funções :
 
 1. [escreva](#escreva)
-1. [leia](#leia)
-1. [limpa](#limpa)
 
 ---
 
@@ -75,6 +73,3 @@ programa
     }
 }
 ```
-
----
-
