@@ -253,6 +253,20 @@ programa
 1. Leia o caractere '#' e concatene com uma palavra fixa 'alerta'. Mostre o resultado.
 1. Leia o caractere '€' e concatene com '50' para formar um valor monetário.
 1. Leia a letra 'π' (Pi) e concatene com '=3.14'. Exiba a representação simplificada.
+    ```portugol
+    programa {
+        funcao inicio() {
+            caracter letra
+            cadeia resultado
+
+            escreva("Digite a letra grega do PI : ")
+            leia(letra)
+
+            resultado = letra + "=3.14"
+            escreva("A representação do PI é : " + resultado)
+        }
+    }
+    ```
 1. Leia o símbolo '$' e concatene com '99' para formar um preço fictício.
 1. Leia o caractere '-' e concatene com '>' para formar uma seta. Mostre o resultado.
 1. Leia um '!' e concatene com outro '!' para criar uma exclamação enfática.
@@ -358,6 +372,21 @@ programa
 1. Leia um preço (real) e multiplique por 0.9 (10% de desconto). Exiba o novo valor.
 1. Leia um número inteiro e exiba o dobro dele junto da frase: "Dobro: ".
 1. Leia um símbolo (caracter) e um número inteiro. Crie uma senha fictícia concatenando os dois.
+    ```portugol
+    programa {
+        funcao inicio() {
+            caracter simbolo
+            inteiro numero
+
+            escreva("Digite um símbolo : ")
+            leia(simbolo)
+            escreva("Digite um número : ")
+            leia(numero)
+
+            escreva(simbolo, numero)
+        }
+    }
+    ```
 1. Leia um inteiro e um real. Calcule a divisão do primeiro pelo segundo e exiba.
 1. Leia um nome (cadeia) e uma idade (inteiro). Exiba: "[nome] tem [idade] anos".
 1. Leia dois reais e calcule a média. Formate a saída como "Média: [valor]".
@@ -406,6 +435,26 @@ programa
 
 ### **Exercícios de Operações Mistas e Contextos Práticos**
 1. Leia um CPF (cadeia) e formate-o com pontos e traço (ex: "123.456.789-00").
+    ```portugol
+    programa {
+        funcao inicio() {
+            cadeia cpf, cpf_inicio, cpf_meio, cpf_fim, cpf_digitos
+
+            escreva("Digite os 3 primeiros números do CPF : ")
+            leia(cpf_inicio)
+            escreva("Digite os 3 números do meio do CPF : ")
+            leia(cpf_meio)
+            escreva("Digite os 3 últimos números do CPF : ")
+            leia(cpf_fim)
+            escreva("Digite os 2 dígitos verificadores do CPF : ")
+            leia(cpf_digitos)
+
+            cpf = cpf_inicio + "." + cpf_meio
+            cpf = cpf + "." + cpf_fim + "-" + cpf_digitos
+            escreva("O CPF digitado foi : ", cpf)
+        }
+    }
+    ```
 1. Leia um número real e exiba apenas a parte inteira como um valor inteiro.
 1. Leia um nome (cadeia) e um número (inteiro). Exiba: "[nome] é o número [número]".
 1. Leia um valor inteiro e calcule 15% de gorjeta. Exiba o total a pagar.
@@ -440,6 +489,23 @@ programa
 1. Leia um nome (cadeia) e concatene com " é bem-vindo(a)!".
 1. Leia um valor (real) e exiba: "Valor positivo? [valor]" (sem verificação real).
 1. Leia um código (caracter) e um status (cadeia). Exiba: "[Código] - [Status]".
+    ```portugol
+    programa {
+        funcao inicio() {
+            caracter codigo
+            cadeia status, texto
+
+            escreva("Digite uma letra para o código : ")
+            leia(codigo)
+            escreva("Digite uma palavra para o status : ")
+            leia(status)
+
+            texto = codigo + " - " + status
+
+            escreva(texto)
+        }
+    }
+    ```
 1. Leia um número (inteiro) e exiba sua metade arredondada para baixo.
 1. Leia uma cidade (cadeia) e sua temperatura (real). Formate: "[Cidade]: [temp]°C".
 1. Leia um número (inteiro) e exiba sua raiz quadrada aproximada.
