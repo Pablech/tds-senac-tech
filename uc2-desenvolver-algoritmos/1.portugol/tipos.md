@@ -248,7 +248,7 @@ programa
 1. Leia a letra 'D' e concatene com 'ó' para formar "Dó". Exiba a nota musical.
 1. Leia a letra 'O' e concatene com 'K'. Mostre a palavra formada.
 1. Leia o número '3' e concatene com '°C' para formar uma temperatura fictícia.
-1. Leia um '*' e concatene com outro '*' para criar um símbolo de destaque.
+1. Leia um '\*' e concatene com outro '\*' para criar um símbolo de destaque.
 1. Leia um número (dígito) e concatene com '%'. Exiba o valor percentual.
 1. Leia o caractere '#' e concatene com uma palavra fixa 'alerta'. Mostre o resultado.
 1. Leia o caractere '€' e concatene com '50' para formar um valor monetário.

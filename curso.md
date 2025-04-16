@@ -14,9 +14,8 @@ A qualificação é uma excelente oportunidade para ingressar no mercado de trab
 
 Venha para o Técnico em Desenvolvimento de Sistemas - Bilíngue do Senac-RS.
 
-
 - Carga Horária - 1.216h
-- Turma :
+- Turma : 180014268Q
 
 ## UC2: Desenvolver Algoritmos - 96h
 
@@ -26,5 +25,5 @@ Utilizar metodologias de desenvolvimento de software conforme o projeto de siste
 
 - Sala : 308
 - Início : 14/04/2025
-- Término : 26/05/2025 (previsão)
-- Horário 19h às 22h
+- Término : 25/05/2025 (previsão)
+- Horário : 19h às 22h
