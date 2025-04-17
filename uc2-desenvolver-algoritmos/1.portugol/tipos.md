@@ -394,6 +394,20 @@ programa
 1. Leia um valor inteiro e subtraia 15%. Exiba o resultado como real.
 1. Leia um dia (inteiro) e um mês (cadeia). Exiba: "Data: [dia] de [mês]".
 1. Leia um número real e arredonde-o para inteiro. Exiba o valor truncado.
+    ```portugol
+    programa {
+        funcao inicio() {
+            real valor
+            inteiro truncado
+
+            escreva("Digite um número decimal : ")
+            leia(valor)
+            truncado = valor
+
+            escreva("O valor digitado foi : " + truncado)
+        }
+    }
+    ```
 1. Leia um caractere e exiba três repetições dele (ex: 'X' → 'XXX').
 1. Leia um salário (real) e calcule 25% dele. Exiba o valor do aumento.
 1. Leia um animal (cadeia) e um número. Exiba: "[animal] tem [número] patas".

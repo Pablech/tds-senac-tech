@@ -9,6 +9,8 @@ A instrução de saída de dados permite ao algoritmo exibir dados na tela do co
 Nesta seção, serão abordados as seguintes funções :
 
 1. [escreva](#escreva)
+1. [leia](#leia)
+1. [limpa](#limpa)
 
 ---
 
@@ -132,3 +134,38 @@ programa
 ```
 
 ---
+
+## limpa
+À medida que um algoritmo está sendo executado ele exibe mensagens e executa ações no console. Assim, em alguns casos o console fica poluído com informações desnecessárias, que atrapalham a compreensão e visualização do programa. Para isso, podemos usar a função `limpa`.
+
+A função `limpa` é responsável por limpar o console. Não requer nenhum parâmetro e não tem nenhuma saída.
+
+Sua sintaxe é simples, e está demonstrada a seguir :
+
+```portugol
+limpa()
+```
+
+Para melhor compreensão deste conceito, confira o exemplo abaixo.
+
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        cadeia nome
+
+        // imprime a frase "Qual é o seu nome?"
+        escreva("Qual é o seu nome ?\n")
+
+        // detecta o que o usuario escreveu na tela
+        leia(nome)
+
+        // limpa tudo que estava escrito no console
+        limpa()
+
+        // escreve resposta
+        escreva("Olá "+nome)
+    }
+}
+```
