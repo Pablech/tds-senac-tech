@@ -428,7 +428,7 @@ programa
 1. Leia um símbolo matemático (caracter) e dois números. Exiba: "[num1] [símbolo] [num2]".
 1. Leia um produto (cadeia) e seu preço (real). Formate: "[produto]: R$[preço]".
 1. Leia uma distância (real) e converta para inteiro (km). Exiba o valor aproximado.
-1. Leia uma letra (caracter) e um número. Exiba a letra repetida o número de vezes lido.
+1. Leia uma letra (caracter) e um número. Exiba o número antes da letra.
 1. Leia um valor inteiro e calcule 1/3 dele. Exiba como real.
 1. Leia um adjetivo (cadeia) e um substantivo (cadeia). Concatene-os em uma frase.
 1. Leia um código de erro (inteiro) e exiba: "Erro #[código]".
@@ -440,7 +440,7 @@ programa
 1. Leia uma senha (cadeia) e um dígito (inteiro). Concatene-os para formar uma senha forte.
 1. Leia um dia (inteiro), mês (inteiro) e ano (inteiro). Formate como "DD/MM/AAAA".
 1. Leia uma nota (real) e exiba: "Sua nota foi: [nota]".
-1. Leia um nome (cadeia) e exiba suas iniciais com pontos (ex: "A.B.").
+1. Leia um nome (cadeia) e um sobrenome (cadeia) e exiba o sobrenome antes do nome.
 1. Leia um número real e exiba seu quadrado com a mensagem: "Quadrado: [valor]".
 1. Leia um animal (cadeia) e concatene com "s são fofos".
 1. Leia um preço (real) e exiba com desconto de 20%: "Preço com desconto: [valor]".
@@ -480,9 +480,9 @@ programa
 1. Leia um preço (real) e uma quantidade (inteiro). Calcule o total com 10% de taxa.
 1. Leia um código (inteiro) e concatene com "PRD-" para formar um código de produto.
 1. Leia um número (inteiro) e exiba: "O número [valor] é par?" (sem verificação real).
-1. Leia uma data (cadeia) e concatene com "Data de nascimento: ".
-1. Leia um valor real e exiba: "Valor aproximado: " seguido do inteiro mais próximo.
-1. Leia um nome de usuário (cadeia) e exiba em minúsculas (simule com concatenação).
+1. Leia uma data (cadeia) e concatene com "Data de nascimento: [data]".
+1. Leia um valor real e exiba: "Valor aproximado: " seguido do inteiro arredondado para baixo.
+1. Leia um nome de usuário (cadeia) e exiba: "Usuário: [usuário]".
 1. Leia uma mensagem (cadeia) e concatene com " - [Assinatura]".
 1. Leia um número (inteiro) e exiba seu triplo formatado como "Triplo: [valor]".
 1. Leia um código de barras (cadeia) e concatene com "Código: [valor]".
@@ -522,8 +522,8 @@ programa
     ```
 1. Leia um número (inteiro) e exiba sua metade arredondada para baixo.
 1. Leia uma cidade (cadeia) e sua temperatura (real). Formate: "[Cidade]: [temp]°C".
-1. Leia um número (inteiro) e exiba sua raiz quadrada aproximada.
-1. Leia um nome (cadeia) e exiba em formato de inicial maiúscula (ex: "Maria → M.").
+1. Leia um número (inteiro) e exiba seu valor elevado à décima potência.
+1. Leia um nome (cadeia) e exiba: "Como você está, [nome]?".
 1. Leia um valor (inteiro) e exiba: "O quadrado de [valor] é [valor^2]".
 1. Leia uma placa de carro (cadeia) e formate com traço (ex: "ABC-1234").
 1. Leia um valor (real) e exiba: "Valor total: " seguido do número formatado.
