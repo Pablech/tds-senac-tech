@@ -16,6 +16,7 @@ Nesta seção, serão abordados os seguintes tópicos :
 1. [tipo `real`](#tipo-real)
 1. [tipo `caracter`](#tipo-caracter)
 1. [tipo `cadeia`](#tipo-cadeia)
+1. [tipo `logico`](#tipo-logico)
 
 ---
 
@@ -352,6 +353,48 @@ programa
 1. Leia um nome e um número de telefone. Concatene-os como "Maria - Tel: 9999-8888".
 
 </details>
+
+---
+
+## tipo `logico`
+Em determinadas situações faz-se necessário trabalhar com informações do tipo verdadeiro e falso. Este tipo de necessidade aparece muito em operações relacionais para exibir se determinada condição é *verdadeira* ou *falsa*.
+
+Por exemplo: como poderíamos verificar se um número digitado pelo usuário é maior que zero? Através de uma variável do tipo `logico`. Uma variável do tipo `logico` é aquela que contém um tipo de dado, usado em operações lógicas, que possui somente dois valores, que são consideradas pelo Portugol como **verdadeiro** e **falso**.
+
+### sintaxe
+A declaração de uma variável do tipo logico é simples.
+
+A sintaxe é a palavra reservada `logico` seguida do nome da variável.
+
+```portugol
+logico nome_da_variavel
+```
+
+### exemplo
+O valor que essa variável assumirá poderá ser especificado pelo programador ou solicitado ao usuário (ver [Operação de Atribuição](variaveis-constantes.md#atribuicoes)). Lembrando que em ambos os casos a variável só assume valores **verdadeiro** ou **falso**.
+
+Para melhor compreensão deste conceito, confira o exemplo abaixo.
+
+```portugol
+programa
+{
+    funcao inicio()
+    {
+        logico teste
+        inteiro num
+
+        num = 42
+
+        teste = num > 0
+
+        escreva("O número digitado é maior que zero? ", teste)
+    }
+}
+```
+
+### resumo
+- **finalidade** : armazena valores **verdadeiro** ou **falso**;
+- **uso típico** : condições, flags (ex: verificar se um usuário está ativo);
 
 ---
 
