@@ -534,6 +534,21 @@ programa
 1. Leia um tempo (real) em horas e converta para minutos (inteiro).
 1. Leia um nome (cadeia) e uma idade (inteiro). Exiba: "[nome], [idade] anos".
 1. Leia um valor (real) e exiba com duas casas decimais: "Precisão: [valor]".
+  ```portugol
+  programa {
+      funcao inicio() {
+          real valor
+          inteiro convert
+
+          escreva("Digite um valor real : ")
+          leia(valor)
+          convert = valor * 100
+          valor = convert / 100
+
+          escreva(valor)
+      }
+  }
+  ```
 1. Leia um código (caracter) e um número (inteiro). Formate: "[Código][Número]".
 1. Leia um número (inteiro) e exiba: "O sucessor de [número] é [número+1]".
 
@@ -576,6 +591,23 @@ programa
 1. Leia um valor (inteiro) e exiba: "Antes: [valor-1], Depois: [valor+1]".
 1. Leia um produto (cadeia) e seu código (caracter). Exiba: "[produto] - Cód. [código]".
 1. Leia um número (real) e exiba: "Parte inteira: [int], Decimal: [decimal]".
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro parte_inteira
+            real decimal, valor
+
+            escreva("Digite um numero real : ")
+            leia(valor)
+
+            parte_inteira = valor
+            decimal = valor - parte_inteira
+            escreva("valor : ", valor)
+            escreva("\nparte_inteira : ", parte_inteira)
+            escreva("\ndecimal : ", decimal)
+        }
+    }
+    ```
 1. Leia uma hora (inteiro) e exiba: "[hora] horas".
 1. Leia um valor (real) e concatene com " reais".
 1. Leia um nome (cadeia) e um ano (inteiro). Exiba: "[nome] © [ano]".
