@@ -326,6 +326,22 @@ programa
 1. Leia o nome de uma rua e um número. Concatene-os para formar um endereço completo (ex: "Rua das Flores, 123").
 1. Leia um nome de usuário e um domínio (ex: "gmail.com"). Concatene-os com "@" no meio para formar um e-mail.
 1. Leia dia, mês e ano e concatene-os no formato "DD/MM/AAAA".
+    ```portugol
+    programa {
+        funcao inicio() {
+            cadeia dia, mes, ano
+            escreva("Digite o valor para dia : ")
+            leia(dia)
+            escreva("Digite o valor para mes : ")
+            leia(mes)
+            escreva("Digite o valor para ano : ")
+            leia(ano)
+
+            escreva(dia + "/" + mes + "/" + ano + "\n")
+            escreva(dia, "/", mes, "/", ano)
+        }
+    }
+    ```
 1. Leia duas partes de uma frase (ex: "Estou aprendendo" e "Portugol"). Concatene-as para formar uma frase completa.
 1. Leia um prefixo (ex: "PROD") e um número (ex: "001"). Concatene-os para formar um código de produto.
 1. Leia uma palavra e concatene com "123_" no início para criar uma senha simples.
