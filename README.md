@@ -8,6 +8,7 @@ Curso com duração de 96 horas.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 05 | 22/04/2025 | [comando `senao`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-se-senao)<br>[comando `se senao`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-se-senao-se) |
 | 04 | 17/04/2025 | [condição se](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#se)<br>[tipo lógico](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-logico)<br>[operadores relacionais](uc2-desenvolver-algoritmos/1.portugol/operadores-relacionais.md)<br>[módulo](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-módulo) |
 | 03 | 16/04/2025 | [resolução de exercícios](uc2-desenvolver-algoritmos/1.portugol/tipos.md#exercícios-completos)<br>[função limpa](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#limpa) |
 | 02 | 15/04/2025 | [caracter](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-caracter)<br>[cadeia](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-cadeia)<br>[operadores aritméticos](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md)<br>[função leia](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#leia) |

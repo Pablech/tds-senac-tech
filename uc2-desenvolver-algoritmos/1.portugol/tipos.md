@@ -565,7 +565,7 @@ programa
 13. Leia uma data (cadeia) e exiba: `"Data de nascimento: [data]"`.
 14. Leia um real e exiba: `"Valor aproximado: [parte_inteira]"`.
 15. Leia um usuário (cadeia) e exiba: `"Usuário: [usuário]"`.
-16. **Corrigido:** Leia uma mensagem e concatene com `" - Assinatura"`.
+16. Leia uma mensagem e concatene com `" - Assinatura"`.
 17. Leia um inteiro e exiba: `"Triplo: [valor*3]"`.
 18. Leia um código de barras (cadeia) e exiba: `"Código: [valor]"`.
 19. Leia um valor (real) e exiba: `"Total a pagar: R$[valor]"`.
