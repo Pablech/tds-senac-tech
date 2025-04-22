@@ -556,7 +556,22 @@ programa
 4. Leia um valor e calcule 15% de gorjeta. Exiba: `"Total a pagar: [valor + gorjeta]"`.
 5. Leia um código (caractere) e um número. Exiba: `"Código: [A]-[10]"`.
 6. Leia uma velocidade (real) e exiba: `"Velocidade: [valor] km/h"`.
-7. Leia um telefone (cadeia) e formate com traço (ex: `"99998888"` → `"9999-8888"`).
+7. Leia um telefone (cadeia) e formate com traço (ex: `"9999"` e `"8888"` → `"9999-8888"`).
+    ```portugol
+    programa {
+        funcao inicio() {
+            cadeia tel1, tel2
+
+            escreva("digite a primeira parte do numero : ")
+            leia(tel1)
+            escreva("digite a segunda parte do numero : ")
+            leia(tel2)
+
+            escreva("o telefone eh : ", tel1 + "-" + tel2)
+
+        }
+    }
+    ```
 8. Leia metros (real), converta para centímetros (inteiro) e exiba.
 9. Leia um filme (cadeia) e ano (inteiro). Exiba: `"[filme] ([ano])"`.
 10. Leia preço e quantidade. Calcule o total com 10% de taxa e exiba.

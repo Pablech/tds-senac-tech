@@ -92,6 +92,29 @@ programa {
 11. Leia um saldo bancário (real) e, se for maior que zero, escreva **"Saldo positivo"**.
 12. Leia um valor (real) e, se for maior que 1000, calcule **10% de desconto** (10% do valor lido) e escreva o valor do desconto.
 13. Leia um caractere e, se for igual a **'a'**, **'e'**, **'i'**, **'o'** ou **'u'**, escreva **"Vogal"**.
+    ```portugol
+    programa {
+        funcao inicio() {
+            caracter letra = 'a'
+
+            escreva("Digite uma letra : ")
+            leia(letra)
+
+            se(letra == 'a'){
+                escreva("Vogal")
+            }
+            se(letra == 'e'){
+                escreva("Vogal")
+            }
+            se(letra == 'i')
+                escreva("Vogal")
+            se(letra == 'o')
+                escreva("Vogal")
+            se(letra == 'u')
+                escreva("Vogal")
+        }
+    }
+    ```
 14. Leia um caractere e, se estiver entre **'A'** e **'Z'**, escreva **"Maiúsculo"**.
 15. Leia um caractere e, se estiver entre **'a'** e **'z'**, escreva **"Minúsculo"**.
 16. Leia um caractere e, se for igual a **'0'**, escreva **"Zero"**.
