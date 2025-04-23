@@ -16,10 +16,10 @@ Essas situações são implementadas usando **desvios condicionais**, que execut
 
 Nesta seção, serão abordados os seguintes tópicos:
 
-- [se](#se)
-- [se-senao](#se-senao)
-- [se-senao-se](#se-senao-se)
-- [escolha-caso](#escolha-caso)
+- [comando `se`](#comando-se)
+- [comando `se-senao`](#comando-se-senao)
+- [comando `se-senao-se`](#comando-se-senao-se)
+- [comando `escolha-caso`](#comando-escolha-caso)
 
 
 ## comando `se`

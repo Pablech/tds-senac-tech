@@ -1,75 +1,93 @@
 # Operações Relacionais
+As operações relacionais permitem comparar valores e retornam um resultado **lógico** (`verdadeiro` ou `falso`). São essenciais para tomadas de decisão em algoritmos, como verificar se um número é positivo ou negativo.
 
-Vamos imaginar que você precise verificar se um número digitado pelo usuário é positivo ou negativo. Como poderíamos verificar isto? Através de uma operação relacional. As operações relacionais também são nossas conhecidas da Matemática. Em algoritmos, os operadores relacionais são importantes, pois permitem realizar comparações que terão como resultado um valor lógico (*verdadeiro* ou *falso*).
+---
 
-Os símbolos que usamos para os operadores também mudam um pouco em relação ao que usamos no papel. Os símbolos para diferente, maior ou igual e menor ou igual mudam pois não existem nos teclados convencionais. A tabela a seguir mostra todas as operações relacionais e os símbolos que o Portugol utiliza.
-| Operação | Símbolo |
-| :----: | :----: |
-| Maior | > |
-| Menor | < |
-| Maior ou igual | >= |
-| Menor ou igual | <= |
-| Igual | == |
-| Diferente | != |
+## Operadores Relacionais no Portugol
+A tabela abaixo mostra os operadores relacionais e seus símbolos:
 
-A tabela a seguir apresenta a estrutura de algumas dessas operações.
-| Operação | Resultado |
-| :----: | :----: |
-| 3 > 4 | Falso |
-| 7 != 7 | Falso |
-| 9 == 10 - 1 | Verdadeiro |
-| 33 <= 100 | Verdadeiro |
-| 6 >= 5 + 1 | Verdadeiro |
-| 5 + 4 <= 11 - 2 | Verdadeiro |
+| Operação           | Símbolo |
+| :----------------: | :-----: |
+| Maior que          | `>`     |
+| Menor que          | `<`     |
+| Maior ou igual a   | `>=`    |
+| Menor ou igual a   | `<=`    |
+| Igual a            | `==`    |
+| Diferente de       | `!=`    |
 
-Nos dois últimos exemplos, temos [operadores aritméticos](operadores-aritmeticos.md) e [relacionais juntos](operadores-relacionais.md). Nestes casos, realiza-se primeiro a operação aritmética e depois a relacional.
+### exemplos práticos
+| Expressão          | Resultado   | Explicação          |
+| :----------------: | :---------: | :-----------------: |
+| `3 > 4`            | `falso`     | 3 não é maior que 4 |
+| `7 != 7`           | `falso`     | 7 é igual a 7       |
+| `9 == 10 - 1`      | `verdadeiro`| 9 é igual a 9       |
+| `33 <= 100`        | `verdadeiro`| 33 é menor que 100  |
+| `6 >= 5 + 1`       | `verdadeiro`| 6 é igual a 6       |
+| `5 + 4 <= 11 - 2`  | `verdadeiro`| 9 é igual a 9       |
 
-Em geral, as operações relacionais são utilizadas em conjunto com as Estruturas de Controle.
+**Ordem de execução**: Operações aritméticas são resolvidas primeiro, depois as relacionais.
 
-Veja a sintaxe :
+---
 
+## Uso em Estruturas de Controle
+As operações relacionais são frequentemente usadas em estruturas de controle para definir condições:
+
+### sintaxe básica
 ```portugol
-// estrutura de controle: "se (...)", operação relacional: "5 > 3"
-se (5 > 3)
-{
-    // conjunto de comandos se for verdadeiro
+// estrutura "se" com operação relacional
+se (5 > 3) {
+    escreva("Condição verdadeira")
 }
+
+// estrutura "para" com operação relacional
+para (inteiro i = 0; i < 5; i++) {
+    escreva(i, "\n")
+}
+
+// estrutura "faca...enquanto"
+faca {
+    escreva("Executa pelo menos uma vez")
+} enquanto (6 < 2)  // condição falsa após a execução
 ```
 
-Para melhor compreensão deste conceito, confira o exemplo abaixo :
+---
 
+## Exemplo Completo
 ```portugol
 programa
 {
     funcao inicio()
     {
-        // comparação entre valor A e B utilizando o operador maior que
         inteiro a = 5, b = 3
-        se(a > b){
-            escreva("A é maior que B")
+
+        // comparação com operador >
+        se (a > b) {
+            escreva("A é maior que B\n")
         }
 
-        // comparação entre A e B utilizando o operador igual a
-        se(a == b){
-            escreva("A é igual a B")
+        // comparação com operador ==
+        se (a == b) {
+            escreva("A é igual a B\n")
         }
 
-        // comparação entre A e B utilizando o operador maior ou igual a
-        se(a >= b){
-            escreva("A é maior ou igual a B")
+        // comparação com operador >=
+        se (a >= b) {
+            escreva("A é maior ou igual a B\n")
         }
-
-        // nos testes acima somente o primeiro teste A > B é verdadeiro,
-        // deste modo somente esta mensagem será exibida
     }
 }
+
+// saída: "A é maior que B" e "A é maior ou igual a B"
 ```
 
-## precedência dos operadores
+---
 
-| prioridade | operador símbolo | operador nome | tipo operador |
-| :----: | :----: | :----: | :----: |
-| 1 | `()` | parênteses | operadores aritméticos |
-| 2 | `*`<br>`/`<br>`%` | multiplicaçao<br>divisão<br>módulo | operadores aritméticos |
-| 3 | `+`<br>`-` | soma<br>subtração | operadores aritméticos |
-| 4 | `==`<br>`>`<br>`<`<br>`>=`<br>`<=`<br>`!=` | igual a<br>maior que<br>menor que<br>maior ou igual a<br>menor ou igual a<br>diferente de | operadores relacionais |
+## Precedência de Operadores
+A ordem de avaliação das operações é definida pela seguinte tabela:
+
+| Prioridade | Operador         | Nome               | Tipo de Operador       |
+| :--------: | :--------------: | :----------------- | :--------------------- |
+| 1          | `()`             | Parênteses         | Aritmético             |
+| 2          | `*`, `/`, `%`    | Multiplicação, Divisão, Módulo | Aritmético |
+| 3          | `+`, `-`         | Soma, Subtração    | Aritmético             |
+| 4          | `==`, `>`, `<`, `>=`, `<=`, `!=` | Operadores Relacionais | Relacional |

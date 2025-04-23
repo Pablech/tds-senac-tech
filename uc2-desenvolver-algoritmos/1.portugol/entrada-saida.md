@@ -1,153 +1,252 @@
 # Entrada e Saída
 
-Entrada/saída é um termo utilizado quase que exclusivamente no ramo da computação (ou informática), indicando entrada (inserção) de dados por meio de algum código ou programa, para algum outro programa ou hardware, bem como a sua saída (obtenção de dados) ou retorno de dados, como resultado de alguma operação de algum programa, consequentemente resultado de alguma entrada.
-
-A instrução de entrada de dados possibilita que o algoritmo capture dados provenientes do ambiente externo (fora da máquina) e armazene em variáveis. Assim um algoritmo consegue representar e realizar operações em informações que foram fornecidas por um usuário tais como: nome, idade, salário, sexo, etc. A forma mais comum de capturar dados é através do teclado do computador. Por meio dele o usuário pode digitar números, palavras, frases etc.
-
-A instrução de saída de dados permite ao algoritmo exibir dados na tela do computador. Ela é utilizada para exibir mensagens, resultados de cálculos, informações contidas nas variáveis, etc.
-
-Nesta seção, serão abordados as seguintes funções :
-
-1. [escreva](#escreva)
-1. [leia](#leia)
-1. [limpa](#limpa)
+Entrada e Saída (E/S) é um conceito fundamental na computação que descreve:
+- **Entrada**: Inserção de dados em um sistema (ex: teclado, arquivos, sensores).
+- **Saída**: Obtenção de resultados processados pelo sistema (ex: tela, impressora, arquivos).
 
 ---
 
-## escreva
-Em determinadas situações precisamos mostrar ao usuário do programa alguma informação. Para isso, existe um comando na programação que exibe dados ao usuário. No portugol a instrução de saída de dados para a tela é chamada através da função `escreva`, pois segue a ideia de que o algoritmo está escrevendo dados na tela do computador.
+## funções básicas de e/s
+### entrada de dados
+Permite que algoritmos recebam informações externas (do usuário ou outros dispositivos) e as armazenem em **variáveis**. Exemplos de dados capturados:
+- Nomes, idades, valores numéricos
+- Opções de menus, configurações
 
-A função `escreva` é utilizada quando deseja-se mostrar informações no console da IDE (do inglês *Integrated Development Environment*, ou *Ambiente de Desenvolvimento Integrado* em português), ou seja, é um comando de saída de dados.
-
-Para utilizar a função `escreva`, você deverá escrever este comando e entre parênteses colocar a(s) variável(eis) ou texto que você quer mostrar no console. Lembrando que quando você utilizar textos, o texto deve estar entre aspas.
-
-A sintaxe para utilização deste comando está demonstrada a seguir :
-
-```portugol
-escreva("Escreva o texto a ser digitado aqui")
-```
-
-Note que quando queremos exibir o valor de alguma variável não utilizamos as aspas. Para exibição de várias mensagens em sequência, basta separá-las com vírgulas.
-
-```portugol
-inteiro variavel1, variavel2
-escreva(variavel1, variavel2)
-```
+### saída de dados
+Exibe informações processadas pelo algoritmo, como:
+- Resultados de cálculos
+- Mensagens para o usuário
+- Conteúdo de variáveis
 
 ---
 
-Existem duas ferramentas importantes que auxiliam a organização e visualização de textos exibidos na tela.
+## funções abordadas nesta seção
+1. [`escreva`](#escreva) - Exibe dados na saída padrão
+2. [`leia`](#leia) - Captura dados da entrada padrão
+3. [`limpa`](#limpa) - Limpa o buffer de entrada/saída
 
-São elas :
-- **quebra-linha** e
-- **tabulação**;
+---
+Aqui está a revisão do texto com melhorias de clareza e organização:
 
-O **quebra-linha** é utilizado para inserir uma nova linha aos textos digitados. Sem ele, os textos seriam exibidos um ao lado do outro. Para utilizar este comando, basta inserir `\n`.
+---
 
-O comando de **tabulação** é utilizado para inserir espaços maiores entre os textos digitados. Para utilizar este comando, basta inserir `\t`.
+## função `escreva`
+A função `escreva` é utilizada para exibir informações na saída padrão (console), sendo fundamental para interação com o usuário.
 
-O exemplo a seguir ilustra a utilização do quebra-linha e da tabulação :
+### sintaxe básica
+```portugol
+escreva(<conteúdo1>, <conteúdo2>, ..., <conteúdoN>)
+```
 
+### características principais:
+1. **Textos Literais**
+    - Devem estar entre aspas duplas:
+    ```portugol
+    escreva("Texto fixo exibido ao usuário")
+    ```
+
+2. **Valores de Variáveis**
+    - Exibidos sem aspas:
+    ```portugol
+    inteiro idade = 30
+    escreva(idade)  // exibe: 30
+    ```
+
+3. **Múltiplos Elementos**
+    - Separe por vírgulas para exibir em sequência:
+    ```portugol
+    cadeia nome = "Maria"
+    escreva("Nome: ", nome, "\nIdade: ", 28)
+    ```
+
+### caracteres especiais para formatação
+| Caractere | Função               | Exemplo              | Saída               |
+|-----------|----------------------|----------------------|---------------------|
+| `\n`      | Quebra de linha      | `"Linha 1\nLinha 2"` | Linha 1<br>Linha 2  |
+| `\t`      | Tabulação (4 espaços)| `"Nome:\tJoão"`      | Nome:    João       |
+
+---
+
+### exemplo completo
 ```portugol
 programa
 {
     funcao inicio()
     {
-        inteiro variavel = 5
+        inteiro valor = 5
+        real media = 7.5
+        cadeia curso = "Técnico em Desenvolvimento de Sistemas"
 
-        // escreve no console um texto qualquer
-        escreva("Escreva um texto aqui.\n")
+        // exibição simples
+        escreva("Bem-vindo ao sistema!\n\n")
 
-        // escreve no console o valor da variável "variavel"
-        escreva(variavel, "\n")
+        // exibição de variáveis e cálculos
+        escreva("Valor: ", valor, "\tDobro: ", valor * 2, "\n")
+        escreva("Média final: ", media, "\n")
 
-        // escreve no console o resultado da operação
-        escreva(variavel+variavel, "\n")
-
-        // escreve no console o texto digitado, e o valor contido na variável
-        escreva("O valor da variável é: ", variavel)
-
-        // escreve no console o texto com quebra de linha
-        escreva("Texto com\n", "quebra-linha")
-
-        // escreve no console o texto com espaço de tabulação
-        escreva("Texto com\t tabulação")
+        // formatação complexa
+        escreva("Curso:\t\t", curso, "\n")
+        se(media >= 7){
+            escreva("Status:\t\tAprovado")
+        }
+        senao{
+            escreva("Status:\t\tReprovado")
+        }
     }
 }
 ```
 
----
+**Saída gerada:**
+```
+Bem-vindo ao sistema!
 
-## leia
-Em alguns problemas, precisamos que o usuário digite um valor a ser armazenado. Por exemplo, se quisermos elaborar um algoritmo para calcular a média de nota dos alunos, precisaremos que o usuário informe ao algoritmo quais as suas notas. No portugol a instrução de entrada de dados via teclado é chamada de `leia`, pois segue a ideia de que o algoritmo está lendo dados do ambiente externo(usuário) para poder utilizá-los.
-
-A função `leia` é utilizada quando se deseja obter informações do teclado do computador, ou seja, é um comando de entrada de dados. Essa função aguarda um valor a ser digitado e o atribui diretamente na variável.
-
-Para utilizar a função `leia`, você deverá escrever este comando e entre parênteses colocar a(s) variavel (eis) que você quer que recebam os valores a serem digitados.
-
-A sintaxe deste comando está exemplificada a seguir:
-
-```portugol
-inteiro x
-cadeia y
-real z
-
-// chamando a função leia
-leia(x)
-leia(y,z)
-// no final as variáveis irão possuir o valor digitado pelo usuário
+Valor: 5    Dobro: 10
+Média final: 7.5
+Curso:      Técnico em Desenvolvimento de Sistemas
+Status:     Aprovado
 ```
 
-Note que para armazenar um valor em uma variável, é necessário que a mesma já tenha sido declarada anteriormente. Assim como no comando `escreva`, se quisermos que o usuário entre com dados sucessivos, basta separar as variáveis dentro dos parênteses com vírgula.
+### boas práticas
+1. Use `\n` para separar seções lógicas de texto
+2. Utilize `\t` para alinhar dados tabulares
+3. Combine textos fixos e variáveis para mensagens claras
 
-O exemplo a seguir ilustra em portugol um algoritmo que lê as variáveis: idade, salario, nome, sobrenome, nota1, nota2 e nota3 :
+---
 
+## função `leia`
+A função `leia` é utilizada para capturar dados digitados pelo usuário via teclado e armazená-los em variáveis. É essencial para criar programas interativos que processam informações em tempo real.
+
+### sintaxe básica
+```portugol
+leia(<variável_1>, <variável_2>, ..., <variável_n>)
+```
+
+### características principais:
+1. **Armazenamento Direto**
+    - Os valores digitados são atribuídos diretamente às variáveis especificadas
+    ```portugol
+    inteiro idade
+    leia(idade)  // armazena o valor digitado na variável 'idade'
+    ```
+
+2. **Múltiplas Entradas**
+    - Aceita múltiplas variáveis separadas por vírgulas
+    ```portugol
+    cadeia nome, sobrenome
+    leia(nome, sobrenome)  // captura dois valores em sequência
+    ```
+
+3. **Tipagem de Dados**
+    - A entrada deve corresponder ao tipo da variável:
+
+        | Tipo Variável | Entrada Válida | Exemplo |
+        |--------------|----------------|---------|
+        | `inteiro`    | Números inteiros | `42` |
+        | `real`       | Números decimais | `3.14` |
+        | `cadeia`     | Texto (com/sem espaços) | `"Ana Maria"` |
+        | `caractere`  | Único caractere | `'A'` |
+
+### boas práticas
+1. **Sempre declare variáveis antes de usar**
+    ```portugol
+    real nota  // Declaração obrigatória
+    leia(nota) // Uso válido
+    ```
+
+2. **Combine com `escreva` para instruções claras**
+    ```portugol
+    escreva("Digite seu ano de nascimento: ")
+    leia(ano_nascimento)
+    ```
+
+3. **Formato de Entrada Múltipla**
+    - Para múltiplas variáveis em um único `leia`, separe os valores com Enter:
+    ```portugol
+    // Usuário digita: 7.5 8.0 9.3
+    real n1, n2, n3
+    leia(n1, n2, n3)
+    ```
+
+### exemplo completo
 ```portugol
 programa
 {
     funcao inicio()
     {
         inteiro idade
-        real salario, nota1, nota2, nota3
-        cadeia nome, sobrenome
+        real salario, nota_1, nota_2, nota_3
+        cadeia nome_completo
 
-        escreva("Informe a sua idade: ")
-        leia (idade)                // lê o valor digitado para "idade"
+        // entrada única
+        escreva("Informe sua idade: ")
+        leia(idade)
 
-        escreva("Informe seu salario: ")
-        leia (salario)              // lê o valor digitado para "salario"
+        // entrada decimal
+        escreva("Informe seu salário: R$ ")
+        leia(salario)
 
-        escreva("Informe o seu nome e sobrenome: ")
-        leia (nome, sobrenome)      // lê o valor digitado para "nome" e "sobrenome"
+        // entrada textual
+        escreva("Digite seu nome completo: ")
+        leia(nome_completo)
 
-        escreva("Informe as suas três notas: ")
-        leia (nota1, nota2, nota3)  // lê o valor digitado para "nota1", "nota2" e "nota3"
+        // entrada múltipla
+        escreva("Digite três notas (separadas por Enter): ")
+        leia(nota_1, nota_2, nota_3)
 
-        escreva("Seu nome é:" + nome + " " + sobrenome + "\n")
-        escreva("Você tem " + idade + " anos e ganha de salario " + salario + "\n")
-        escreva("Suas três notas foram:\n")
-        escreva("Nota 1: " + nota1 + "\n")
-        escreva("Nota 2: " + nota2 + "\n")
-        escreva("Nota 3: " + nota3 + "\n")
+        // saída formatada
+        escreva("\n----- Dados Informados -----\n")
+        escreva("Nome: ", nome_completo, "\n")
+        escreva("Idade: ", idade, " anos\n")
+        escreva("Salário: R$ ", salario, "\n")
+        escreva("Média: ", (nota_1 + nota_2 + nota_3)/3)
     }
 }
 ```
 
----
+**Fluxo de Execução:**
+```
+Informe sua idade: 25
+Informe seu salário: R$ 3500.50
+Digite seu nome completo: Maria Silva
+Digite três notas (separadas por Enter): 8.5
+7.9
+9.2
 
-## limpa
-À medida que um algoritmo está sendo executado ele exibe mensagens e executa ações no console. Assim, em alguns casos o console fica poluído com informações desnecessárias, que atrapalham a compreensão e visualização do programa. Para isso, podemos usar a função `limpa`.
-
-A função `limpa` é responsável por limpar o console. Não requer nenhum parâmetro e não tem nenhuma saída.
-
-Sua sintaxe é simples, e está demonstrada a seguir :
-
-```portugol
-limpa()
+----- Dados Informados -----
+Nome: Maria Silva
+Idade: 25 anos
+Salário: R$ 3500.50
+Média: 8.533333
 ```
 
-Para melhor compreensão deste conceito, confira o exemplo abaixo.
+### consideração importante
+- A função não valida automaticamente tipos de dados. Se o usuário digitar texto onde se espera número, ocorrerá erro de execução
 
+---
+Aqui está a revisão do texto com aprimoramentos na organização e clareza:
+
+---
+
+## função `limpa`
+
+A função `limpa` é utilizada para **apagar todo o conteúdo exibido no console**, proporcionando uma experiência mais organizada ao usuário. É particularmente útil em:
+- Aplicações com múltiplas interações
+- Menus iterativos
+- Cenários onde informações temporárias devem ser removidas
+
+### características principais
+| Aspecto          | Descrição                                 |
+|------------------|-------------------------------------------|
+| Parâmetros       | Não requer nenhum argumento               |
+| Valor de retorno | Nenhum                                    |
+| Comportamento    | Apaga todo o histórico do console         |
+
+### sintaxe
+```portugol
+limpa()  // remove todas as mensagens anteriores do terminal
+```
+
+### exemplo prático
 ```portugol
 programa
 {
@@ -155,17 +254,39 @@ programa
     {
         cadeia nome
 
-        // imprime a frase "Qual é o seu nome?"
-        escreva("Qual é o seu nome ?\n")
-
-        // detecta o que o usuario escreveu na tela
+        // fase de entrada de dados
+        escreva("=== CADASTRO DE USUÁRIO ===\n")
+        escreva("Qual é o seu nome? ")
         leia(nome)
 
-        // limpa tudo que estava escrito no console
+        // limpeza do console antes do resultado
         limpa()
 
-        // escreve resposta
-        escreva("Olá "+nome)
+        // exibição final organizada
+        escreva("■ Sistema de Boas-Vindas ■\n")
+        escreva("Olá, ", nome, "!\n")
+        escreva("Seu cadastro foi concluído com sucesso.")
     }
+}
+```
+
+**Fluxo de execução:**
+1. Exibe formulário de cadastro
+2. Coleta o nome do usuário
+3. Limpa toda a interface anterior
+4. Mostra mensagem final personalizada
+
+### boas práticas
+1. Use antes de exibir novos menus ou interfaces
+2. Combine com `escreva` formatado para transições suaves
+3. Evite usar excessivamente - pode confundir usuários
+
+```portugol
+// uso ideal em menu iterativo
+enquanto (verdadeiro) {
+    limpa()
+    escreva("=== MENU PRINCIPAL ===\n")
+    escreva("1. Novo jogo\n2. Carregar\n3. Configurações\n4. Sair\n")
+    // ... lógica do menu ...
 }
 ```
