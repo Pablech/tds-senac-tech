@@ -285,7 +285,7 @@ programa {
 #### explicação:
 - Se a nota for **≥ 9**, exibe "excelente".
 - Se não, verifica se é **≥ 7**, exibindo "bom".
-- Se não, verifica se é **≥ 6", exibindo "razoável".
+- Se não, verifica se é **≥ 6**, exibindo "razoável".
 - Se todas falharem, executa o `senao` ("insuficiente").
 
 ---

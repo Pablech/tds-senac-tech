@@ -3,8 +3,7 @@ Os programas precisam armazenar dados temporariamente para processamento e inter
 
 Nesta seção, abordaremos:
 1. [Declaração de Variáveis](#declaração-de-variáveis)
-2. [Declaração de Constantes](#declaração-de-constante)
-3. [Atribuições](#atribuicoes)
+2. [Atribuições](#atribuicoes)
 
 ---
 
@@ -47,34 +46,6 @@ programa
         // Cálculo usando variáveis
         anos_para_100 = 100 - 25
         escreva(nome_usuario, " terá 100 anos em ", anos_para_100, " anos.\n")
-    }
-}
-```
-
----
-
-## declaração de constantes
-Constantes armazenam valores fixos que **não podem ser alterados** após a declaração. São úteis para valores repetitivos ou críticos (ex: PI, taxas).
-
-### sintaxe
-```portugol
-const real PI = 3.1415923565
-const inteiro DIAS_SEMANA = 7
-```
-
-### exemplo
-```portugol
-programa
-{
-    // constante global
-    const real ACELERACAO_GRAVIDADE = 9.78
-
-    funcao inicio()
-    {
-        // constante local
-        const caracter VOGAIS[5] = {'a','e','i','o','u'}
-
-        escreva("Aceleração da gravidade: ", ACELERACAO_GRAVIDADE)
     }
 }
 ```
