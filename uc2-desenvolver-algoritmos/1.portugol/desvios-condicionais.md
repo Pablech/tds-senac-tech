@@ -362,9 +362,184 @@ senao {
 <summary>Lista de Exercícios</summary>
 
 1. Crie um algoritmo que pergunte ao usuário dois números. Mostre as variáveis onde os números foram armazenados, troque os valores entre as variáveis e mostre as variáveis e seus valores trocados.
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro n1, n2, troca
+
+            escreva("digite um valor para n1 : ")
+            leia(n1)
+            escreva("digite um valor para n2 : ")
+            leia(n2)
+
+            escreva("n1 = ", n1, "\nn2 = ", n2)
+            troca = n1
+            n1 = n2
+            n2 = troca
+            escreva("\nn1 = ", n1, "\nn2 = ", n2)
+        }
+    }
+    ```
 2. Crie um algoritmo que pergunte ao usuário uma temperatura e que conversão ele gostaria de fazer: Grau Celsius para Grau Fahrenheit ou vice-versa.
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro opcao
+            real temp, conv
+
+            escreva("digite\n1. celsius para fahrenheit")
+            escreva("\n2. fahrenheit para celsius\n\t>> ")
+            leia(opcao)
+
+            escreva("qual a temperatura que gostaria de converter\n\t>> ")
+            leia(temp)
+
+            se(opcao == 1){
+                // converter celsius para fahrenheit
+                conv = ((9/5) * temp) + 32
+                escreva("a temp de celsius para fahrenheit : ", conv)
+            }
+            senao{
+                // converter fahrenheit para celsius
+                conv = (temp - 32) / (9/5)
+                escreva("a temp de fahrenheit para celsius : ", conv)
+            }
+        }
+    }
+    ```
 3. Crie um algoritmo que pergunte ao usuário que forma geométrica ele gostaria de saber a área: quadrado, círculo, retângulo ou triângulo. Depois pergunte o tamanho do(s) lado(s) para calcular a área.
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro opcao
+            real raio, base, altura, area
+
+            escreva("escolha uma forma para calcular a area :")
+            escreva("\n\t1. quadrado")
+            escreva("\n\t2. circulo")
+            escreva("\n\t3. retangulo")
+            escreva("\n\t4. triangulo")
+            escreva("\n>> ")
+            leia(opcao)
+            limpa()
+
+            se(opcao == 1){
+                escreva("qual o lado do quadrado : ")
+                leia(base)
+                altura = base
+                area = base * altura
+                escreva("a area do quadrado eh : ", area)
+            }
+            senao se(opcao == 2){
+                escreva("qual o raio do circulo : ")
+                leia(raio)
+                area = (3.1415926535) * raio * raio
+                escreva("a area do circulo eh : ", area)
+            }
+            senao se(opcao == 3){
+                escreva("qual o lado maior do retangulo : ")
+                leia(base)
+                escreva("qual o lado menor do retangulo : ")
+                leia(altura)
+                area = base * altura
+                escreva("a area do retangulo eh : ", area)
+            }
+            senao se(opcao == 4){
+                escreva("qual a base do triangulo : ")
+                leia(base)
+                escreva("qual a altura do triangulo : ")
+                leia(altura)
+                area = (base * altura) / 2
+                escreva("a area do triangulo eh : ", area)
+            }
+            senao{
+                escreva("nao sei que forma geometrica eh essa")
+            }
+        }
+    }
+    ```
 4. Crie um algoritmo que pergunte ao usuário quantas maçãs ele quer comprar e o valor total da compra. Se forem compradas menos do que uma dúzia, elas vão custar R$ 0.70 a unidade. Se forem compradas mais de uma dúzia, o valor é R$ 0.50 por unidade.
 5. Crie um algoritmo que peça 3 números inteiros ao usuário. Mostre eles ordenados do maior para o menor e do menor para o maior.
+    ```portugol
+    // forma 1
+    programa {
+        funcao inicio() {
+            inteiro v1, v2, v3, maior, meio, menor
+
+            escreva("digite v1 : ")
+            leia(v1)
+            escreva("digite v2 : ")
+            leia(v2)
+            escreva("digite v3 : ")
+            leia(v3)
+
+            maior = v1
+            se(v2 > maior){
+                maior = v2
+            }
+            se(v3 > maior)
+                maior = v3
+
+            menor = v1
+            se(v2 < menor)
+                menor = v2
+            se(v3 < menor)
+                menor = v3
+
+            meio = v1 + v2 + v3 - maior - menor
+
+            escreva(maior, " " ,meio, " ", menor, "\n")
+            escreva(menor, " ", meio, " ", maior)
+
+        }
+    }
+
+    // forma 2
+    programa {
+        funcao inicio() {
+            inteiro v1, v2, v3
+
+            escreva("digite v1 : ")
+            leia(v1)
+            escreva("digite v2 : ")
+            leia(v2)
+            escreva("digite v3 : ")
+            leia(v3)
+
+            se(v1 > v2){
+                se(v1 > v3){ // v1 é o maior de todos
+                    se(v2 > v3){
+                        escreva(v1, " ", v2, " ", v3, "\n")
+                        escreva(v3, " ", v2, " ", v1)
+                    }
+                    senao{
+                        escreva(v1, " ", v3, " ", v2, "\n")
+                        escreva(v2, " ", v3, " ", v1)
+                    }
+                }
+            }
+            se(v2 > v1)
+                se(v2 > v3) // v2 é o maior de todos
+                    se(v1 > v3){
+                        escreva(v2, " ", v1, " ", v3, "\n")
+                        escreva(v3, " ", v1, " ", v2)
+                    }
+                    senao{
+                        escreva(v2, " ", v3, " ", v1, "\n")
+                        escreva(v1, " ", v3, " ", v2)
+                    }
+            se(v3 > v1)
+                se(v3 > v2) // v3 é o maior de todos
+                    se(v1 > v2){
+                        escreva(v3, " ", v1, " ", v2, "\n")
+                        escreva(v2, " ", v1, " ", v3)
+                    }
+                    senao{
+                        escreva(v3, " ", v2, " ", v1, "\n")
+                        escreva(v1, " ", v2, " ", v3)
+                    }
+        }
+    }
+    ```
 
 </details>
