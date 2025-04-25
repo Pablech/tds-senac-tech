@@ -138,8 +138,7 @@ senao {
 <img src="https://portugol.dev/assets/recursos/ajuda/recursos/imagens/Dark/se_senao.png" style="background-color: #000000;"/><br>
 *Diagrama: Se a condição for verdadeira, executa o bloco "É dia"; senão, executa o bloco "É noite".*
 
-
-### exemplo Prático
+### exemplo prático
 ```portugol
 programa {
     funcao inicio() {
@@ -555,6 +554,9 @@ escolha(<variável>) {
 2. `caso`: Define um valor específico para comparação
 3. `pare`: Interrompe a execução, prevenindo execução sequencial de casos
 4. `caso contrario`: Executado quando nenhum caso anterior é satisfeito (equivalente a [`senao`](#comando-se-senao))
+
+<img src="https://portugol.dev/assets/recursos/ajuda/recursos/imagens/Dark/escolha_caso.png" style="background-color: #000000;"/><br>
+*Diagrama: A figura acima ilustra um algoritmo que verifica se o a variável valor é igual a 0, 1 ou 2.*
 
 ## exemplo - calculadora
 ```portugol
