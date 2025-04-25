@@ -92,29 +92,6 @@ programa {
 11. Leia um saldo bancário (real) e, se for maior que zero, escreva **"Saldo positivo"**.
 12. Leia um valor (real) e, se for maior que 1000, calcule **10% de desconto** (10% do valor lido) e escreva o valor do desconto.
 13. Leia um caractere e, se for igual a **'a'**, **'e'**, **'i'**, **'o'** ou **'u'**, escreva **"Vogal"**.
-    ```portugol
-    programa {
-        funcao inicio() {
-            caracter letra = 'a'
-
-            escreva("Digite uma letra : ")
-            leia(letra)
-
-            se(letra == 'a'){
-                escreva("Vogal")
-            }
-            se(letra == 'e'){
-                escreva("Vogal")
-            }
-            se(letra == 'i')
-                escreva("Vogal")
-            se(letra == 'o')
-                escreva("Vogal")
-            se(letra == 'u')
-                escreva("Vogal")
-        }
-    }
-    ```
 14. Leia um caractere e, se estiver entre **'A'** e **'Z'**, escreva **"Maiúsculo"**.
 15. Leia um caractere e, se estiver entre **'a'** e **'z'**, escreva **"Minúsculo"**.
 16. Leia um caractere e, se for igual a **'0'**, escreva **"Zero"**.
@@ -541,5 +518,153 @@ senao {
         }
     }
     ```
+
+</details>
+
+---
+
+## comando `escolha-caso`
+
+A estrutura `escolha-caso` oferece uma forma eficiente de criar menus e tomar decisões múltiplas, especialmente quando comparada ao uso excessivo de `se-senão`. É ideal para situações com valores discretos e pré-definidos.
+
+## características principais
+| Vantagem                   | Limitação                      |
+|----------------------------|--------------------------------|
+| Simplifica código complexo | Só testa igualdade exata       |
+| Melhora legibilidade       | Não aceita operadores lógicos  |
+| Otimiza performance        | Requer `pare` para evitar fall-through |
+
+## sintaxe básica
+```portugol
+escolha(<variável>) {
+    caso <valor_1>:
+        // bloco de código 1
+    pare
+
+    caso <valor_2>:
+        // bloco de código 2
+    pare
+
+    caso contrario:
+        // bloco padrão (opcional)
+}
+```
+
+### componentes chave:
+1. `escolha`: Inicia a estrutura com a variável a ser testada
+2. `caso`: Define um valor específico para comparação
+3. `pare`: Interrompe a execução, prevenindo execução sequencial de casos
+4. `caso contrario`: Executado quando nenhum caso anterior é satisfeito (equivalente a [`senao`](#comando-se-senao))
+
+## exemplo - calculadora
+```portugol
+programa {
+    funcao inicio() {
+        inteiro opcao
+        real num_1, num_2
+
+        escreva("Calculadora Simples\n1-Soma\n2-Subtração\n3-Multiplicação\nOpção: ")
+        leia(opcao)
+
+        escreva("Digite um número: ")
+        leia(num_1)
+        escreva("Digite outro número: ")
+        leia(num_2)
+
+        escolha(opcao) {
+            caso 1:
+                escreva("Resultado: ", num_1 + num_2)
+            pare
+
+            caso 2:
+                escreva("Resultado: ", num_1 - num_2)
+            pare
+
+            caso 3:
+                escreva("Resultado: ", num_1 * num_2)
+            pare
+
+            caso contrario:
+                escreva("Opção inválida!")
+        }
+    }
+}
+```
+
+## comportamento sem `pare`
+```portugol
+inteiro valor = 1
+escolha(valor) {
+    caso 1:
+        escreva("Um")
+    // sem pare - continua execução
+    caso 2:
+        escreva("Dois")
+    pare
+}
+// Saída: "UmDois"
+```
+
+## boas práticas
+1. **Sempre use `pare`** exceto em fall-through intencional
+2. **Ordene casos** numericamente/alfabeticamente para melhor legibilidade
+3. **Use `caso contrario`** para tratamento de erros/exceções
+4. **Evite aninhamento** complexo dentro dos casos
+
+## comparação com [`se-senão`](#comando-se-senao)
+| Cenário                | Escolha-Caso           | Se-Senão            |
+|------------------------|------------------------|---------------------|
+| Teste de igualdade     | Ideal (1 variável)     | Ineficiente         |
+| Intervalos/Operações   | Não aplicável          | Melhor opção        |
+| Legibilidade           | Superior (>3 casos)    | Complexa            |
+
+### casos de uso recomendados
+- Menus interativos
+- Processamento de códigos/opções
+- Máquinas de estado finito
+- Tratamento de comandos de usuário
+
+---
+
+### exercícios - `escolha-caso`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+### **Básico**
+1. Peça um número (1-7) e exiba o nome do dia correspondente (1 = Domingo, 7 = Sábado).
+2. Crie um menu para operações básicas (+, -, *, /) entre dois números.
+3. Converta Celsius para Fahrenheit ou vice-versa, conforme a opção do usuário.
+4. Categorize a idade em: criança (0-12), adolescente (13-17), adulto (18-59), idoso (60+).
+5. Exiba cores primárias (1-Vermelho, 2-Azul, 3-Amarelo) e mostre uma mensagem relacionada.
+6. Valide códigos de produtos (Ex: 100 = Eletrônico, 200 = Alimentício).
+7. Traduza códigos de status: 1 = "Em preparo", 2 = "Entregue", 3 = "Cancelado".
+8. Associe números a notas (1-Dó, 2-Ré, etc.) e exiba o texto da nota.
+9. Use opções (1-Vermelho, 2-Amarelo, 3-Verde) para indicar ações.
+10. Crie uma mini-história com 3 finais diferentes baseados na escolha do usuário.
+
+### **Intermediário**
+11. Converta Real para Dólar, Euro ou Libra conforme a opção.
+12. Converta notas numéricas (0-10) em conceitos (A, B, C, D, F).
+13. Exiba pratos (1-Lasanha, 2-Pizza, etc.) e calcule o preço total.
+14. Classifique o IMC em: abaixo do peso, normal, sobrepeso, obeso.
+15. Ofereça opções: 1-Saque, 2-Depósito, 3-Consultar Saldo.
+16. Use números fixos (ex: 7, 15, 22) como respostas "secretas".
+17. Permita adicionar, buscar ou excluir contatos via menu.
+18. Peça um número ao usuário e uma escolha a qual potência ele deve ser elevado.
+19. Associe números a perguntas e valide respostas pré-definidas.
+20. Aplique descontos conforme o código promocional inserido (ex: CODE10 = 10%).
+
+### **Avançado**
+21. Associe datas fixas (ex: 25/12 = Natal) a eventos.
+22. Use um menu para iniciar, ver regras ou sair do jogo.
+23. Controle permissões baseadas em códigos de usuário (1-Admin, 2-Usuário, 3-Convidado).
+24. Implemente saque, depósito e extrato com validação de notas (ex: R$50, R$100).
+25. Converta entre metros/km, litros/m³, etc., conforme a opção.
+26. Ofereça horários pré-definidos (ex: 14h, 16h, 18h) para reservas.
+27. Use escolhas para definir ações em batalhas (atacar, defender, fugir).
+28. Compare senhas pré-cadastradas (ex: "1234", "admin") e dê feedback.
+29. Peça um número (1-10) e exiba sua tabuada usando `caso`.
+30. Calcule preços por faixa etária (criança, adulto, idoso).
 
 </details>
