@@ -4,10 +4,11 @@ Este repositório será usado para compartilhar o material das aulas que serão 
 ---
 
 ## UC2 - Desenvolver Algoritmos
-Curso com duração de 96 horas.
+Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 07 | 24/04/2025 | [comando `escolha-caso`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-escolha-caso)<br>[constantes](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#declaração-de-constantes) |
 | 06 | 23/04/2025 | Projeto Integrador |
 | 05 | 22/04/2025 | [comando `senao`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-se-senao)<br>[comando `se senao`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-se-senao-se) |
 | 04 | 17/04/2025 | [comando `se`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#se)<br>[tipo `lógico`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-logico)<br>[operadores relacionais](uc2-desenvolver-algoritmos/1.portugol/operadores-relacionais.md)<br>[operador `módulo` `%`](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-módulo) |
