@@ -652,7 +652,61 @@ escolha(valor) {
 14. Classifique o IMC em: abaixo do peso, normal, sobrepeso, obeso.
 15. Ofereça opções: 1-Saque, 2-Depósito, 3-Consultar Saldo.
 16. Use números fixos (ex: 7, 15, 22) como respostas "secretas".
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro opcao
+
+            escreva("digite um número para uma resposta : \n\t>> ")
+            leia(opcao)
+
+            escolha(opcao){
+            caso 0:
+                escreva("parabéns, esse número é nulo")
+                pare
+            caso 42:
+                escreva("a resposta para a pergunta universal")
+                pare
+            caso 3:
+                escreva("esse é o PI arredondado em uma prova de engenharia")
+                pare
+            caso contrario:
+                escreva("esse número não quer dizer nada")
+            }
+        }
+    }
+    ```
 17. Permita adicionar, buscar ou excluir contatos via menu.
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro opcao
+
+            escreva("\t\tAgenda Eletrônica\n")
+            escreva("\nMenu :")
+            escreva("\n\t1. Salvar Contato")
+            escreva("\n\t2. Buscar Contato")
+            escreva("\n\t3. Apagar Contato")
+            escreva("\n\t4. Alterar Contato")
+            escreva("\n\t\t >> ")
+            leia(opcao)
+
+            escolha(opcao){
+            caso 1:
+                escreva("contato salvo") pare
+            caso 2:
+                escreva("contato buscado") pare
+            caso 3:
+                escreva("contato apagado") pare
+            caso 4:
+                escreva("contato atualizado") pare
+            caso contrario:
+                escreva("opcao incorreta")
+            }
+        }
+    }
+
+    ```
 18. Peça um número ao usuário e uma escolha a qual potência ele deve ser elevado.
 19. Associe números a perguntas e valide respostas pré-definidas.
 20. Aplique descontos conforme o código promocional inserido (ex: CODE10 = 10%).
