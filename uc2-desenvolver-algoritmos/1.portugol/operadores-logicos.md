@@ -390,7 +390,7 @@ Acesso especial concedido
 
 ## exercícios
 
-< details>
+<details>
 <summary>Lista de Exercícios</summary>
 
 ## Fácil

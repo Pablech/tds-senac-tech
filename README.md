@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 09 | 29/04/2025 | [comando `enquanto`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-enquanto) |
 | 08 | 28/04/2025 | [operadores lógicos](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md)<br>[`e`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-e) [`ou`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-ou) [`nao`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-nao)<br>[avaliação - parte 1](uc2-desenvolver-algoritmos/avaliacao.md)<br>[git](uc2-desenvolver-algoritmos/git.md)<br>[github](uc2-desenvolver-algoritmos/git.md#github) |
 | 07 | 24/04/2025 | [comando `escolha-caso`](uc2-desenvolver-algoritmos/1.portugol/desvios-condicionais.md#comando-escolha-caso)<br>[constantes](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#declaração-de-constantes) |
 | 06 | 23/04/2025 | Projeto Integrador |
