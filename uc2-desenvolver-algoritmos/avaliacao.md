@@ -63,6 +63,16 @@ Configurar o ambiente de trabalho no GitHub e realizar a primeira exibição de 
     - Um arquivo de código `.por`.
 - [ ] Exibir um CPF usando o comando [`escreva`](https://github.com/gutohertzog/tds-senac-tech/blob/main/uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#fun%C3%A7%C3%A3o-escreva).
 
+## Etapa 2: Uso de Variáveis
+
+### Objetivo
+Armazenar e exibir o CPF formatado utilizando variáveis.
+
+### Tarefas
+- [ ] Criar **quatro variáveis inteiras**.
+- [ ] Atribuir valores a essas variáveis (valores fixos).
+- [ ] Exibir o CPF formatado a partir dessas variáveis.
+
 # Como usar checkbox no README
 
 Copie a seção `Desenvolvimento do Projeto` direto no seu `README.md`.<br>
