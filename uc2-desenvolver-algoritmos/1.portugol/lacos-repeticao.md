@@ -300,9 +300,84 @@ faca {
 
 ### **Intermediário**
 11. Calcule a média de notas de alunos. Permite reiniciar o cálculo.
+    ```portugol
+    programa {
+        funcao inicio() {
+            // Calcule a média de notas de alunos. Permite reiniciar o cálculo.
+            inteiro cont = 0
+            real notas, media = 0
+            logico vai_parar = falso
+            caracter parada = 'N'
+
+            escreva("\n\t\tcalculadora de médias\n\n")
+
+            // faca-enquanto cálculo de vários alunos
+            faca{
+                escreva("Fazendo o calculo de um novo aluno\n")
+                media = 0
+                cont = 0
+                // faca-enquanto do cálculo da nota
+                faca{
+                    escreva("Digite a nota ", cont+1, " (-1 para reiniciar) : ")
+                    leia(notas)
+                    media += notas // igual a -> media = media + notas
+
+                    cont++
+                    se(notas < 0){
+                        media = 0
+                        cont = 0
+                        escreva("\n\t\t REINICIANDO \n")
+                    }
+                }enquanto(cont < 3)
+                escreva("\n\nA média é : ", media / 3)
+
+                // teste do proximo aluno
+                escreva("\nquer parar (S/N)? ")
+                leia(parada)
+
+                se(parada == 'S' ou parada == 's')
+                    vai_parar = verdadeiro
+            }enquanto(nao vai_parar)
+        }
+    }
+    ```
 12. Salve um número entre 1-10. Peça palpites até que o usuário acerte.
 13. Permita 5 tentativas para acertar uma senha pré-definida.
 14. Peça um número e verifique se é primo. Repita a ação até o número ser primo.
+    ```portugol
+    programa {
+        funcao inicio() {
+            inteiro candidato_primo
+            inteiro testador
+
+            // pedindo varios numeros ate sair primo
+            faca{
+                escreva("digite um candidato a primo (numerico) : ")
+                leia(candidato_primo)
+                testador = candidato_primo - 1
+
+                // adicione aqui seu teste para numeros negativos
+
+                // faca-enquanto para buscar numero primo
+                faca{
+                    se(candidato_primo == 2){
+                        pare
+                    }
+                    se(candidato_primo % testador == 0){
+                        escreva("nao eh primo\n")
+                        pare
+                    }
+                    testador-- // == testador -= 1 == testador = testador - 1
+                }enquanto(testador > 1)
+                se(testador == 1){
+                    pare
+                }
+            }enquanto(verdadeiro)
+
+            escreva("o numero eh primo : ", candidato_primo)
+        }
+    }
+    ```
 15. Converta Real para Dólar. Repita até que o usuário decida sair.
 16. Conte quantos números pares e ímpares foram digitados até que o usuário insira 999.
 17. Registre compras e calcule o total. Repita até o usuário finalizar.
