@@ -73,6 +73,17 @@ Armazenar e exibir o CPF formatado utilizando variáveis.
 - [ ] Atribuir valores a essas variáveis (valores fixos).
 - [ ] Exibir o CPF formatado a partir dessas variáveis.
 
+## Etapa 3: Entrada de Dados
+
+### Objetivo
+Permitir a entrada de dados pelo usuário e exibir o CPF formatado.
+
+### Tarefas
+- [ ] Ler valores digitados para **quatro variáveis inteiras**.
+- [ ] Exibir o CPF formatado a partir dos valores lidos.
+
+---
+
 # Como usar checkbox no README
 
 Copie a seção `Desenvolvimento do Projeto` direto no seu `README.md`.<br>

@@ -398,3 +398,147 @@ faca {
 <!-- 26. Verifique se palavras são palíndromas. Permita múltiplas verificações. -->
 
 </details>
+
+---
+
+## comando `para`
+O laço `para` é uma estrutura de repetição projetada para **iterações controladas**, onde o número de repetições é conhecido ou pré-determinado. Ideal para situações como processamento de listas, cálculos sequenciais e operações com contagem fixa.
+
+### por que usar o `para`?
+- **Controle automatizado**: Gerencia inicialização, condição e incremento em uma única linha
+- **Prevenção de erros**: Elimina o risco de esquecer atualizações manuais do contador
+- **Eficiência**: Otimizado para processamento de intervalos numéricos
+
+### sintaxe e componentes
+```portugol
+para (<inicialização>; <condição>; <incremento>) {
+    // bloco de código repetido
+}
+```
+
+| Componente       | Função                                  | Exemplo         |
+|------------------|-----------------------------------------|-----------------|
+| Inicialização    | Declara e/ou atribui valor ao contador  | `inteiro i = 1` |
+| Condição         | Define critério de continuação          | `i <= 10`       |
+| Incremento       | Atualiza o contador após cada iteração  | `i++`           |
+
+### funcionamento passo a passo
+1. **Inicialização**: Executada uma vez, no início
+2. **Verificação da Condição**:
+    - Se `verdadeira`: Executa o bloco
+    - Se `falsa`: Encerra o laço
+3. **Incremento**: Atualiza o contador após cada bloco
+
+### exemplo 1: tabuada de 3
+```portugol
+programa {
+    funcao inicio() {
+        para (inteiro i = 1; i <= 10; i++) {
+            inteiro resultado = i * 3
+            escreva("3 x ", i, " = ", resultado, "\n")
+        }
+    }
+}
+```
+
+**Saída:**
+```
+3 x 1 = 3
+3 x 2 = 6
+...
+3 x 10 = 30
+```
+
+### exemplo 2: contagem regressiva
+```portugol
+para (inteiro i = 5; i >= 1; i--) {
+    escreva("Contagem: ", i, "\n")
+}
+```
+
+**Saída:**
+```
+Contagem: 5
+Contagem: 4
+...
+Contagem: 1
+```
+
+### boas práticas
+1. **Escopo do Contador**:
+    Declare o contador dentro do `para` para limitar seu escopo:
+    ```portugol
+    para (inteiro i = 0; i < 5; i++) { ... }  // i só existe aqui
+    ```
+
+2. **Evite Modificar o Contador**:
+    Não altere manualmente a variável dentro do bloco:
+    ```portugol
+    // ruim
+    para (inteiro i=0; i<10; i++) {
+        i = 5  // causa loop infinito
+    }
+    ```
+
+### comparação com outros laços
+| Cenário                 | `para`              | `enquanto`         |
+|-------------------------|---------------------|--------------------|
+| Iterações pré-definidas | Ideal               | Ineficiente        |
+| Controle de contador    | Automático          | Manual             |
+| Flexibilidade           | Limitado a padrões  | Ilimitada          |
+
+### aplicações típicas
+1. Processamento de arrays/vetores
+2. Geração de sequências numéricas
+3. Execução de algoritmos matemáticos iterativos
+4. Implementação de sistemas de repetição por tempo fixo
+
+### exercícios - comando `para`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+### **Básico**
+1. Peça um número inteiro `N` e exiba todos os números de 1 a `N`.
+2. Calcule a soma dos primeiros `N` números naturais (1 + 2 + 3 + ... + N).
+3. Exiba todos os números pares entre 1 e 20.
+4. Leia 10 números digitados pelo usuário e exiba-os no final.
+5. Exiba os múltiplos de 5 de 5 a 50.
+6. Exiba a tabuada do 9 (9x1 a 9x10).
+7. Faça uma contagem regressiva de 10 a 1.
+8. Peça dois números `A` e `B` e calcule a soma de todos os números entre eles.
+9. Leia 5 notas e calcule a média.
+10. Exiba um quadrado de 5x5 usando `*`.
+
+### **Intermediário**
+11. Calcule o fatorial de um número `N` usando `para`.
+12. Verifique se um número é primo usando um laço `para`.
+13. Peça um número e exiba sua tabuada de 1 a 10.
+14. Calcule a soma dos números pares entre dois números informados.
+17. Exiba os primeiros `N` termos da sequência de Fibonacci.
+18. Verifique se um número é perfeito (soma dos divisores = número).
+19. Exiba o padrão:
+    ```
+    1
+    12
+    123
+    1234
+    ```
+<!-- 15. Inverta uma string digitada pelo usuário (ex: "ola" → "alo").<br> -->
+<!-- *Dica:* Use as bibliotecas [`Texto`](bibliotecas.md#biblioteca-texto) e [`Tipos`](bibliotecas.md#biblioteca-tipos). -->
+<!-- 16. Conte quantas vogais existem em uma palavra usando vetor. -->
+<!-- 20. Calcule o MDC de dois números usando o algoritmo de Euclides. -->
+
+### **Avançado**
+21. Converta um número decimal para binário usando `para`.
+22. Exiba todos os números primos entre 1 e 100.
+23. Calcule a soma da série: 1 + 1/2 + 1/3 + ... + 1/N.
+26. Verifique se um número digitado é múltiplo de dois números primos.
+27. Exiba as primeiras 5 linhas do Triângulo de Pascal.
+28. Desenhe um tabuleiro 3x3 usando `para` e caracteres.
+29. Simule 1000 lançamentos de um dado e conte quantas vezes cada face saiu.
+<!-- 24. Ordene um vetor de 10 números em ordem crescente (use Bubble Sort). -->
+<!-- 25. Crie uma matriz identidade 4x4 (1 na diagonal principal, 0 outros). -->
+<!-- 30. Crie uma cifra de César (deslocar letras por 3 posições no alfabeto). -->
+
+</details>
