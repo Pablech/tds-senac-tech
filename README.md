@@ -8,7 +8,8 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 11 | 02/04/2025 | [comando `para`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-para)<br>[avaliação - etapa 3](uc2-desenvolver-algoritmos/avaliacao.md#etapa-3-entrada-de-dados) |
+| 12 | 05/05/2025 | [biblioteca `Texto`](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-texto)<br>[biblioteca `Tipo`](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-tipos)<br>[avaliação - etapa 4](uc2-desenvolver-algoritmos/avaliacao.md#etapa-4-validando-positivos) |
+| 11 | 02/05/2025 | [comando `para`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-para)<br>[avaliação - etapa 3](uc2-desenvolver-algoritmos/avaliacao.md#etapa-3-entrada-de-dados) |
 | 10 | 30/04/2025 | [comando `faca-enquanto`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-faca-enquanto)<br>[biblioteca](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md)<br>[biblioteca Util - sorteia](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-util)<br>[avaliação - etapa 2](uc2-desenvolver-algoritmos/avaliacao.md#etapa-2-uso-de-variáveis) |
 | 09 | 29/04/2025 | [comando `enquanto`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-enquanto) |
 | 08 | 28/04/2025 | [operadores lógicos](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md)<br>[`e`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-e) [`ou`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-ou) [`nao`](uc2-desenvolver-algoritmos/1.portugol/operadores-logicos.md#operador-nao)<br>[avaliação - etapa 1](uc2-desenvolver-algoritmos/avaliacao.md)<br>[git](uc2-desenvolver-algoritmos/git.md)<br>[github](uc2-desenvolver-algoritmos/git.md#github) |

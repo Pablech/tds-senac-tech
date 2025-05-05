@@ -533,6 +533,26 @@ Contagem: 1
 21. Converta um número decimal para binário usando `para`.
 22. Exiba todos os números primos entre 1 e 100.
 23. Calcule a soma da série: 1 + 1/2 + 1/3 + ... + 1/N.
+    ```portugol
+    programa
+    {
+        funcao inicio()
+        {
+            real soma = 0.0, soma1 = 0.0
+            inteiro valor, teste = 1
+
+            escreva("numero : ")
+            leia(valor)
+
+            enquanto(teste < valor){
+                teste++
+                soma = soma1 + (1.0/teste)
+                soma1 = soma
+            }
+            escreva(soma  + 1, "\n")
+        }
+    }
+    ```
 26. Verifique se um número digitado é múltiplo de dois números primos.
 27. Exiba as primeiras 5 linhas do Triângulo de Pascal.
 28. Desenhe um tabuleiro 3x3 usando `para` e caracteres.
