@@ -917,7 +917,7 @@ programa
 <summary>Lista de Exercícios</summary>
 
 #### **Cadeia é Caracter**
-1. Verifique se uma string inserida pelo usuário representa um único caractere.
+1. Verifique se uma cadeia inserida pelo usuário representa um único caractere.
 1. Determine se um caractere digitado é uma vogal (a, e, i, o, u).
 1. Converta um caractere minúsculo para maiúsculo (se válido).
 1. Identifique se um caractere é uma letra do alfabeto.
@@ -926,9 +926,9 @@ programa
 1. Verifique se um caractere é uma consoante.
 
 #### **Cadeia é Inteiro**
-1. Valide se uma string representa um número inteiro válido (ex: "123").
+1. Valide se uma cadeia representa um número inteiro válido (ex: "123").
 1. Verifique se um número inteiro (em formato de string) é positivo.
-1. Converta uma string para inteiro e verifique se é par.
+1. Converta uma cadeia para inteiro e verifique se é par.
 1. Calcule a soma dos dígitos de um número inteiro representado por string.
 1. Inverta os dígitos de um número inteiro em formato de string (ex: "123" → "321").
 1. Valide se um número inteiro (string) é um palíndromo (ex: "121").
@@ -937,21 +937,21 @@ programa
 1. Multiplique por 2 um número inteiro válido inserido como string.
 
 #### **Cadeia é Lógico**
-1. Valide se uma string é "verdadeiro" ou "falso" (caso insensível).
+1. Valide se uma cadeia é "verdadeiro" ou "falso" (caso insensível).
 1. Converta a string "verdadeiro" para `verdadeiro` e "falso" para `falso`.
-1. Inverta o valor lógico de uma string ("verdadeiro" → "falso" e vice-versa).
-1. Verifique se uma string representa "sim" ou "não" e converta para lógico.
-1. Valide se uma string é equivalente a "1" (verdadeiro) ou "0" (falso).
-1. Combine uma string lógica com uma condição numérica (ex: "verdadeiro" e número > 5).
+1. Inverta o valor lógico de uma cadeia ("verdadeiro" → "falso" e vice-versa).
+1. Verifique se uma cadeia representa "sim" ou "não" e converta para lógico.
+1. Valide se uma cadeia é equivalente a "1" (verdadeiro) ou "0" (falso).
+1. Combine uma cadeia lógica com uma condição numérica (ex: "verdadeiro" e número > 5).
 
 #### **Cadeia é Real**
-1. Valide se uma string representa um número real válido (ex: "3.14").
+1. Valide se uma cadeia representa um número real válido (ex: "3.14").
 1. Verifique se um número real (string) é positivo ou negativo.
-1. Converta uma string para real e some 5.5 ao resultado.
+1. Converta uma cadeia para real e some 5.5 ao resultado.
 1. Separe a parte inteira e decimal de um número real em formato de string.
 1. Arredonde um número real (string) para duas casas decimais.
 1. Valide se um número real (string) é maior que 10.0.
-1. Verifique se uma string representa um número em notação científica (ex: "2.5e3").
+1. Verifique se uma cadeia representa um número em notação científica (ex: "2.5e3").
 1. Multiplique por 3 um número real válido inserido como string.
 1. Identifique se um número real (string) é um número inteiro (ex: "5.0" → inteiro).
 1. Compare duas strings representando números reais e exiba a maior.
@@ -978,55 +978,55 @@ programa
 1. Verifique se um número inteiro é o código ASCII de uma vogal (A, E, I, O, U, maiúscula ou minúscula).
 
 #### **Cadeia para Caracter**
-1. Converta o primeiro caractere de uma string em um caractere individual (ex: "hello" → 'h').
-2. Verifique se uma string tem apenas um caractere e exiba-o. Caso contrário, mostre uma mensagem de erro.
-1. Converta o último caractere de uma string em um caractere individual.
-1. Exiba o caractere do meio de uma string (se o comprimento for ímpar).
-1. Converta uma string de dois caracteres em dois caracteres separados (ex: "AB" → 'A' e 'B').
-1. Valide se uma string não está vazia e converta seu primeiro caractere para maiúsculo.
-1. Receba uma string e retorne o caractere correspondente à posição informada pelo usuário.
+1. Converta o primeiro caractere de uma cadeia em um caractere individual (ex: "hello" → 'h').
+2. Verifique se uma cadeia tem apenas um caractere e exiba-o. Caso contrário, mostre uma mensagem de erro.
+1. Converta o último caractere de uma cadeia em um caractere individual.
+1. Exiba o caractere do meio de uma cadeia (se o comprimento for ímpar).
+1. Converta uma cadeia de dois caracteres em dois caracteres separados (ex: "AB" → 'A' e 'B').
+1. Valide se uma cadeia não está vazia e converta seu primeiro caractere para maiúsculo.
+1. Receba uma cadeia e retorne o caractere correspondente à posição informada pelo usuário.
 
 #### **Cadeia para Inteiro**
-1. Converta uma string numérica (ex: "42") em inteiro e some 8 ao resultado.
-1. Valide se uma string pode ser convertida para inteiro e exiba o resultado ou "inválido".
-1. Converta uma string binária (ex: "1010") para seu valor inteiro correspondente.
+1. Converta uma cadeia numérica (ex: "42") em inteiro e some 8 ao resultado.
+1. Valide se uma cadeia pode ser convertida para inteiro e exiba o resultado ou "inválido".
+1. Converta uma cadeia binária (ex: "1010") para seu valor inteiro correspondente.
 1. Faça a soma de dois números inteiros fornecidos como strings (ex: "12" + "34" → 46).
-1. Converta uma string hexadecimal válida (ex: "1A") para inteiro.
-1. Calcule o fatorial de um número representado por uma string (após conversão).
-1. Valide se uma string com sinal (ex: "-123") é um inteiro negativo.
-1. Converta uma string com caracteres não numéricos misturados (ex: "12a3") para inteiro, ignorando letras.
-1. Receba uma string e retorne a soma de seus dígitos (ex: "123" → 6).
-1. Converta uma string em formato de hora (ex: "14:30") para minutos inteiros (ex: 870).
+1. Converta uma cadeia hexadecimal válida (ex: "1A") para inteiro.
+1. Calcule o fatorial de um número representado por uma cadeia (após conversão).
+1. Valide se uma cadeia com sinal (ex: "-123") é um inteiro negativo.
+1. Converta uma cadeia com caracteres não numéricos misturados (ex: "12a3") para inteiro, ignorando letras.
+1. Receba uma cadeia e retorne a soma de seus dígitos (ex: "123" → 6).
+1. Converta uma cadeia em formato de hora (ex: "14:30") para minutos inteiros (ex: 870).
 
 #### **Cadeia para Lógico**
 1. Converta a string "verdadeiro" para `verdadeiro` e "falso" para `falso` (case-insensitive).
-1. Valide se uma string é "sim" ou "não" e converta para `verdadeiro` ou `falso`.
+1. Valide se uma cadeia é "sim" ou "não" e converta para `verdadeiro` ou `falso`.
 1. Converta a string "1" para `verdadeiro` e "0" para `falso`.
-1. Faça a negação lógica de uma string (ex: "verdadeiro" → `falso`).
+1. Faça a negação lógica de uma cadeia (ex: "verdadeiro" → `falso`).
 1. Combine duas strings lógicas (ex: "verdadeiro" e "falso") usando a operação **E** lógico.
-1. Converta uma string que representa um número par (ex: "4") para `verdadeiro`.
-1. Valide se uma string está vazia e retorne `verdadeiro` ou `falso`.
+1. Converta uma cadeia que representa um número par (ex: "4") para `verdadeiro`.
+1. Valide se uma cadeia está vazia e retorne `verdadeiro` ou `falso`.
 1. Converta a string "V" para `verdadeiro` e "F" para `falso` (maiúsculas).
 1. Compare duas strings e retorne `verdadeiro` se forem iguais, ignorando maiúsculas/minúsculas.
-1. Converta uma string que representa um número maior que 100 (ex: "150") para `verdadeiro`.
+1. Converta uma cadeia que representa um número maior que 100 (ex: "150") para `verdadeiro`.
 
 #### **Cadeia para Real**
-1. Converta uma string com ponto decimal (ex: "3.14") para real e multiplique por 2.
-1. Valide se uma string pode ser convertida para real (ex: "12.5" ou "7") e exiba o resultado.
-1. Converta uma string em notação científica (ex: "2.5e3") para real.
-1. Separe a parte inteira e decimal de uma string real (ex: "5.75" → 5 e 0.75).
+1. Converta uma cadeia com ponto decimal (ex: "3.14") para real e multiplique por 2.
+1. Valide se uma cadeia pode ser convertida para real (ex: "12.5" ou "7") e exiba o resultado.
+1. Converta uma cadeia em notação científica (ex: "2.5e3") para real.
+1. Separe a parte inteira e decimal de uma cadeia real (ex: "5.75" → 5 e 0.75).
 1. Arredonde um número real representado por string para o inteiro mais próximo.
-1. Converta uma string com vírgula decimal (ex: "3,14") para real (substituindo "," por ".").
+1. Converta uma cadeia com vírgula decimal (ex: "3,14") para real (substituindo "," por ".").
 1. Calcule a média de dois números fornecidos como strings (ex: "4.5" e "3.2").
-1. Valide se uma string real está no intervalo de 0.0 a 1.0.
-1. Converta uma string de fração (ex: "3/4") para seu valor real correspondente (0.75).
+1. Valide se uma cadeia real está no intervalo de 0.0 a 1.0.
+1. Converta uma cadeia de fração (ex: "3/4") para seu valor real correspondente (0.75).
 1. Compare duas strings representando números reais e retorne a maior delas.
 
 #### **Caracter para Cadeia**
-1. Converta um caractere digitado pelo usuário em uma string de comprimento 3, repetindo-o três vezes (ex: 'A' → "AAA").
-1. Crie uma string que represente o nome de um mês (ex: 'J' → "Janeiro") baseado na primeira letra digitada (considerar apenas meses únicos como Janeiro, Junho, Julho).
-1. Transforme um caractere em uma string com seu código ASCII entre colchetes (ex: 'B' → "[66]").
-1. Converta um caractere para uma string que represente seu tipo: "letra", "número" ou "símbolo".
+1. Converta um caractere digitado pelo usuário em uma cadeia de comprimento 3, repetindo-o três vezes (ex: 'A' → "AAA").
+1. Crie uma cadeia que represente o nome de um mês (ex: 'J' → "Janeiro") baseado na primeira letra digitada (considerar apenas meses únicos como Janeiro, Junho, Julho).
+1. Transforme um caractere em uma cadeia com seu código ASCII entre colchetes (ex: 'B' → "[66]").
+1. Converta um caractere para uma cadeia que represente seu tipo: "letra", "número" ou "símbolo".
 1. Monte uma sigla de 3 letras a partir de três caracteres digitados (ex: 'B', 'R', 'A' → "BRA").
 
 #### **Caracter para Inteiro**
@@ -1041,16 +1041,16 @@ programa
 1. Converta um caractere que representa um dígito par ('0', '2', ..., '8') para `verdadeiro`.
 
 #### **Inteiro para Cadeia**
-1. Converta um número inteiro em uma string que represente seu valor por extenso (ex: 123 → "123").
-1. Crie uma string que repita um número inteiro três vezes (ex: 5 → "555").
-1. Converta um inteiro em uma string com formatação de moeda (ex: 1000 → "R$ 1000").
-1. Transforme um número inteiro em uma string binária (ex: 10 → "1010").
+1. Converta um número inteiro em uma cadeia que represente seu valor por extenso (ex: 123 → "123").
+1. Crie uma cadeia que repita um número inteiro três vezes (ex: 5 → "555").
+1. Converta um inteiro em uma cadeia com formatação de moeda (ex: 1000 → "R$ 1000").
+1. Transforme um número inteiro em uma cadeia binária (ex: 10 → "1010").
 1. Monte uma data no formato "DD/MM/AAAA" a partir de três inteiros (dia, mês, ano).
-1. Converta um inteiro em uma string hexadecimal (ex: 255 → "FF").
+1. Converta um inteiro em uma cadeia hexadecimal (ex: 255 → "FF").
 1. Valide se a string gerada a partir de um inteiro é um palíndromo (ex: 121 → "121" é palíndromo).
-1. Crie uma string que concatene um número inteiro com uma mensagem (ex: 3 → "Você tem 3 mensagens").
-1. Converta um inteiro negativo em uma string com parênteses (ex: -50 → "(50)").
-1. Transforme um inteiro em uma string com até dois zeros à esquerda (ex: 7 → "007").
+1. Crie uma cadeia que concatene um número inteiro com uma mensagem (ex: 3 → "Você tem 3 mensagens").
+1. Converta um inteiro negativo em uma cadeia com parênteses (ex: -50 → "(50)").
+1. Transforme um inteiro em uma cadeia com até dois zeros à esquerda (ex: 7 → "007").
 
 #### **Inteiro para Caracter**
 1. Converta um número inteiro (código ASCII) em seu caractere correspondente (ex: 65 → 'A').
@@ -1083,14 +1083,14 @@ programa
 1. Calcule o valor real de um inteiro em porcentagem (ex: 75 → 0.75).
 
 #### **Lógico para Cadeia**
-1. Converta um valor lógico (`verdadeiro`/`falso`) em uma string "SIM" ou "NÃO".
+1. Converta um valor lógico (`verdadeiro`/`falso`) em uma cadeia "SIM" ou "NÃO".
 1. Transforme `verdadeiro` em "Ativo" e `falso` em "Inativo".
 1. Converta um valor lógico para "Válido" ou "Inválido" em uma mensagem de erro.
-1. Crie uma string que represente um valor lógico em inglês ("true" ou "false").
+1. Crie uma cadeia que represente um valor lógico em inglês ("true" ou "false").
 1. Exiba "Liberado" se o valor for `verdadeiro` e "Bloqueado" se for `falso`.
 1. Converta `verdadeiro` para "1" e `falso` para "0" em formato de string.
 1. Monte uma frase: "O resultado é [valor]" (ex: `verdadeiro` → "O resultado é verdadeiro").
-1. Converta `verdadeiro` para "T" e `falso` para "F" em uma string de status.
+1. Converta `verdadeiro` para "T" e `falso` para "F" em uma cadeia de status.
 
 #### **Lógico para Caracter**
 1. Converta `verdadeiro` para 'V' e `falso` para 'F' (maiúsculas).
@@ -1112,10 +1112,10 @@ programa
 1. Calcule a soma de dois valores lógicos convertidos para inteiros (ex: `verdadeiro` + `falso` → 1 + 0 = 1).
 
 #### **Real para Cadeia**
-1. Converta um número real (ex: `3.1415`) em uma string com duas casas decimais (ex: `"3.14"`).
+1. Converta um número real (ex: `3.1415`) em uma cadeia com duas casas decimais (ex: `"3.14"`).
 1. Formate um número real como moeda (ex: `2500.99` → `"R$ 2500,99"`).
 1. Transforme um número real em notação científica (ex: `0.0045` → `"4.5e-3"`).
-1. Converta um número real em uma string com texto (ex: `2.5` → `"O valor é 2.5"`).
+1. Converta um número real em uma cadeia com texto (ex: `2.5` → `"O valor é 2.5"`).
 1. Substitua o ponto decimal por vírgula (ex: `7.8` → `"7,8"`).
 1. Converta um real em string de porcentagem (ex: `0.85` → `"85%"`).
 1. Valide se a parte inteira de um número real é par e exiba como string (ex: `5.7` → `"Ímpar"`).
