@@ -991,6 +991,31 @@ programa
 1. Valide se uma cadeia pode ser convertida para inteiro e exiba o resultado ou "inválido".
 1. Converta uma cadeia binária (ex: "1010") para seu valor inteiro correspondente.
 1. Faça a soma de dois números inteiros fornecidos como strings (ex: "12" + "34" → 46).
+    ```portugol
+    programa
+    {
+        inclua biblioteca Tipos
+        funcao inicio()
+        {
+            cadeia n1, n2
+            inteiro v1, v2
+
+            escreva("digite o valor de n1 : ")
+            leia(n1)
+            escreva("digite o valor de n2 : ")
+            leia(n2)
+
+            se(Tipos.cadeia_e_inteiro(n1, 10) e Tipos.cadeia_e_inteiro(n2, 10)){
+                v1 = Tipos.cadeia_para_inteiro(n1, 10)
+                v2 = Tipos.cadeia_para_inteiro(n2, 10)
+                escreva(v1, " + ", v2, " -> ", v1 + v2)
+            }
+            senao{
+                escreva("Digite apenas numeros")
+            }
+        }
+    }
+    ```
 1. Converta uma cadeia hexadecimal válida (ex: "1A") para inteiro.
 1. Calcule o fatorial de um número representado por uma cadeia (após conversão).
 1. Valide se uma cadeia com sinal (ex: "-123") é um inteiro negativo.
