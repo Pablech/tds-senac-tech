@@ -946,6 +946,40 @@ programa
 
 #### **Cadeia é Real**
 1. Valide se uma cadeia representa um número real válido (ex: "3.14").
+    ```portugol
+    programa {
+        inclua biblioteca Texto
+        inclua biblioteca Tipos
+        funcao inicio() {
+            // indice pi 01234567
+            cadeia pi = "3.141592"
+            logico resultado
+
+            // método 1
+            resultado = Tipos.cadeia_e_real(pi)
+            escreva("A variávei pi é do tipo real ? ", resultado)
+
+            // método 2 braçal
+            inteiro tamanho = Texto.numero_caracteres(pi)
+            caracter letra
+
+            para(inteiro i = 0; i < tamanho; i++){
+                letra = Texto.obter_caracter(pi, i)
+                se(letra == '.'){
+                    resultado = verdadeiro
+                }
+                senao se(nao Tipos.caracter_e_inteiro(letra)){
+                    resultado = falso
+                    pare
+                }
+                senao{
+                    resultado = verdadeiro
+                }
+            }
+            escreva("\nA variávei pi é do tipo real (método 2)? ", resultado)
+        }
+    }
+    ```
 1. Verifique se um número real (string) é positivo ou negativo.
 1. Converta uma cadeia para real e some 5.5 ao resultado.
 1. Separe a parte inteira e decimal de um número real em formato de string.
@@ -1018,6 +1052,58 @@ programa
     ```
 1. Converta uma cadeia hexadecimal válida (ex: "1A") para inteiro.
 1. Calcule o fatorial de um número representado por uma cadeia (após conversão).
+    ```portugol
+    programa
+    {
+        inclua biblioteca Tipos
+        funcao inicio()
+        {
+            const cadeia VALOR = "10"
+            inteiro fatorial = 0, valor
+            cadeia resultado
+
+            valor = Tipos.cadeia_para_inteiro(VALOR, 10)
+            para(inteiro i = 1; i <= valor; i++){
+                fatorial *= i // == fatorial = fatorial * 1
+            }
+            escreva("o fatorial de ",VALOR," eh : ",fatorial)
+
+            // necessário reiniciar para novo cálculo
+            fatorial = 1
+            para(inteiro i = valor; i > 0; i--){
+                fatorial *= i // == fatorial = fatorial * 1
+            }
+            escreva("\no segundo fatorial de ",VALOR," eh : ",fatorial)
+
+            // necessário reiniciar para novo cálculo
+            fatorial = 1
+            escreva("\n\n", VALOR, "! = ")
+            para(inteiro i = valor; i > 0; i--){
+                fatorial *= i // == fatorial = fatorial * 1
+                escreva(i)
+                se(i != 1){
+                    escreva(" * ")
+                }
+            }
+            escreva(" = ", fatorial)
+
+            // necessário reiniciar para novo cálculo
+            fatorial = 1
+            resultado = VALOR + "! = "
+            inteiro i = valor
+            enquanto(i > 0){
+                fatorial *= i // == fatorial = fatorial * 1
+                resultado += Tipos.inteiro_para_cadeia(i, 10)
+                se(i != 1){
+                    resultado += " * "
+                }
+                i-- // == i -= 1 == i = i -1
+            }
+            resultado += " = " + Tipos.inteiro_para_cadeia(fatorial, 10)
+            escreva("\n\nSegundo : ",resultado)
+        }
+    }
+    ```
 1. Valide se uma cadeia com sinal (ex: "-123") é um inteiro negativo.
 1. Converta uma cadeia com caracteres não numéricos misturados (ex: "12a3") para inteiro, ignorando letras.
 1. Receba uma cadeia e retorne a soma de seus dígitos (ex: "123" → 6).
@@ -1042,6 +1128,33 @@ programa
 1. Separe a parte inteira e decimal de uma cadeia real (ex: "5.75" → 5 e 0.75).
 1. Arredonde um número real representado por string para o inteiro mais próximo.
 1. Converta uma cadeia com vírgula decimal (ex: "3,14") para real (substituindo "," por ".").
+    ```portugol
+    programa {
+        inclua biblioteca Texto
+        inclua biblioteca Tipos
+        funcao inicio() {
+            const cadeia PI = "3,1415926535"
+            cadeia trocado = ""
+            inteiro tamanho = Texto.numero_caracteres(PI)
+            caracter letra
+
+            para(inteiro i = 0; i < tamanho; i++){
+                letra = Texto.obter_caracter(PI, i)
+                se(letra == ','){
+                    trocado += "."
+                }
+                senao{
+                    trocado += Tipos.caracter_para_cadeia(letra)
+                }
+            }
+
+            escreva("o valor de PI eh : ", PI)
+            escreva("\no valor de trocado eh : ", trocado)
+            escreva("\ntestando o trocado : ", Tipos.cadeia_e_real(trocado))
+            escreva("\no trocado convertido eh : ", Tipos.cadeia_para_real(trocado))
+        }
+    }
+    ```
 1. Calcule a média de dois números fornecidos como strings (ex: "4.5" e "3.2").
 1. Valide se uma cadeia real está no intervalo de 0.0 a 1.0.
 1. Converta uma cadeia de fração (ex: "3/4") para seu valor real correspondente (0.75).
