@@ -124,6 +124,35 @@ Terceira letra: o
 ### **Intermediário**
 11. Ordene um vetor de números inteiros em ordem crescente.
 12. Retorne a posição da primeira ocorrência de um elemento em um vetor.
+    ```portugol
+    programa
+    {
+        inclua biblioteca Util
+        funcao inicio()
+        {
+            const inteiro TAM = 20
+            inteiro numeros[TAM]
+            inteiro valor_para_buscar = 10, indice_do_valor = -1
+
+            para(inteiro i = 0; i < TAM; i++){
+                numeros[i] = Util.sorteia(0, 20)
+            }
+
+            para(inteiro i = 0; i < TAM; i++){
+                se(numeros[i] == valor_para_buscar){
+                    indice_do_valor = i
+                    pare
+                }
+            }
+            se(indice_do_valor >= 0){
+                escreva("numeros[",indice_do_valor,"] -> ", valor_para_buscar)
+            }
+            senao{
+                escreva("nao achei esse valor")
+            }
+        }
+    }
+    ```
 13. Inverta a ordem dos elementos de um vetor sem usar um vetor auxiliar.
 14. Junte dois vetores ordenados em um terceiro vetor mantendo a ordem.
 15. Remova valores duplicados de um vetor e exiba o resultado.
