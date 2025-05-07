@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 13 | 06/05/2025 | [vetores](uc2-desenvolver-algoritmos/1.portugol/vetores-matrizes.md#vetores) |
 | 12 | 05/05/2025 | [biblioteca `Texto`](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-texto)<br>[biblioteca `Tipo`](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-tipos)<br>[avaliação - etapa 4](uc2-desenvolver-algoritmos/avaliacao.md#etapa-4-validando-positivos) |
 | 11 | 02/05/2025 | [comando `para`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-para)<br>[avaliação - etapa 3](uc2-desenvolver-algoritmos/avaliacao.md#etapa-3-entrada-de-dados) |
 | 10 | 30/04/2025 | [comando `faca-enquanto`](uc2-desenvolver-algoritmos/1.portugol/lacos-repeticao.md#comando-faca-enquanto)<br>[biblioteca](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md)<br>[biblioteca Util - sorteia](uc2-desenvolver-algoritmos/1.portugol/bibliotecas.md#biblioteca-util)<br>[avaliação - etapa 2](uc2-desenvolver-algoritmos/avaliacao.md#etapa-2-uso-de-variáveis) |
