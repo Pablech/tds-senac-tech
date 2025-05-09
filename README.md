@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 16 | 09/05/2025 | [tipo `vazio`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-vazio)<br>[funções](uc2-desenvolver-algoritmos/1.portugol/funcoes.md) |
 | 15 | 08/05/2025 | [matriz](uc2-desenvolver-algoritmos/1.portugol/vetores-matrizes.md#matrizes)<br>[avaliação - etapa 5](uc2-desenvolver-algoritmos/avaliacao.md#etapa-5-entrando-texto) |
 | 14 | 07/05/2025 | [exercícios vetores](uc2-desenvolver-algoritmos/1.portugol/vetores-matrizes.md#exercícios---vetor) |
 | 13 | 06/05/2025 | [vetores](uc2-desenvolver-algoritmos/1.portugol/vetores-matrizes.md#vetores) |
