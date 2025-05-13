@@ -511,43 +511,43 @@ Funções que recebem dados e retornam um valor processado.
 | **Tipos de variáveis**  | Declaração explícita (ex: `inteiro`). | Tipagem dinâmica (inferência automática).|
 | **Exponenciação**       | Somente com uso de biblioteca.        | Usa `**` (ex: `2 ** 3`).                |
 | **Divisão inteira**     | Não tem.                              | Usa `//`.                               |
-|
+||||
 | **Exibição de dados**   | `escreva("Texto", variavel)`.         | `print("Texto", variavel)`.             |
 | **Leitura de dados**    | `leia(variavel)` (conversão automática). | `input()` (conversão manual necessária). |
-|
+||||
 | **Operadores relacionais**| Símbolos iguais (ex: `==`, `>`).      | Símbolos iguais (ex: `!=`, `<=`). |
 | **Comparação encadeada**  | Não suportada (necessário `e` lógico).       | Suportada (ex: `5 < x < 10`).            |
 | **Operadores lógicos**    | Usa `e`, `ou`, `nao`.                 | Usa `and`, `or`, `not`.                  |
 | **Resultado lógico**      | Tipo `logico` (`verdadeiro`/`falso`). | Tipo `bool` (`True`/`False`).            |
-|
+||||
 | **Estruturas de Controle** |
 | **Condicional simples**| `se (condição) { ... }`.            | `if condição: ...` (indentação obrigatória). |
 | **Condicional encadeada** | `senao se` e `senao`.              | `elif` e `else`.                         |
 | **Múltiplos casos**    | `escolha caso` com `pare`.            | `match case` (sem fall-through).         |
 | **Delimitadores**      | Usa chaves `{}`.                     | Usa apenas indentação.         |
 | **Flexibilidade**      | Foco em simplicidade educacional.     | Recursos avançados (ternários, pattern matching). |
-|
+||||
 | **Palavras-chave**     | `escolha`, `caso`, `caso contrario`.  | `match`, `case`, `case _`.     |
 | **Fall-through**       | Ocorre sem `pare`.                    | Não ocorre (sem necessidade de `break`). |
 | **Funcionalidade**     | Apenas comparação simples de valores. | Suporta **pattern matching** complexo. |
-|
+||||
 | **Estruturas de Repetição** |
 | **Loop condicional**| `enquanto` (verificação antes).        | `while` (mesmo comportamento).           |
 | **Delimitadores**  | Requer chaves `{}`.                 | Usa apenas indentação.         |
-|
+||||
 | **Loop iterativo**  | `para` (intervalos numéricos).         | `for` (iteráveis, incluindo `range()`).  |
 | **Flexibilidade**  | Focado em números (intervalos).       | Itera sobre qualquer iterável. |
 | **Sintaxe**        | `para (inteiro i=0; i<5; i++)`.                | `for i in range(0, 5)`.        |
-|
+||||
 | **Loop pós-condicional** | `faca enquanto` (executa primeiro). | Emulado com `while True` e `break`.      |
 | **Implementação**  | Nativo.                               | Requer emulação com `while True`. |
-|
+||||
 | **Funções** |
 | **Declaração**                  | `funcao`, `{ ... }`, tipos explícitos. | `def`, indentação, tipos implícitos.     |
 | **Parâmetros**                  | Tipos obrigatórios (ex: `inteiro a`). | Sem declaração de tipo.                  |
 | **Retorno**                     | `retorne` com tipo declarado.         | `return` sem tipo explícito.             |
 | **Flexibilidade**               | Menos flexível (tipos estáticos).     | Mais flexível (tipagem dinâmica).        |
-|
+||||
 
 ## Exercícios
 
