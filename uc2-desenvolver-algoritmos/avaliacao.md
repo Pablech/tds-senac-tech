@@ -103,6 +103,15 @@ Receba um CPF completo (com pontos e traço) e mostre ele separado em 2 partes.
 - [ ] Separe os 9 números do CPF dos 2 Dígitos Verificadores em duas variáveis.
 - [ ] Exiba as duas variáveis separadamente.
 
+## Etapa 6: Validando Entrada
+
+### Objetivos
+Receba um CPF completo e valide ele.
+
+### Tarefas
+- [ ] Leia um CPF completo do usuário.
+- [ ] Valide para que o CPF esteja nos formatos `XXX.XXX.XXX-YY` ou `XXXXXXXXXYY`.
+
 ---
 
 # Como usar checkbox no README
