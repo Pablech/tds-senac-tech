@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 18 | 13/05/2025 | [instalando Python](uc2-desenvolver-algoritmos/2.python/instalando-python.md)<br>[instalando VS Code](uc2-desenvolver-algoritmos/2.python/instalando-vscode.md) |
 | 17 | 12/05/2025 | [escopo de variáveis](uc2-desenvolver-algoritmos/escopo-de-variavel.md)<br>[Portugol vs Python](uc2-desenvolver-algoritmos/2.python/potugol-vs-python.md)<br>[avaliação - etapa 6](uc2-desenvolver-algoritmos/avaliacao.md#etapa-6-validando-entrada) |
 | 16 | 09/05/2025 | [tipo `vazio`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-vazio)<br>[funções](uc2-desenvolver-algoritmos/1.portugol/funcoes.md) |
 | 15 | 08/05/2025 | [matriz](uc2-desenvolver-algoritmos/1.portugol/vetores-matrizes.md#matrizes)<br>[avaliação - etapa 5](uc2-desenvolver-algoritmos/avaliacao.md#etapa-5-entrando-texto) |
