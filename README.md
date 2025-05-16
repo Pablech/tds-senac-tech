@@ -32,8 +32,10 @@ Curso com duração de 30 horas (10 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 04 | 18/06/2025 | Projeto Integrador |
 | 03 | 14/05/2025 | Projeto Integrador |
 | 02 | 23/04/2025 | Projeto Integrador |
+| 01 | 10/04/2025 | Projeto Integrador |
 
 ---
 
