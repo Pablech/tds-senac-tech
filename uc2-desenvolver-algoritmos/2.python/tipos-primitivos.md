@@ -852,6 +852,13 @@ print(resultado)  # saída : False
     1. Crie uma variável x com o valor 8.2 e uma variável y com o valor 3.4. Imprima o resultado da multiplicação de x por y e verifique se é menor que 30.
     1. Crie uma variável a com o valor 17 e outra variável b com o valor 3. Crie uma variável resultado que armazene a soma de a com o resto da divisão de a por b. Imprima resultado.
     1. Crie uma variável x com o valor 5.6 e outra variável y com o valor 2.3. Imprima o resultado da subtração de x por y, arredondado para o inteiro mais próximo.
+        ```python
+        x = 5.6
+        y = 2.3
+        resultado = x - y
+
+        print("o valor de resultado eh", int(resultado))
+        ```
 1. Exercícios Avançados
     1. Crie uma variável x com o valor 9 e uma variável y com o valor 4. Imprima o resultado da expressão (x ** 2 + y ** 2) / (x - y).
     1. Crie uma variável x com o valor 10.5 e uma variável y com o valor 2.7. Imprima o resultado da expressão (x * y) - (x / y).

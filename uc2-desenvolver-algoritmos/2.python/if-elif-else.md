@@ -188,6 +188,22 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
 1. Exercícios Avançados
     1. Verifique se a média das notas de um aluno é maior ou igual a 7. Caso seja, exiba "Aprovado". Caso contrário, exiba "Reprovado".
     1. Verifique se a temperatura está abaixo de 0. Caso esteja, exiba "Congelante". Se estiver entre 0 e 20, exiba "Frio". Se estiver acima de 20, exiba "Quente".
+        ```python
+        # vai ser recebida como string
+        temp = input("digite uma temperatura : ")
+
+        # convertendo de string para inteiro
+        temp = int(temp)
+
+        if temp < 0:
+            print("Congelante")
+        # elif temp >= 0 and temp <= 20:
+        elif 0 <= temp <= 20:
+            print("Frio")
+        # elif temp > 20:
+        else:
+            print("Quente")
+        ```
     1. Verifique se um número é par ou ímpar, e se é maior ou menor que 10. Exiba as mensagens correspondentes.
     1. Verifique se um aluno passou de ano. As notas finais de três matérias devem ser todas maiores ou iguais a 6. Caso seja, exiba "Passou". Caso contrário, exiba "Não passou".
     1. Verifique se um número está entre 1 e 100. Se estiver entre 1 e 50, exiba "Entre 1 e 50". Se estiver entre 51 e 100, exiba "Entre 51 e 100". Caso contrário, exiba "Fora do intervalo".
@@ -199,9 +215,43 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
 1. Exercícios Complexos
     1. Verifique se um triângulo é equilátero, isósceles ou escaleno com base nos comprimentos de seus lados.
     1. Verifique se uma pessoa pode se aposentar. Ela deve ter pelo menos 65 anos ou ter trabalhado por pelo menos 30 anos. Exiba "Pode se aposentar" ou "Não pode se aposentar".
+        ```python
+        idade = int(input("digite sua idade : "))
+        tempo_trabalho = int(input("digite seu tempo de trabalho : "))
+
+        # forma 1
+        if idade >= 65 or tempo_trabalho >= 30:
+            print('Pode se aposentar')
+        else:
+            print('Nao pode se aposentar')
+
+        # forma 2
+        if idade >= 65:
+            print("Pode se aposentar")
+        elif tempo_trabalho >= 30:
+            print("Pode se aposentar")
+        else:
+            print("nao pode se aposentar")
+        ```
     1. Verifique se uma nota está entre 0 e 10. Se estiver fora, exiba "Nota inválida". Caso contrário, verifique se é maior ou igual a 7 (Aprovado), entre 5 e 6.9 (Recuperação) ou menor que 5 (Reprovado).
     1. Verifique se um ponto (x, y) informado pelo usuário está dentro, fora ou sobre a borda de um círculo de raio 5 centrado na origem.
     1. Verifique se um número é positivo, negativo ou zero. Além disso, verifique se é par ou ímpar e exiba as mensagens correspondentes.
+        ```python
+        num = input("digite um numero : ")
+        num = int(num)
+
+        if num == 0:
+            print("eh igual a zero")
+        elif num > 0:
+            print("eh positivo")
+        else:
+            print("eh negativo")
+
+        if num % 2 == 0:
+            print("e o numero eh par")
+        else:
+            print("e o num eh impar")
+        ```
     1. Verifique se uma data (dia, mês, ano) é válida. Considere anos bissextos e meses com diferentes números de dias. Exiba "Data válida" ou "Data inválida".
     1. Verifique se um ano é bissexto. Se for, exiba "Bissexto". Caso contrário, verifique se é par ou ímpar e exiba a mensagem correspondente.
     1. Verifique se três valores podem formar um triângulo. Caso possam, verifique se é equilátero, isósceles ou escaleno.
