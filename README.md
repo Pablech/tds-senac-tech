@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 20 | 19/05/2025 | [módulo `random`](uc2-desenvolver-algoritmos/2.python/modulos.md#módulo-random)<br>[comando `in`](uc2-desenvolver-algoritmos/2.python/comandos-built-in.md#in)<br>[métodos `list`](uc2-desenvolver-algoritmos/2.python/tipo-list.md#métodos-da-lista) |
 | 19 | 16/05/2025 | [tipo `list`](uc2-desenvolver-algoritmos/2.python/tipo-list.md)<br>[funcao `print`](uc2-desenvolver-algoritmos/2.python/funcoes-built-in.md#print)<br>[funcao `len`](uc2-desenvolver-algoritmos/2.python/funcoes-built-in.md#len)<br>[funcao `input`](uc2-desenvolver-algoritmos/2.python/funcoes-built-in.md#input)<br>[funcao `range`](uc2-desenvolver-algoritmos/2.python/funcoes-built-in.md#range)<br>[comando `while`](uc2-desenvolver-algoritmos/2.python/estruturas-repeticao.md#while)<br>[avaliação - etapa 7](uc2-desenvolver-algoritmos/avaliacao.md#etapa-7-dígito-1) |
 | 18 | 15/05/2025 | [tipos primitivos](uc2-desenvolver-algoritmos/2.python/tipos-primitivos.md)<br>[cast](uc2-desenvolver-algoritmos/2.python/cast.md)<br>[condicional if-elif-else](uc2-desenvolver-algoritmos/2.python/if-elif-else.md) |
 | 17 | 13/05/2025 | [instalando Python](uc2-desenvolver-algoritmos/2.python/instalando-python.md)<br>[instalando VS Code](uc2-desenvolver-algoritmos/2.python/instalando-vscode.md) |

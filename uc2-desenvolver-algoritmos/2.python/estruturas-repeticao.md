@@ -208,6 +208,26 @@ print('o fatorial de 5 é', produto)
     1. Crie um programa que peça ao usuário para digitar números decimais até que ele digite um número negativo. Se o número for maior que 1, exiba "Grande". Se for menor que 1, exiba "Pequeno". Se for igual a 1, exiba "Igual a 1".
     1. Crie um programa que peça ao usuário para digitar valores booleanos (True ou False) até que ele digite "False" duas vezes seguidas. Exiba quantas vezes "True" foi digitado.
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número maior que 100. Se o número for múltiplo de 5, adicione-o a uma lista de "múltiplos de 5". Caso contrário, adicione-o a uma lista de "não múltiplos de 5". Exiba as duas listas ao final.
+        ```python
+        mult_cinco = []
+        nao_mult_cinco = []
+
+        numero = 0
+
+        while numero <= 100:
+            print("digite apenas numeros inteiros")
+            numero = int(input(' >> '))
+
+            if numero % 5 == 0:
+                mult_cinco = mult_cinco + [numero]
+            else:
+                nao_mult_cinco = nao_mult_cinco + [numero]
+
+
+        print('fim do programa')
+        print('conteudo da lista mult_cinco : ', mult_cinco)
+        print("conteudo da lista nao_mult_cinco : ", nao_mult_cinco)
+        ```
 1. Nível Avançado
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número primo. Exiba todos os números digitados até então.
     1. Crie um programa que peça ao usuário para digitar números decimais até que ele digite um número igual a 0. Em seguida, exiba o maior número digitado.

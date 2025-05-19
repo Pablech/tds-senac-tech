@@ -1,6 +1,11 @@
 Índice
 
 1. [manipulando a lista](#manipulando-a-lista)
+1. [métodos da lista](#métodos-da-lista)
+    1. [list.append()](#listappend)
+    1. [list.insert()](#listinsert)
+    1. [list.remove()](#listremove)
+    1. [list.pop()](#listpop)
 1. [string e list](#string-e-list)
 1. [exercícios lista](#exercícios-lista)
 
@@ -57,6 +62,61 @@ Como as listas são mutáveis, você pode alterar qualquer item da lista usando 
 planetas[2] = 'Saturno'
 print(planetas)  # saída : ['Mercúrio', 'Vênus', 'Saturno', 'Marte']
 ```
+
+## métodos da lista
+
+### `list.append()`
+
+Adiciona um item ao **final** da lista.
+
+```python
+planetas.append("Plutão")
+print(planetas)  # saída : ['Mercúrio', 'Vênus', 'Saturno', 'Marte', 'Plutão']
+```
+
+### `list.insert()`
+
+Adiciona um item em uma posição específica.
+
+```python
+# insere a string "Júpiter" no índice 1 da lista
+planetas.insert(1, "Júpiter")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão']
+```
+
+Se for usado um índice maior que o tamanho da lista, então ele será adicionado ao final dela.
+
+```python
+planetas.insert(100, "Terra")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão', 'Terra']
+```
+
+### `list.remove()`
+
+Remove a primeira ocorrência de um item específico.
+
+```python
+planetas.remove("Plutão")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Terra']
+```
+
+Se o item removido não estiver na lista, então irá levantar um erro.
+
+### `list.pop()`
+
+Remove um item pela sua posição (índice) e retorna esse item. Se nenhum índice for fornecido, ele remove o último item.
+
+```python
+ultimo = planetas.pop()
+print(ultimo)  # saída : "Terra"
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte']
+
+especifico = planetas.pop(2)
+print(especifico)  # saída : "Vênus"
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Saturno', 'Marte']
+```
+
+Se o índice passado não existir, então irá ocorrer um erro.
 
 ## string e list
 
@@ -149,22 +209,56 @@ Como os tipos `int`, `float`, `bool` não são iteráveis, não é possível con
     1. Crie uma lista com quatro números inteiros. Se o comprimento da lista for igual a 4, exiba o segundo e o terceiro elemento. Caso contrário, exiba "Lista incorreta".
 1. Exercícios Complexos
     1. Crie uma lista com cinco números inteiros e substitua todos os números pares por zero.
+        ```python
+        num_inteiros = list(range(5, 100))
+        contador = 0
+
+        print("lista antes :", num_inteiros)
+
+        while contador < len(num_inteiros):
+            if num_inteiros[contador] % 2 == 0:
+                num_inteiros[contador] = 0
+            contador += 1
+
+        print("lista depois :", num_inteiros)
+        print('fim do programa')
+        ```
+    1. Crie uma lista com quatro strings e converta todas as strings para maiúsculas.
+    1. Crie uma lista com seis números decimais e insira o número 2.5 após cada número maior que 2.
+    1. Crie uma lista com três valores booleanos e adicione um valor booleano alternado após cada elemento.
     1. Crie uma lista com cinco números inteiros e remova todos os números ímpares.
+        ```python
+        num_inteiros = list(range(0, 10))
+        contador = 0
+        num_pares = []
+
+        while contador < len(num_inteiros):
+            if num_inteiros[contador] % 2 == 0:
+                num_pares = num_pares + [num_inteiros[contador]]
+            print("numeros pares soh :", num_pares)
+            print("num_inteiros[contador] :", num_inteiros[contador])
+            contador += 1
+
+        print("fim do programa")
+        print("numeros pares soh :", num_pares)
+        ```
 1. Exercícios Complexos com if-elif-else
     1. Crie uma lista com cinco números inteiros. Se todos os números forem positivos, substitua o último número por -1. Caso contrário, adicione -1 no final da lista.
     1. Crie uma lista com quatro strings. Se a lista contiver a string "Python", altere todas as strings para "Code". Caso contrário, adicione "Python" no final da lista.
     1. Crie uma lista com seis números decimais. Se a média dos números for maior que 3, remova o primeiro e o último elemento. Caso contrário, adicione 0.5 no início e no final da lista.
     1. Crie uma lista com três valores booleanos. Se a lista contiver dois valores False, altere o primeiro elemento para True. Caso contrário, insira False no início da lista.
-    1. Crie uma lista com quatro números inteiros. Se a soma dos elementos for maior que 15, remova o número no índice 2. Caso contrário, insira o número 7 na posi    1. Crie uma lista com quatro números inteiros. Se a soma dos elementos for maior que 20, remova todos os números pares. Caso contrário, adicione 2 após cada número ímpar.
-ão 1.
+    1. Crie uma lista com quatro números inteiros. Se a soma dos elementos for maior que 15, remova o número no índice 2. Caso contrário, insira o número 7 na posição 1.
 1. Exercícios Muito Complexos
     1. Crie uma lista com cinco números inteiros e inverta a ordem dos elementos.
     1. Crie uma lista com quatro strings e remova todas as strings que contêm a letra "a".
+    1. Crie uma lista com seis números decimais e insira um número aleatório após cada elemento.
+    1. Crie uma lista com três valores booleanos e remova todos os valores False.
     1. Crie uma lista com cinco números inteiros e substitua cada elemento pelo seu quadrado.
 1. Exercícios Muito Complexos com if-elif-else
     1. Crie uma lista com cinco números inteiros. Se a lista contiver números negativos, remova todos eles. Caso contrário, adicione -1 no início e no final da lista.
-    1. Crie uma lista com quatro strings. Se a lista tiver mais de uma string com a letra "e", remova todas essas strings. Caso contrário, adicione "Sem e" no final da lista.
-    1. Crie uma lista com seis números decimais. Se a soma dos números for menor que 10, insira o número 5.5 no meio da lista. Caso contrário, remova os números no meio da lista.
+    1. Crie uma lista com quatro strings. Se a lista tiver mais de uma string com a letra "e", remova todas essas strings. Caso contrário, adicione "No e" no final da lista.
+    1. Crie uma lista com seis números decimais. Se a soma dos números for menor que 10, insira o número 5.5 no meio da lista. Caso contrário, remova o número no meio da lista.
     1. Crie uma lista com três valores booleanos. Se todos os valores forem True, altere o segundo elemento para False. Caso contrário, adicione True no final da lista.
+    1. Crie uma lista com quatro números inteiros. Se a soma dos elementos for maior que 20, remova todos os números pares. Caso contrário, adicione 2 após cada número ímpar.
 
 </details>

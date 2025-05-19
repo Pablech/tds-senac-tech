@@ -233,7 +233,7 @@ Veja alguns exemplos de uso
 1. veja mais alguns usos do `range()` :
    ```python
     # criando uma sequência de números pares
-    pares = list(range(0, 21, 0))
+    pares = list(range(0, 21, 2))
     print(pares)
     # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
