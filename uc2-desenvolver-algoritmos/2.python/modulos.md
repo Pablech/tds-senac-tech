@@ -2,6 +2,10 @@
 
 1. [módulo `random`](#módulo-random)
     - [exercícios módulo `random`](#exercícios-módulo-random)
+1. [módulo `time`](#módulo-time)
+    - [exercícios módulo `time`](#exercícios-módulo-time)
+1. [módulo `string`](#módulo-string)
+    - [exercícios módulo `string`](#exercícios-módulo-string)
 
 # módulos
 
@@ -302,5 +306,523 @@ Saída típica :
 1. Crie uma função que retorne uma letra aleatória (maiúscula ou minúscula). Use `random.choice(string.ascii_letters)`.
 1. Simule o lançamento de uma moeda 1000 vezes e conte quantas vezes deu "cara". Use `random.choice()` em um loop.
 1. Gere uma sequência aleatória de 20 números inteiros entre 0 e 100 e calcule a média. Utilize `random.randint(0, 100)` e `sum()` para calcular a média.
+
+</details>
+
+## módulo `time`
+
+O módulo `time` do Python oferece várias funções para trabalhar com tempo, como a manipulação de horas, minutos, segundos, e funções para medir o tempo que uma ação leva para ser concluída. Ele é muito utilizado para calcular a duração de eventos, fazer pausas (delays) no código, além de obter e manipular o tempo no formato de segundos desde a *"época"* (epoch), que geralmente é 1º de janeiro de 1970 no sistema UNIX.
+
+1. [`time.time()`](#timetime)
+1. [`time.sleep()`](#timesleep)
+1. [`time.localtime()`](#timelocaltime)
+1. [`time.strftime()`](#timestrftime)
+1. [`time.gmtime([])`](#timegmtime)
+1. [`time.mktime(t)`](#timemktimet)
+1. [`time.asctime([struct_time])`](#timeasctimestruct_time)
+1. [`time.ctime([])`](#timectime)
+1. [`time.perf_counter()`](#timeperf_counter)
+1. [`time.monotonic()`](#timemonotonic)
+1. [`time.process_time()`](#timeprocess_time)
+1. [exemplos práticos do módulo `time`](#exemplos-práticos-do-módulo-time)
+1. [índice](#índice)
+
+### `time.time()`
+
+Essa função retorna o número de segundos desde a *"época"*, ou seja, um número do tipo *float* que representa o tempo em segundos.  A *"época"* (epoch) é o ponto de referência para a contagem do tempo. No Unix, a *epoch* é definida como meia-noite (00:00:00) de 1 de janeiro de 1970.
+
+**exemplo :**
+```python
+import time
+segundos = time.time()
+print(f"Segundos desde 1º de janeiro de 1970: {segundos}")
+```
+
+### `time.sleep(segundos)`
+
+A função `sleep(seconds)` faz com que o programa pause ou "durma" por um determinado número de segundos. É útil em casos onde se deseja que o código aguarde um certo tempo antes de prosseguir.
+
+**exemplo :**
+```python
+import time
+print("Esperando 5 segundos...")
+time.sleep(5)
+print("Fim da espera.")
+```
+
+### `time.localtime()`
+
+A função `localtime([seconds])` converte o tempo dado em segundos desde a *epoch* em um objeto de tempo local (`struct_time`). Se nenhum argumento for fornecido, ela utiliza o tempo atual (retornado por `time.time()`). O objeto `struct_time` tem vários atributos como `tm_year` (ano), `tm_mon` (mês), `tm_mday` (dia do mês), `tm_hour` (hora), etc.
+
+**exemplo :**
+```python
+import time
+tempo_atual = time.localtime()
+print(f"Ano atual: {tempo_atual.tm_year}")
+print(f"Mês atual: {tempo_atual.tm_mon}")
+print(f"Dia atual: {tempo_atual.tm_mday}")
+```
+
+### `time.strftime()`
+
+A função `strftime(formato[, struct_time])` converte um objeto `struct_time` em uma string formatada, de acordo com a especificação de formato fornecida. Por exemplo, `%Y` para ano completo, `%m` para mês, `%d` para dia do mês, `%H` para hora (formato 24h), `%M` para minutos, `%S` para segundos.
+
+Mais Formatos [aqui](https://docs.python.org/3/library/time.html#time.strftime)
+
+**exemplo :**
+```python
+import time
+tempo_atual = time.localtime()
+formato = time.strftime("%Y-%m-%d %H:%M:%S", tempo_atual)
+print(f"Data e hora formatada: {formato}")
+```
+
+### `time.gmtime()`
+
+Semelhante a `time.localtime()`, a função `gmtime([seconds])` retorna o tempo no fuso horário UTC (Tempo Universal Coordenado), em vez do fuso horário local.
+
+**exemplo :**
+```python
+import time
+tempo_utc = time.gmtime()
+print(f"Ano atual (UTC): {tempo_utc.tm_year}")
+```
+
+### `time.mktime()`
+
+A função `mktime(t)` faz o inverso de `time.localtime()` ou `time.gmtime()`, convertendo uma estrutura de tempo (`struct_time`) em segundos desde a *epoch*.
+
+**exemplo :**
+```python
+import time
+tempo_local = time.localtime()
+segundos = time.mktime(tempo_local)
+print(f"Segundos desde a epoch para a hora local: {segundos}")
+```
+
+### `time.asctime()`
+
+A função `asctime([struct_time])` converte um objeto `struct_time` em uma string no formato: `'Dia_sem Mês Dia Hora:Min:Seg Ano'`. Se não for fornecido nenhum argumento, usa o tempo local.
+
+**exemplo :**
+```python
+import time
+print(time.asctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
+```
+
+### `time.ctime()`
+
+A função `ctime([segundos])` converte o tempo, em segundos desde a epoch, em uma string legível. Se nenhum argumento for passado, usa o tempo atual.
+
+**exemplo :**
+```python
+import time
+print(time.ctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
+```
+
+### `time.perf_counter()`
+
+A função `perf_counter()` retorna o valor de um temporizador de alta resolução, medido em segundos. É útil para medir o tempo de execução de trechos de código.
+
+**exemplo :**
+```python
+import time
+inicio = time.perf_counter()
+time.sleep(2)
+fim = time.perf_counter()
+print(f"Tempo decorrido: {fim - inicio} segundos")
+```
+
+### `time.monotonic()`
+
+A função `monotonic()` é similar a `time.perf_counter()`, mas este temporizador não pode ser ajustado para frente ou para trás (não é afetado por mudanças no relógio do sistema).
+
+**exemplo :**
+```python
+import time
+inicio = time.monotonic()
+time.sleep(1)
+fim = time.monotonic()
+print(f"Tempo decorrido: {fim - inicio} segundos")
+```
+
+### `time.process_time()`
+
+A função `process_time()` retorna o tempo de CPU usado pelo processo atual, em segundos.
+
+**exemplo :**
+```python
+import time
+inicio = time.process_time()
+# Simulando um processo que consome CPU
+for i in range(1000000):
+    pass
+fim = time.process_time()
+print(f"Tempo de CPU usado: {fim - inicio} segundos")
+```
+
+---
+
+### exemplos práticos do módulo `time`
+
+#### exemplo de contagem regressiva
+
+Use `time.sleep()` para implementar uma contagem regressiva.
+
+```python
+import time
+
+def contagem_regressiva(segundos):
+    while segundos:
+        mins, secs = divmod(segundos, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        segundos -= 1
+    print("Tempo esgotado!")
+
+contagem_regressiva(10)
+```
+
+#### medição do tempo de execução de uma função
+
+Usando `time.perf_counter()` para medir quanto tempo uma função leva para ser executada.
+
+```python
+import time
+
+def funcao_lenta():
+    print("Executando uma função lenta...")
+    time.sleep(3)
+    print("Função concluída.")
+
+inicio = time.perf_counter()
+funcao_lenta()
+fim = time.perf_counter()
+
+print(f"A função demorou {fim - inicio:.2f} segundos para ser executada.")
+```
+
+#### imprimindo a data e hora atual formatada
+
+Usando `time.strftime()` para formatar a hora em um formato legível.
+
+```python
+import time
+
+agora = time.localtime()
+formato = time.strftime("%A, %d de %B de %Y, %H:%M:%S", agora)
+print(f"Data e hora atual: {formato}")
+```
+
+#### medindo o tempo de cpu usado por um processo
+
+Usando `time.process_time()` para ver quanto tempo de CPU foi utilizado.
+
+```python
+import time
+
+inicio = time.process_time()
+for i in range(10000000):
+    pass
+fim = time.process_time()
+
+print(f"Tempo de CPU usado: {fim - inicio:.4f} segundos")
+```
+
+## exercícios módulo `time`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exibindo o Tempo Atual. Use a função `time.time()` para exibir a quantidade de segundos desde o "Epoch" (01/01/1970).
+1. Exibindo o Tempo em Formato Estruturado. Use a função `time.gmtime()` para exibir a data e hora atual no formato UTC (tempo universal coordenado).
+1. Formatando o Tempo Local. Utilize a função `time.localtime()` para exibir a data e hora local. Em seguida, formate essa saída para mostrar apenas o ano, mês e dia.
+1. Formatando uma Data Customizada. Use `time.strftime()` para formatar a data atual no formato `"Ano-Mês-Dia Hora:Minuto:Segundo"`.
+1. Convertendo uma String de Data para um Struct_time. Utilize a função `time.strptime()` para converter a string `"12/09/2024 14:30:00"` para um objeto `struct_time`.
+1. Exibindo Apenas o Ano Atual. Use a função `time.localtime()` para obter o ano atual e exibi-lo.
+1. Medição de Tempo de Execução de Código. Crie um script que utilize `time.time()` para medir quanto tempo demora para executar um loop que itera 1 milhão de vezes.
+1. Pausando a Execução do Programa. Use `time.sleep()` para pausar a execução do programa por 5 segundos.
+1. Imprimindo um Relógio Simples. Crie um loop que utilize `time.sleep()` e `time.localtime()` para imprimir a hora atual a cada segundo, como um relógio simples.
+1. Calculando a Diferença Entre Duas Datas. Use a função `time.mktime()` para calcular a diferença em segundos entre duas datas fornecidas.
+1. Convertendo Tempo UTC para Tempo Local. Use a função `time.gmtime()` para pegar o tempo atual em UTC e, em seguida, converta para a hora local usando `time.localtime()`.
+1. Exibindo o Tempo em Milissegundos. Modifique o programa para exibir o tempo atual em milissegundos usando `time.time()`.
+1. Gerando um Timestamp Customizado. Crie um timestamp customizado para a data `01/01/2020 00:00:00` usando `time.mktime()`.
+1. Exibindo a Data Atual em Diferentes Formatos. Use `time.strftime()` para exibir a data atual em três formatos diferentes (como "dd-mm-aaaa", "aaaa/mm/dd", etc.).
+1. Validando uma Data a Partir de uma String. Use `time.strptime()` para validar se a string `"30/02/2020"` é uma data válida.
+1. Verificando se é Horário de Verão. Use a função `time.localtime()` para verificar se o horário atual está em horário de verão (DST).
+1. Simulando uma Contagem Regressiva. Crie um script que faça uma contagem regressiva de 10 segundos usando `time.sleep()`.
+1. Comparando Duas Datas. Use `time.mktime()` para comparar duas datas fornecidas e determine qual é a mais recente.
+1. Exibindo o Dia da Semana Atual. Utilize `time.localtime()` para determinar o dia da semana (onde 0 é segunda-feira e 6 é domingo).
+1. Calculando o Tempo Restante para o Próximo Ano. Calcule quantos segundos faltam para o início do próximo ano (01/01/2025 00:00:00) a partir da data e hora atual.
+1. Imprimindo a Data e Hora de 7 Dias Atrás. Use `time.time()` e `time.localtime()` para calcular e exibir a data e hora de 7 dias atrás.
+1. Formatando o Tempo para Horário Completo e Amigável. Use `time.strftime()` para formatar a hora atual no formato `"12-hour:minute AM/PM"`.
+1. Convertendo uma Data e Hora para o Timestamp. Crie uma data e hora arbitrária, como `"25/12/2024 15:00:00"`, e converta para o timestamp usando `time.mktime()`.
+1. Exibindo o Mês Atual. Extraia e exiba o mês atual usando `time.localtime()`.
+1. Implementando um Temporizador de 10 Segundos. Crie um programa que avise o usuário após 10 segundos, utilizando `time.sleep()`.
+1. Calculando o Intervalo de Tempo Entre Duas Execuções. Crie um programa que execute duas funções e calcule o intervalo de tempo entre elas usando `time.perf_counter()`.
+1. Convertendo uma Hora UTC para Horário Local. Pegue a hora UTC usando `time.gmtime()` e converta para a hora local usando `time.localtime()`.
+1. Exibindo o Tempo de Início do Script. Use `time.ctime()` para exibir o horário em que o script foi iniciado.
+1. Exibindo a Data Atual em Diferentes Idiomas. Use `time.strftime()` e altere as configurações de idioma do sistema para exibir a data atual em diferentes idiomas (pode ser feito manualmente no sistema operacional).
+
+</details>
+
+## módulo `string`
+
+O módulo `string` do Python fornece constantes e funções úteis para manipular strings, principalmente quando se trabalha com caracteres e conjuntos de caracteres predefinidos. Ele ajuda a tornar operações comuns mais simples e legíveis, fornecendo acesso a letras, dígitos, pontuações, espaços em branco, e métodos úteis para formatação de strings.
+
+1. [`string.ascii_letters`](#stringascii_letters)
+1. [`string.ascii_lowercase`](#stringascii_lowercase)
+1. [`string.ascii_uppercase`](#stringascii_uppercase)
+1. [`string.digits`](#stringdigits)
+1. [`string.hexdigits`](#stringhexdigits)
+1. [`string.octdigits`](#stringoctdigits)
+1. [`string.punctuation`](#stringpunctuation)
+1. [`string.whitespace`](#stringwhitespace)
+1. [`string.printable`](#stringprintable)
+1. [`string.capwords`](#stringcapwordss-sepnone)
+1. [exemplos práticos do módulo `string`](#exemplos-práticos-do-módulo-string)
+1. [índice](#índice)
+
+### `string.ascii_letters`
+
+Contém todas as letras maiúsculas e minúsculas do alfabeto em inglês, combinando `ascii_lowercase` (minúsculas) e `ascii_uppercase` (maiúsculas). Útil quando se deseja gerar uma sequência de letras ou validar se um caractere é uma letra.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_letters)  # Saída: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+```
+
+### `string.ascii_lowercase`
+
+Contém todas as letras minúsculas do alfabeto em inglês (`'abcdefghijklmnopqrstuvwxyz'`). Ideal para operações que envolvem apenas letras minúsculas.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_lowercase)  # Saída: 'abcdefghijklmnopqrstuvwxyz'
+```
+
+### `string.ascii_uppercase`
+
+Contém todas as letras maiúsculas do alfabeto em inglês (`'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`). Útil para operações que envolvem apenas letras maiúsculas.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_uppercase)  # Saída: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+```
+
+### `string.digits`
+
+Contém todos os dígitos decimais de 0 a 9 (`'0123456789'`). Muito útil para validar ou gerar números.
+
+**exemplo :**
+```python
+import string
+print(string.digits)  # Saída: '0123456789'
+```
+
+### `string.hexdigits`
+
+Contém todos os dígitos hexadecimais, incluindo os números de 0 a 9 e as letras de A a F (tanto maiúsculas quanto minúsculas). A sequência é `'0123456789abcdefABCDEF'`. Usado em conversões ou validações de números hexadecimais.
+
+**exemplo :**
+```python
+import string
+print(string.hexdigits)  # Saída: '0123456789abcdefABCDEF'
+```
+
+### `string.octdigits`
+
+Contém todos os dígitos octais, de 0 a 7 (`'01234567'`). Ideal para trabalhar com números no sistema octal.
+
+**exemplo :**
+```python
+import string
+print(string.octdigits)  # Saída: '01234567'
+```
+
+### `string.punctuation`
+
+Contém todos os caracteres de pontuação comuns, como `!`, `@`, `#`, etc. Útil para remover ou validar a presença de pontuação em uma string.
+
+**exemplo :**
+```python
+import string
+print(string.punctuation)  # Saída: '!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~'
+```
+
+### `string.whitespace`
+
+Contém todos os caracteres que são considerados espaço em branco, como o espaço (`' '`), tabulação (`'\t'`), nova linha (`'\n'`), etc. Excelente para tarefas de limpeza de strings.
+
+**exemplo :**
+```python
+import string
+print(repr(string.whitespace))  # Saída: ' \t\n\r\x0b\x0c'
+```
+
+### `string.printable`
+
+Contém todos os caracteres imprimíveis, que são a união de letras, dígitos, pontuação e espaços em branco. Ideal para validar se uma string contém apenas caracteres que podem ser impressos.
+
+**exemplo :**
+```python
+import string
+print(string.printable)  # Saída: todos os caracteres imprimíveis
+```
+
+### `string.capwords(s, sep=None)`
+
+Essa função converte uma string de forma que a primeira letra de cada palavra seja maiúscula (capitaliza a string). Ela é semelhante ao método `str.title()`, mas usa o espaço como separador por padrão. Caso você passe um separador (como vírgula ou ponto), a função usa esse separador para detectar as palavras.
+
+**exemplo :**
+```python
+import string
+frase = "olá mundo, python é incrível"
+print(string.capwords(frase))  # Saída: 'Olá Mundo, Python É Incrível'
+```
+
+---
+
+### exemplos práticos do módulo `string`
+
+#### gerar uma senha aleatória
+
+Usando os caracteres disponíveis em `string.ascii_letters`, `string.digits` e `string.punctuation` para criar uma senha aleatória.
+
+**exemplo :**
+```python
+import string
+import random
+
+def gerar_senha(tamanho=8):
+    caracteres = string.ascii_letters + string.digits + string.punctuation
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+senha = gerar_senha(12)
+print(f"Senha gerada: {senha}")
+```
+
+#### validar se uma string é alfabética
+
+Verificar se uma string contém apenas letras utilizando `string.ascii_letters`.
+
+**exemplo :**
+```python
+import string
+
+def eh_alfabetica(texto):
+    for caractere in texto:
+        if caractere not in string.ascii_letters:
+            return False
+    return True
+
+print(eh_alfabetica("Python"))  # Saída: True
+print(eh_alfabetica("Python3"))  # Saída: False
+```
+
+#### remover pontuação de uma string
+
+Utilizando `string.punctuation` para remover todos os sinais de pontuação de uma frase.
+
+**exemplo :**
+```python
+import string
+
+def remover_pontuacao(texto):
+    return ''.join(caractere for caractere in texto if caractere not in string.punctuation)
+
+frase = "Olá, mundo! Python é incrível."
+frase_sem_pontuacao = remover_pontuacao(frase)
+print(frase_sem_pontuacao)  # Saída: 'Olá mundo Python é incrível'
+```
+
+#### verificar se uma string contém apenas caracteres imprimíveis
+
+Verificar se uma string contém apenas caracteres que podem ser impressos utilizando `string.printable`.
+
+**exemplo :**
+```python
+import string
+
+def eh_imprimivel(texto):
+    return all(caractere in string.printable for caractere in texto)
+
+print(eh_imprimivel("Python 3.10!"))  # Saída: True
+print(eh_imprimivel("Texto\nNão Imprimível"))  # Saída: True (nova linha ainda é considerada imprimível)
+```
+
+#### capitalize todas as palavras de uma string
+
+Utilizando `string.capwords()` para transformar a primeira letra de cada palavra em maiúscula.
+
+**exemplo :**
+```python
+import string
+
+frase = "python é uma linguagem incrível"
+frase_capitalizada = string.capwords(frase)
+print(frase_capitalizada)  # Saída: 'Python É Uma Linguagem Incrível'
+```
+
+## exercícios módulo `string`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exibindo o Alfabeto Minúsculo. Use `string.ascii_lowercase` para exibir todas as letras minúsculas do alfabeto inglês.
+1. Exibindo o Alfabeto Maiúsculo. Use `string.ascii_uppercase` para exibir todas as letras maiúsculas do alfabeto inglês.
+1. Exibindo Todos os Dígitos. Use `string.digits` para exibir todos os dígitos (de 0 a 9).
+1. Exibindo Caracteres Hexadecimais. Use `string.hexdigits` para exibir todos os caracteres válidos em um número hexadecimal.
+1. Exibindo Caracteres Octais. Use `string.octdigits` para exibir todos os dígitos válidos em um número octal.
+1. Exibindo Símbolos de Pontuação. Use `string.punctuation` para exibir todos os símbolos de pontuação.
+1. Exibindo Todos os Caracteres Imprimíveis. Use `string.printable` para exibir todos os caracteres imprimíveis.
+1. Exibindo os Caracteres de Espaçamento. Use `string.whitespace` para exibir todos os caracteres considerados espaço em branco (espaços, tabulações, etc.).
+1. Verificando se uma String é Alfanumérica. Crie uma função que verifique se uma string contém apenas caracteres alfanuméricos utilizando `string.ascii_letters` e `string.digits`.
+1. Convertendo uma String para Maiúscula. Utilize `string.ascii_uppercase` para criar uma função que converta qualquer string para letras maiúsculas.
+1. Convertendo uma String para Minúscula. Use `string.ascii_lowercase` para criar uma função que converta qualquer string para letras minúsculas.
+1. Removendo Pontuação de uma String. Crie uma função que remova todos os símbolos de pontuação de uma string utilizando `string.punctuation`.
+1. Substituindo Espaços por Underlines. Use `string.whitespace` para substituir todos os espaços de uma string por underscores (`_`).
+1. Gerando uma Senha Aleatória. Use `string.ascii_letters` e `string.digits` para gerar uma senha aleatória de 8 caracteres.
+1. Verificando se uma String é Hexadecimal. Crie uma função que verifique se uma string contém apenas caracteres válidos para um número hexadecimal, usando `string.hexdigits`.
+1. Removendo Dígitos de uma String. Crie uma função que remova todos os dígitos de uma string utilizando `string.digits`.
+1. Verificando se uma String é uma Palavra. Crie uma função que verifique se uma string contém apenas letras (maiúsculas ou minúsculas), usando `string.ascii_letters`.
+1. Formatando uma String de Forma Capitalizada. Utilize `string.capwords()` para capitalizar cada palavra de uma frase.
+1. Gerando um Identificador de Produto. Crie uma função que gere um identificador de produto aleatório, contendo letras e números, utilizando `string.ascii_uppercase` e `string.digits`.
+1. Gerando um Nome de Arquivo Seguro. Crie uma função que remova qualquer caractere especial de uma string, exceto letras, números e underscore, utilizando `string.ascii_letters`, `string.digits` e `'_`.
+1. Contando o Número de Dígitos em uma String. Crie uma função que conte quantos dígitos existem em uma string usando `string.digits`.
+1. Validando um Identificador. Crie uma função que valide se um identificador contém apenas letras, números e underscores utilizando `string.ascii_letters`, `string.digits`, e `'_'`.
+1. Separando Palavras de uma Frase. Utilize `string.whitespace` para separar as palavras de uma frase em uma lista, ignorando os espaços em branco.
+1. Gerando uma Frase sem Espaços. Crie uma função que remova todos os espaços de uma frase utilizando `string.whitespace`.
+1. Gerando um Token de Sessão Aleatório. Crie uma função que gere um token aleatório de 16 caracteres utilizando `string.printable`.
+1. Formatando um Texto em Blocos de 4 Dígitos. Crie uma função que pegue uma sequência de números e formate em blocos de 4 dígitos separados por hífens (ex.: "1234-5678-9012").
+1. Verificando se uma String é uma Data Válida. Crie uma função que verifique se uma string contém uma data no formato "dd/mm/yyyy" usando `string.digits` e `string.punctuation`.
+1. Criando uma String de Números Sequenciais. Crie uma função que gere uma string contendo todos os números de 0 a 9 em sequência usando `string.digits`.
+1. Convertendo um Texto para Código Morse. Crie uma função que converta uma string para código Morse, utilizando `string.ascii_uppercase` e `string.digits` para mapear os caracteres.
+1. Formatando uma String com Pontuação e Espaçamento. Utilize `string.capwords()` para formatar uma frase, ajustando os espaços em branco e a capitalização de cada palavra.
+1. Criando uma Função de Busca de Palavras. Crie uma função que receba um texto e uma palavra e retorne quantas vezes a palavra aparece no texto, ignorando a pontuação com `string.punctuation`.
+1. Verificando se uma String é um Número Binário. Crie uma função que verifique se uma string contém apenas os caracteres '0' e '1', utilizando `string.digits`.
+1. Formatando um Texto para Ficar Legível. Use `string.capwords()` para formatar um texto inteiro, capitalizando as primeiras letras de cada palavra.
+1. Gerando uma String de Símbolos Aleatórios. Crie uma função que gere uma string de 10 caracteres contendo apenas símbolos de `string.punctuation`.
+1. Verificando se uma String é Imprimível. Crie uma função que verifique se todos os caracteres de uma string são imprimíveis, utilizando `string.printable`.
+1. Contando Caracteres Não Imprimíveis em uma String. Crie uma função que conte quantos caracteres não imprimíveis existem em uma string, utilizando `string.printable`.
+1. Gerando uma Senha Segura. Crie uma função que gere uma senha aleatória contendo letras maiúsculas, minúsculas, números e símbolos, utilizando `string.ascii_letters`, `string.digits`, e `string.punctuation`.
+1. Verificando se uma Senha é Segura. Crie uma função que verifique se uma senha contém pelo menos uma letra maiúscula, uma minúscula, um número e um símbolo de pontuação.
+1. Contando a Frequência de Letras em uma String. Crie uma função que conte quantas vezes cada letra aparece em uma string utilizando `string.ascii_lowercase` ou `string.ascii_uppercase`.
+1. Gerando uma Sequência de Caracteres Alternados. Crie uma função que gere uma string alternando entre letras maiúsculas e minúsculas, utilizando `string.ascii_uppercase` e `string.ascii_lowercase`.
+1. Verificando Caracteres Permitidos em Identificadores. Crie uma função que verifique se uma string é um identificador válido (apenas letras, números e underscores), utilizando `string.ascii_letters` e `string.digits`.
+1. Removendo Pontuação e Espaços de uma String. Crie uma função que remova todos os espaços e pontuações de uma string, utilizando `string.whitespace` e `string.punctuation`.
+1. Verificando se uma String Contém Apenas Letras e Espaços. Crie uma função que verifique se uma string contém apenas letras e espaços, utilizando `string.ascii_letters` e `string.whitespace`.
+1. Gerando uma Chave de Produto Aleatória. Crie uma função que gere uma chave de produto no formato "ABCD-EFGH-IJKL", utilizando `string.ascii_uppercase` e `string.digits`.
+1. Formatando um Número de Cartão de Crédito. Crie uma função que formate um número de cartão de crédito no formato "XXXX-XXXX-XXXX-XXXX", usando `string.digits`.
+1. Verificando se uma String Contém Apenas Caracteres de Controle. Crie uma função que verifique se uma string contém apenas caracteres de controle (não imprimíveis), utilizando `string.whitespace` e verificando com `string.printable`.
+1. Substituindo Dígitos por Palavras. Crie uma função que substitua cada dígito em uma string pela respectiva palavra (ex.: "1" por "um", "2" por "dois"), utilizando `string.digits`.
+1. Gerando um Código de Desconto Aleatório. Crie uma função que gere um código de desconto de 8 caracteres, utilizando letras maiúsculas e números, com `string.ascii_uppercase` e `string.digits`.
+1. Validando um Nome de Usuário. Crie uma função que valide um nome de usuário, verificando se contém apenas letras, números e underscores, utilizando `string.ascii_letters` e `string.digits`.
+1. Contando Caracteres de Espaçamento. Crie uma função que conte quantos caracteres de espaçamento existem em uma string, utilizando `string.whitespace`.
 
 </details>
