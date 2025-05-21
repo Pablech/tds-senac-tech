@@ -451,5 +451,80 @@ Acesso especial concedido
 48. Leia dois números reais e verifique se o módulo da diferença é menor que 5.
 49. Leia dois números e verifique se pelo menos um deles é múltiplo de 9.
 50. Leia cinco números inteiros e verifique quem é o maior, o menor e o médio.
+    ```portugol
+    programa {
+        inclua biblioteca Util
+        funcao inicio() {
+            inteiro n1, n2, n3, n4, n5, maior, menor, medio, s_maior, s_menor
+            n1 = Util.sorteia(0,100)
+            n2 = Util.sorteia(0,100)
+            n3 = Util.sorteia(0,100)
+            n4 = Util.sorteia(0,100)
+            n5 = Util.sorteia(0,100)
+
+            escreva("n1 : ", n1, "\nn2 : ", n2, "\nn3 : ", n3, "\nn4 : ", n4, "\nn5 : ", n5)
+
+            maior = n1
+            se (maior < n2)
+                maior = n2
+            se (maior < n3)
+                maior = n3
+            se (maior < n4)
+                maior = n4
+            se (maior < n5)
+                maior = n5
+
+            menor = n1
+            se (menor > n2)
+                menor = n2
+            se (menor > n3)
+                menor = n3
+            se (menor > n4)
+                menor = n4
+            se (menor > n5)
+                menor = n5
+
+            se (maior != n1)
+                s_maior = n1
+            senao
+                s_maior = n2
+
+            se (n1 < maior e s_maior < n1)
+                s_maior = n1
+            se (n2 < maior e s_maior < n2)
+                s_maior = n2
+            se (n3 < maior e s_maior < n3)
+                s_maior = n3
+            se (n4 < maior e s_maior < n4)
+                s_maior = n4
+            se (n5 < maior e s_maior < n5)
+                s_maior = n5
+
+            se (menor != n1)
+                s_menor = n1
+            senao
+                s_menor = n2
+
+            se (n1 > menor e s_menor > n1)
+                s_menor = n1
+            se (n2 > menor e s_menor > n2)
+                s_menor = n2
+            se (n3 > menor e s_menor > n3)
+                s_menor = n3
+            se (n4 > menor e s_menor > n4)
+                s_menor = n4
+            se (n5 > menor e s_menor > n5)
+                s_menor = n5
+
+            escreva("\no maior eh : ", maior)
+            escreva("\no menor eh : ", menor)
+            medio = n1+n2+n3+n4+n5 - maior-menor-s_maior-s_menor
+            escreva("\no valor do meior eh : ", medio)
+
+            escreva("\n\no segundo maior eh : ", s_maior)
+            escreva("\no segundo menor eh : ", s_menor)
+        }
+    }
+    ```
 
 </details>
