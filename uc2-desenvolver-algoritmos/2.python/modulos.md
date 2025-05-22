@@ -539,6 +539,18 @@ print(f"Tempo de CPU usado: {fim - inicio:.4f} segundos")
 1. Exibindo o Tempo em Formato Estruturado. Use a função `time.gmtime()` para exibir a data e hora atual no formato UTC (tempo universal coordenado).
 1. Formatando o Tempo Local. Utilize a função `time.localtime()` para exibir a data e hora local. Em seguida, formate essa saída para mostrar apenas o ano, mês e dia.
 1. Formatando uma Data Customizada. Use `time.strftime()` para formatar a data atual no formato `"Ano-Mês-Dia Hora:Minuto:Segundo"`.
+    ```python
+    import time
+
+    # mostrando com horario de 24h
+    print(time.strftime("%Y-%m-%d %H:%M:%S"))
+
+    # mostrando com horario de 12h
+    print(time.strftime("%Y-%m-%d %I:%M:%S %p"))
+
+    # mostrando com horario de 24h e mes por extenso
+    print(time.strftime("%Y-%B-%d %H:%M:%S"))
+    ```
 1. Convertendo uma String de Data para um Struct_time. Utilize a função `time.strptime()` para converter a string `"12/09/2024 14:30:00"` para um objeto `struct_time`.
 1. Exibindo Apenas o Ano Atual. Use a função `time.localtime()` para obter o ano atual e exibi-lo.
 1. Medição de Tempo de Execução de Código. Crie um script que utilize `time.time()` para medir quanto tempo demora para executar um loop que itera 1 milhão de vezes.
@@ -800,6 +812,29 @@ print(frase_capitalizada)  # Saída: 'Python É Uma Linguagem Incrível'
 1. Gerando uma Frase sem Espaços. Crie uma função que remova todos os espaços de uma frase utilizando `string.whitespace`.
 1. Gerando um Token de Sessão Aleatório. Crie uma função que gere um token aleatório de 16 caracteres utilizando `string.printable`.
 1. Formatando um Texto em Blocos de 4 Dígitos. Crie uma função que pegue uma sequência de números e formate em blocos de 4 dígitos separados por hífens (ex.: "1234-5678-9012").
+    ```python
+    import random
+    import string
+
+    texto = ""
+    while True:
+        texto += random.choice(string.digits)
+        if len(texto) > 11:
+            break
+
+    print(texto)
+    print(texto[:4]+'-'+texto[4:8]+'-'+texto[8:])
+
+    com_traco = ''
+    i = 0
+    while i < len(texto):
+        com_traco += texto[i]
+        if i == 3 or i == 7:
+            com_traco += "-"
+        i += 1
+
+    print(com_traco)
+    ```
 1. Verificando se uma String é uma Data Válida. Crie uma função que verifique se uma string contém uma data no formato "dd/mm/yyyy" usando `string.digits` e `string.punctuation`.
 1. Criando uma String de Números Sequenciais. Crie uma função que gere uma string contendo todos os números de 0 a 9 em sequência usando `string.digits`.
 1. Convertendo um Texto para Código Morse. Crie uma função que converta uma string para código Morse, utilizando `string.ascii_uppercase` e `string.digits` para mapear os caracteres.

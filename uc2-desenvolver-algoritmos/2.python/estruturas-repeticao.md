@@ -2,6 +2,13 @@
 
 1. [while](#while)
 1. [contador e acumulador](#contador-e-acumulador)
+1. [exercícios while](#exercícios-while)
+1. [comando for](#comando-for)
+1. [exercícios for](#exercícios-for)
+1. [loops aninhados](#loops-aninhados)
+1. [exercícios loops aninhados](#exercícios-loops-aninhados)
+1. [for vs while](#for-vs-while)
+1. [exercícios for vs while](#exercícios-for-vs-while)
 
 # estruturas de repetição
 
@@ -264,4 +271,482 @@ print('o fatorial de 5 é', produto)
     1. Crie um programa que peça ao usuário para digitar números decimais até que ele digite um número que seja o dobro de algum dos números já digitados. Se o número for maior que 10, adicione-o a uma lista de "números grandes". Caso contrário, adicione-o a uma lista de "números pequenos". Exiba ambas as listas ao final.
     1. Crie um programa que peça ao usuário para digitar valores booleanos (True ou False) até que ele digite um padrão alternado de "True" e "False" três vezes seguidas. Exiba a quantidade total de "True" e "False" digitados ao final.
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número que seja múltiplo da soma dos dígitos de um dos números anteriormente digitados. Se o número for par, adicione-o a uma lista de "pares". Caso contrário, adicione-o a uma lista de "ímpares". Exiba ambas as listas ao final.
+</details>
+
+## comando `for`
+
+O comando `for` em Python é uma estrutura de repetição que permite iterar sobre elementos de uma sequência (como listas, tuplas, strings ou intervalos) ou qualquer outro objeto iterável. A cada iteração, ele atribui o próximo elemento da sequência a uma variável e executa um bloco de código.
+
+```python
+# sintaxe básica
+for variável in sequência:
+    # bloco de código
+```
+
+- **variável** : uma variável que assume o valor de cada item da sequência durante cada iteração;
+- **sequência** : pode ser qualquer tipo de coleção, como uma lista, string, tupla, conjunto, ou até mesmo um intervalo (usando `range()`);
+- **bloco de código** : o código que será executado para cada item na sequência;
+
+Veja alguns exemplos
+
+1. iterando sobre uma lista :
+
+    Uma lista, nada mais é que uma sequência de itens. Então, é possível usar o comando `for` para passar por cada elemento individualmente.
+    ```python
+    frutas = ["maçã", "banana", "laranja"]
+    for fruta in frutas:
+        print(fruta)
+    # maçã
+    # banana
+    # laranja
+    ```
+
+1. iterando sobre uma string :
+    ```python
+    palavra = 'Arnold'
+    for letra in palavra:
+        print(letra)
+    # A
+    # r
+    # n
+    # o
+    # l
+    # d
+    ```
+
+### `for` e `if-elif-else`
+
+É possível incluir declarações condicionais dentro de um loop `for` para controlar o fluxo de execução :
+
+```python
+numeros = [1, 2, 3, 4, 5, 6]
+for num in numeros:
+    if num % 2 == 0:
+        print(f'{num} é par')
+    else:
+        print(f'{num} é ímpar')
+# 1 é ímpar
+# 2 é par
+# 3 é ímpar
+# 4 é par
+# 5 é ímpar
+# 6 é par
+```
+
+### exercícios `for`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Itere sobre uma lista de números e imprima cada número.
+1. Itere sobre uma string e imprima cada caractere.
+1. Itere sobre uma lista de palavras e imprima cada palavra em maiúsculas.
+1. Itere sobre uma lista de números e imprima o quadrado de cada número.
+1. Itere sobre uma string e conte quantas letras "a" ela possui.
+1. Crie uma lista de números e use um loop `for` para criar uma nova lista com o dobro de cada número.
+1. Itere sobre uma lista de strings e imprima cada uma em ordem reversa.
+1. Itere sobre uma lista de números e imprima apenas os números pares.
+1. Itere sobre uma lista de palavras e imprima apenas as palavras que começam com a letra "p".
+1. Itere sobre uma lista de números e imprima o cubo de cada número.
+1. Crie uma lista de números e use `for` para somar todos os números da lista.
+1. Itere sobre uma string e crie uma nova string com todas as vogais removidas.
+1. Itere sobre uma lista de palavras e imprima o comprimento de cada uma.
+1. Itere sobre uma lista de números e imprima a metade de cada número.
+1. Itere sobre uma string e imprima cada caractere junto com seu índice.
+1. Crie uma lista de palavras e use `for` para criar uma nova lista com cada palavra em maiúsculas.
+1. Itere sobre uma lista de números e imprima apenas os números ímpares.
+1. Itere sobre uma string e imprima apenas as letras que aparecem mais de uma vez.
+1. Itere sobre uma lista de números e imprima o produto de todos os números.
+1. Itere sobre uma lista de palavras e imprima apenas as palavras que contêm a letra "e".
+1. Itere sobre uma lista de números e crie uma nova lista com apenas os números que são divisíveis por 3.
+1. Itere sobre uma string e imprima cada caractere junto com a quantidade de vezes que ele aparece na string.
+1. Itere sobre uma lista de palavras e imprima cada palavra com suas letras em ordem alfabética.
+1. Itere sobre uma lista de números e imprima a soma de todos os números maiores que 10.
+1. Itere sobre uma lista de strings e crie uma nova string que seja a concatenação de todas as strings da lista.
+
+</details>
+
+## loops aninhados
+
+Loops aninhados em Python ocorrem quando se coloca um loop dentro de outro. Isso permite percorrer estruturas de dados mais complexas, como listas de listas (ou matrizes) e realizar operações em camadas diferentes de iteração.
+
+### usando o loop `for` aninhado
+
+Quando se aninha loops `for`, o loop externo inicia e, para cada iteração do loop externo, o loop interno percorre completamente sua estrutura.
+
+1. iterando sobre uma matriz
+
+```python
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for linha in matriz:
+    for coluna in linha:
+        print(coluna, end=' ')
+    print()
+# 1 2 3
+# 4 5 6
+# 7 8 9
+```
+
+1. O loop externo `for linha in matriz` percorre cada lista dentro da lista principal `matriz`;
+1. O loop interno `for coluna in linha` percorre cada elemento dentro da lista atual (`linha`);
+1. O `print(coluna, end=' ')` imprime cada elemento da linha na mesma linha;
+1. O `print()` fora do loop interno quebra a linha, garantindo que cada linha da matriz seja impressa em uma linha separada;
+
+### usando o loop `while` aninhado
+
+No caso do `while`, é necessário controlar explicitamente as condições de parada tanto do loop externo quanto do interno.
+
+1. iterando sobre uma matriz com `while`
+
+```python
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+i = 0
+while i < len(matriz):
+    j = 0
+    while j < len(matriz[i]):
+        print(matriz[i][j], end=' ')
+        j += 1
+    print()
+    i += 1
+# 1 2 3
+# 4 5 6
+# 7 8 9
+```
+
+1. O loop externo `while i < len(matriz)` controla a iteração sobre as linhas da matriz.
+1. O loop interno `while j < len(matriz[i])` controla a iteração sobre os elementos dentro da linha atual.
+1. O `print(matriz[i][j], end=' ')` imprime cada elemento da linha.
+1. Após o loop interno, o `print()` cria uma nova linha.
+1. `i += 1` e `j += 1` atualizam os contadores para mover-se para a próxima linha e próximo elemento, respectivamente.
+
+### usando `for` e `while` juntos
+
+É também possível combinar `for` e `while` em loops aninhados, dependendo da lógica que deseja implementar.
+
+1. `for` e `while` juntos
+
+```python
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for linha in matriz:
+    j = 0
+    while j < len(linha):
+        print(linha[j], end=' ')
+        j += 1
+    print()
+# 1 2 3
+# 4 5 6
+# 7 8 9
+```
+
+1. O loop externo `for linha in matriz` percorre cada linha da matriz;
+1. O loop interno `while j < len(linha)` percorre cada elemento da linha usando um contador manual `j`;
+1. O `print(linha[j], end=' ')` imprime cada elemento;
+1. O `print()` no final quebra a linha;
+
+### exercícios loops aninhados
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. exercícios com `for` aninhado
+    1. crie um programa que imprime o seguinte padrão utilizando loops aninhados `for`:
+    ```
+    *
+    * *
+    * * *
+    * * * *
+    * * * * *
+    ```
+    1. dda uma matriz 3x3, crie um programa que soma todos os elementos da matriz usando loops `for` aninhados.
+    1. crie uma lista de listas onde cada sublista contém os números de 1 a 5. Use loops `for` aninhados para imprimir todos os elementos.
+    1. dada uma matriz 4x4, use loops `for` aninhados para imprimir a diagonal principal (elementos onde o índice da linha é igual ao índice da coluna).
+    1. escreva um programa que crie um tabuleiro de xadrez 8x8 utilizando loops `for` aninhados, onde o tabuleiro é representado por "X" e "O".
+1. exercícios com `while` aninhado
+    1. crie um programa que imprime o seguinte padrão utilizando loops aninhados `while`:
+    ```
+    1
+    1 2
+    1 2 3
+    1 2 3 4
+    1 2 3 4 5
+    ```
+    1. dada uma matriz 3x3, escreva um programa que encontra o maior valor da matriz utilizando loops `while` aninhados.
+    1. usando loops `while` aninhados, crie um programa que imprime uma matriz identidade 4x4.
+    1. escreva um programa que cria uma matriz 5x5 e preenche-a com números aleatórios entre 1 e 100. Use loops `while` aninhados para encontrar e imprimir o menor valor da matriz.
+    1. crie um programa que usa loops `while` aninhados para imprimir todos os números pares de uma matriz 3x3.
+1. exercícios com combinação de `for` e `while`
+    1. dada uma lista de listas, use um loop `for` externo e um loop `while` interno para imprimir todos os elementos das sublistas.
+    1. crie um programa que use um loop `while` externo para iterar sobre os índices de uma lista de listas e um loop `for` interno para somar os elementos de cada sublista.
+    1. escreva um programa que leia uma matriz 4x4 e use um loop `for` para iterar sobre as linhas e um loop `while` para contar o número de elementos pares em cada linha.
+    1. dada uma matriz 3x3, use um loop `for` externo para iterar sobre as linhas e um loop `while` interno para calcular o produto dos elementos de cada linha.
+    1. crie um programa que usa um loop `while` para iterar sobre uma lista de listas e um loop `for` para encontrar a soma dos elementos ímpares em cada sublista.
+1. Exercícios Avançados
+    1. escreva um programa que gere uma matriz 3x3 com números aleatórios entre 1 e 50. Use loops `for` aninhados para transpor a matriz (trocar linhas por colunas).
+    1. dada uma matriz `NxN`, escreva um programa que utilize loops aninhados `while` para calcular a soma dos elementos acima da diagonal principal.
+    1. crie um programa que leia duas matrizes 3x3 e use loops `for` aninhados para calcular a soma dessas matrizes.
+    1. dada uma matriz `M x N`, crie um programa que use loops `for` e `while` aninhados para imprimir os elementos na forma de espiral.
+    1. crie um programa que usa um loop `for` para iterar sobre os índices de uma lista de listas e um loop `while` para encontrar o maior número primo em cada sublista.
+
+</details>
+
+## for vs while
+
+No Python, os loops `for` e `while` são estruturas de repetição que permitem executar um bloco de código várias vezes, mas funcionam de maneiras diferentes.
+
+### loop `for`
+
+O loop `for` é utilizado para iterar sobre uma sequência (como uma lista, tupla, string ou range). Ele percorre cada elemento da sequência, um por um, até que todos os elementos tenham sido processados.
+
+```python
+estrutura básica
+for elemento in sequencia:
+    # Bloco de código a ser repetido
+```
+
+- **`elemento`** : uma variável que assume o valor de cada item da sequência em cada iteração;
+- **`sequencia`** : a sequência de elementos que será iterada;
+
+#### características do `for`
+1. **iteração pré-definida** : o número de iterações é conhecido desde o início, baseado no tamanho da sequência;
+2. **fácil manipulação de sequências** : ideal para trabalhar com listas, strings, tuplas, etc;
+3. **menos propenso a loops infinitos** : como o número de iterações é determinado pela sequência, é menos provável que o loop entre em um estado infinito;
+
+### loop `while`
+
+O loop `while` repete um bloco de código enquanto uma condição booleana é verdadeira. Ele é útil quando o número de iterações não é conhecido de antemão, mas depende de uma condição que pode mudar durante a execução do loop.
+
+```python
+# estrutura básica
+while condicao:
+    # Bloco de código a ser repetido
+```
+
+- **`condicao`** : uma expressão que é avaliada antes de cada iteração. Se for `True`, o loop continua; se for `False`, o loop para;
+
+#### características do `while`
+1. **iteração não definida** : o número de iterações depende da condição, e pode não ser conhecido antecipadamente;
+2. **flexibilidade** : permite loops mais complexos, onde a condição de término pode depender de várias variáveis;
+3. **propenso a loops infinitos** : se a condição nunca se tornar `false`, o loop continuará indefinidamente;
+
+
+### comparação `for` vs `while`
+
+| característica | `for` | `while` |
+| ---- | ---- | ---- |
+| **uso principal** | iteração sobre sequências conhecidas | condições complexas ou indefinidas |
+| **número de iterações** | pré-determinado (baseado na sequência) | indeterminado (baseado na condição)|
+| **sintaxe** | mais concisa para iterar sequências | mais flexível, mas potencialmente mais longa |
+| **segurança** | menos propenso a loops infinitos | maior risco de loops infinitos |
+| **aplicabilidade** | ideal para listas, strings, tuplas, etc. | ideal para loops dependentes de condições variáveis |
+| **controle do loop** | controlado pela sequência | controlado pela condição booleana |
+
+### quando usar `for`?
+- quando o número de iterações é conhecido ou pode ser determinado com base na sequência (como iterar sobre uma lista ou usando `range()`).
+- quando se deseja iterar sobre cada elemento de uma estrutura de dados.
+
+### quando usar `while`?
+- quando o número de iterações não é conhecido antecipadamente e depende de uma condição que pode variar durante a execução.
+- quando é necessário repetir uma ação até que uma determinada condição seja atendida.
+
+### exemplos
+
+1. iterar uma lista de números e imprimir cada elemento :
+    ```python
+    numeros = [1, 2, 3, 4, 5]
+
+    # iterando com for
+    for numero in numeros:
+        print(numero)
+    # 1
+    # 2
+    # 3
+    # 4
+    # 5
+
+    # iterando com o while
+    i = 0
+
+    while i < len(numeros):
+        numero = numeros[i]
+        print(numero)
+        i += 1
+
+    # 1
+    # 2
+    # 3
+    # 4
+    # 5
+    ```
+
+1. somar os números de 1 a 5 :
+    ```python
+    # iterando com for
+    soma = 0
+
+    for i in range(1, 6):
+        soma += i
+    print(soma)
+    # 15
+
+    # iterando com while
+    soma = 0
+    i = 1
+
+    while i <= 5:
+        soma += i
+        i += 1
+    print(soma)
+    # 15
+    ```
+
+1. encontrar o primeiro número par em uma lista :
+    ```python
+    numeros = [1, 3, 5, 6, 7, 9]
+
+    # iterando com for
+    for numero in numeros:
+        if numero % 2 == 0:
+            print(f"Primeiro número par : {numero}")
+            break
+    # Primeiro número par : 6
+
+    # iterando com while
+    i = 0
+
+    while i < len(numeros):
+        numero = numeros[i]
+        if numero % 2 == 0:
+            print(f"Primeiro número par : {numero}")
+            break
+        i += 1
+    # Primeiro número par : 6
+    ```
+
+1. contar até que um número aleatório seja maior que 5 :
+
+    Esse exemplo é mais adequado para `while`, mas pode ser adaptado com um loop controlado.
+
+    ```python
+    import random
+
+    # iterando com for
+    for _ in range(100):  # define um limite arbitrário para evitar loop infinito
+        numero = random.randint(1, 10)
+        print(numero)
+            if numero > 5:
+            break
+    # 3
+    # 1
+    # 2
+    # 6
+
+    # iterando com while
+    numero = 0
+    while numero <= 5:
+        numero = random.randint(1, 10)
+        print(numero)
+
+    # 1
+    # 4
+    # 7
+    ```
+
+1. repetir uma string 5 vezes
+    ```python
+    # iterando com for
+    for _ in range(5):
+        print("Olá")
+    # Olá
+    # Olá
+    # Olá
+    # Olá
+    # Olá
+
+    # iterando com while
+    i = 0
+    while i < 5:
+        print("Olá")
+        i += 1
+    # Olá
+    # Olá
+    # Olá
+    # Olá
+    # Olá
+    ```
+
+## exercícios for vs while
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+Para cada exercício abaixo, crie as duas versões, isto é, use tanto o loop `for` quanto o loop `while`.
+
+Exemplo :
+```python
+# imprimir cada elemento de uma lista de frutas :
+# dada a lista frutas = ['maçã', 'banana', 'cereja'],
+# imprima cada fruta;
+frutas = ['maçã', 'banana', 'cereja']
+
+# iterando com for
+for fruta in frutas:
+    print(fruta)
+
+# iterando com while
+i = 0
+while i < len(frutas):
+    fruta = frutas[i]
+    print(fruta)
+    i += 1
+```
+
+1. **imprimir cada elemento de uma lista de frutas** : dada a lista `frutas = ['maçã', 'banana', 'cereja']`, imprima cada fruta;
+1. **somar todos os números em uma tupla** : dada a tupla `numeros = (1, 2, 3, 4, 5)`, calcule e imprima a soma de todos os elementos;
+1. **contar o número de vogais em uma string** : dada a string `texto = "programacao"`, conte quantas vogais existem no texto;
+1. **reverter uma lista de números** : dada a lista `numeros = [1, 2, 3, 4, 5]`, imprima os números na ordem inversa;
+1. **concatenar todas as strings em uma lista** : dada a lista `palavras = ['Eu', 'gosto', 'de', 'programar']`, concatene todas as strings em uma única string e imprima o resultado;
+1. **encontrar o maior número em uma lista** : dada a lista `numeros = [4, 7, 1, 9, 3]`, encontre e imprima o maior número;
+1. **contar quantos números pares existem em uma tupla** : dada a tupla `numeros = (2, 5, 8, 11, 14)`, conte quantos números são pares;
+1. **imprimir cada caractere de uma string** : dada a string `nome = "Python"`, imprima cada caractere em uma linha separada;
+1. **somar os números ímpares em uma lista** : dada a lista `numeros = [1, 2, 3, 4, 5, 6, 7]`, calcule a soma de todos os números ímpares;
+1. **verificar se uma lista contém um número específico** : dada a lista `numeros = [10, 20, 30, 40, 50]` e o número `30`, verifique se o número está presente na lista;
+1. **contar quantas vezes uma letra específica aparece em uma string** : dada a string `frase = "banana"` e a letra `a`, conte quantas vezes a letra `a` aparece;
+1. **imprimir os elementos de uma tupla que estão em posições pares** : dada a tupla `numeros = (10, 20, 30, 40, 50, 60)`, imprima os elementos que estão em posições pares;
+1. **criar uma nova lista apenas com os elementos ímpares de uma lista** : dada a lista `numeros = [1, 2, 3, 4, 5, 6]`, crie e imprima uma nova lista contendo apenas os números ímpares;
+1. **concatenar os caracteres de uma string em ordem inversa** : dada a string `texto = "abcd"`, crie e imprima uma nova string com os caracteres em ordem inversa;
+1. **multiplicar todos os elementos de uma lista por 2** : dada a lista `numeros = [2, 4, 6, 8]`, crie uma nova lista onde cada elemento é o dobro do valor original;
+1. **contar quantos números negativos existem em uma lista** : dada a lista `numeros = [-3, -2, 0, 1, 4]`, conte quantos números são negativos;
+1. **verificar se uma string é um palíndromo** : dada a string `palavra = "radar"`, verifique se a palavra é um palíndromo (lê-se da mesma forma de trás para frente);
+1. **imprimir os elementos de uma tupla até encontrar um valor específico** : dada a tupla `numeros = (5, 10, 15, 20, 25)` e o número `15`, imprima os elementos até encontrar o número 15 (inclusive);
+1. **substituir todas as vogais de uma string por `*`** : dada a string `frase = "substituir vogais"`, crie e imprima uma nova string onde todas as vogais são substituídas por `*`;
+1. **imprimir o índice e o valor de cada elemento em uma lista** : dada a lista `numeros = [10, 20, 30, 40]`, imprima o índice e o valor de cada elemento;
+1. **criar uma nova tupla apenas com os números maiores que 10** : dada a tupla `numeros = (3, 10, 15, 7, 20)`, crie e imprima uma nova tupla contendo apenas os números maiores que 10;
+1. **imprimir uma string em formato de pirâmide** : dada a string `texto = "PYTHON"`, imprima a string em formato de pirâmide :
+    ```
+    P
+    PY
+    PYT
+    PYTH
+    PYTHO
+    PYTHON
+    ```
+1. **remover todos os elementos duplicados de uma lista**: dada a lista `numeros = [1, 2, 2, 3, 4, 4, 5]`, crie e imprima uma nova lista sem elementos duplicados;
+1. **imprimir apenas os caracteres que são letras maiúsculas de uma string**: dada a string `texto = "Programação Em Python"`, imprima apenas as letras maiúsculas;
+1. **imprimir todos os elementos de uma lista de trás para frente**: dada a lista `numeros = [1, 2, 3, 4, 5]`, imprima os elementos começando do último até o primeiro;
+
 </details>
