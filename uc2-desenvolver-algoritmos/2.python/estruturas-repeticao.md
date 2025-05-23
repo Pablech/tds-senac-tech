@@ -734,6 +734,19 @@ while i < len(frutas):
 1. **verificar se uma string é um palíndromo** : dada a string `palavra = "radar"`, verifique se a palavra é um palíndromo (lê-se da mesma forma de trás para frente);
 1. **imprimir os elementos de uma tupla até encontrar um valor específico** : dada a tupla `numeros = (5, 10, 15, 20, 25)` e o número `15`, imprima os elementos até encontrar o número 15 (inclusive);
 1. **substituir todas as vogais de uma string por `*`** : dada a string `frase = "substituir vogais"`, crie e imprima uma nova string onde todas as vogais são substituídas por `*`;
+    ```python
+    frase = "SUBSTITUIR VOGAIS"
+    vogais = "aeiou"
+    copia = ""
+
+    for i in range(len(frase)):
+        if frase[i].lower() in vogais:
+            copia += "*"
+            continue
+        copia += frase[i]
+    print(frase)
+    print(copia)
+    ```
 1. **imprimir o índice e o valor de cada elemento em uma lista** : dada a lista `numeros = [10, 20, 30, 40]`, imprima o índice e o valor de cada elemento;
 1. **criar uma nova tupla apenas com os números maiores que 10** : dada a tupla `numeros = (3, 10, 15, 7, 20)`, crie e imprima uma nova tupla contendo apenas os números maiores que 10;
 1. **imprimir uma string em formato de pirâmide** : dada a string `texto = "PYTHON"`, imprima a string em formato de pirâmide :
@@ -744,6 +757,29 @@ while i < len(frutas):
     PYTH
     PYTHO
     PYTHON
+    ```
+    ```python
+    texto = "python eh muito legal"
+    texto = texto.upper()
+
+    print("print com for")
+    for i in range(len(texto)):
+        print(texto[:i+1])
+
+    print("print com while")
+    i = 0
+    while i < len(texto):
+        print(texto[:i+1])
+        i += 1
+
+    print("print com for e while")
+    for i in range(len(texto)):
+        qtd_letra = 0
+        while qtd_letra < i + 1:
+            print(texto[qtd_letra], end='')
+            qtd_letra += 1
+        # print("\nqtd de letras :", qtd_letra)
+        print()
     ```
 1. **remover todos os elementos duplicados de uma lista**: dada a lista `numeros = [1, 2, 2, 3, 4, 4, 5]`, crie e imprima uma nova lista sem elementos duplicados;
 1. **imprimir apenas os caracteres que são letras maiúsculas de uma string**: dada a string `texto = "Programação Em Python"`, imprima apenas as letras maiúsculas;
