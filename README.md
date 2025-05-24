@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 24 | 23/05/2025 | [`else` no `for` e `while`](uc2-desenvolver-algoritmos/2.python/estruturas-repeticao.md#else-em-loops)<br>[tratamento de erros](uc2-desenvolver-algoritmos/2.python/tratamento-erros.md)<br>[avaliação - etapa 8](uc2-desenvolver-algoritmos/avaliacao.md#etapa-8-dígito-2) |
 | 23 | 22/05/2025 | [tipo `tuple`](uc2-desenvolver-algoritmos/2.python/tipo-tuple.md)<br>[tipo `dictionary`](uc2-desenvolver-algoritmos/2.python/tipo-dictionary.md) |
 | 22 | 21/05/2025 | [comando `for`](uc2-desenvolver-algoritmos/2.python/estruturas-repeticao.md#comando-for)<br>[`for` vs `while`](uc2-desenvolver-algoritmos/2.python/estruturas-repeticao.md#for-vs-while)<br>[comando `break`](uc2-desenvolver-algoritmos/2.python/comandos-built-in.md#break)<br>[comando `continue`](uc2-desenvolver-algoritmos/2.python/comandos-built-in.md#continue)<br>[comando `pass`](uc2-desenvolver-algoritmos/2.python/comandos-built-in.md#pass) |
 | 21 | 20/05/2025 | [módulo `time`](uc2-desenvolver-algoritmos/2.python/modulos.md#módulo-time)<br>[tipo `string`](uc2-desenvolver-algoritmos/2.python/tipo-string.md)<br>[módulo `string`](uc2-desenvolver-algoritmos/2.python/modulos.md#módulo-string) |

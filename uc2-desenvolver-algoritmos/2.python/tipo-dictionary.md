@@ -300,5 +300,20 @@ Neste exemplo:
     1. **Crie um dicionário** onde as chaves são os nomes de alunos e os valores são suas idades. Use `keys()` para imprimir todos os nomes e depois adicione um novo aluno.
     1. **Crie um dicionário** que associa produtos a seus preços. Aumente o preço de cada produto em 10% usando `items()` e um loop.
     1. **Crie um dicionário** onde as chaves são países e os valores são suas capitais. Use `items()` para iterar e imprimir cada país e sua capital no formato "A capital de X é Y".
+        ```python
+        paises_capitais = {
+            "BRA" : "Brasilia",
+            'ARG' : 'Buenos Aires',
+            "URU" : 'Montevideu',
+            "PAR" : "Assuncao"
+        }
+
+        for sigla, capital in paises_capitais.items():
+            print("A capital de", sigla, "eh", capital)
+            if sigla == "bra".upper():
+                print("eh penta!!!")
+            elif sigla.lower() == 'arg':
+                print('o melhor tango mundo')
+        ```
 
 </details>

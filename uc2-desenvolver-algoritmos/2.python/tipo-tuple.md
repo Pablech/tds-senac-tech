@@ -196,6 +196,41 @@ Embora as tuplas sejam imutáveis, Python oferece algumas funções e métodos q
     1. **Comparando Duas Tuplas**: Crie duas tuplas de números. Escreva um loop `while` que percorra ambas as tuplas e imprima qual número é maior em cada índice correspondente.
     1. **Tuplas Aninhadas**: Crie uma tupla que contenha outras tuplas dentro. Escreva um loop `for` que percorra cada sub-tupla e verifique se o primeiro elemento é maior que o segundo. Imprima "Sim" ou "Não" conforme o caso.
     1. **Verificação de Todos os Elementos**: Crie uma tupla de números inteiros. Escreva um loop `for` que verifique se todos os elementos são positivos. Se algum número for negativo, imprima "Número negativo encontrado" e interrompa o loop.
+        ```python
+        import random
+
+        lista_inteiros = []
+
+        # while True:
+        #     lista_inteiros = []
+        #     todos_positivos = True
+        #     for _ in range(10):
+        #         lista_inteiros.append(random.randint(-200, 200))
+        #     for num in lista_inteiros:
+        #         if num < 0:
+        #             todos_positivos = False
+        #             break
+        #     if todos_positivos:
+        #         break
+
+        for _ in range(10):
+            lista_inteiros.append(random.randint(-200, 200))
+
+        tupla_inteiros = tuple(lista_inteiros)
+
+        todos_positivos = True
+
+        for num in tupla_inteiros:
+            if num < 0:
+                print("Número negativo encontrado")
+                todos_positivos = False
+                break
+
+        if todos_positivos:
+            print("a tupla soh tem valores positivos")
+
+        print(tupla_inteiros)
+        ```
     1. **Tuplas e Condicionais**: Crie uma tupla com números e escreva um loop `while` que percorra a tupla. Se o número for maior que 20, multiplique-o por 2 e imprima o resultado.
     1. **Acessando Sub-Tuplas**: Crie uma tupla de 3 sub-tuplas, cada uma contendo 2 números. Escreva um loop `for` que percorra cada sub-tupla e some os números de cada uma, imprimindo o resultado.
 1. nível muito complexo

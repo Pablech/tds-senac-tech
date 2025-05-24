@@ -9,6 +9,8 @@
 1. [exercícios loops aninhados](#exercícios-loops-aninhados)
 1. [for vs while](#for-vs-while)
 1. [exercícios for vs while](#exercícios-for-vs-while)
+1. [else em loops](#else-em-loops)
+1. [exercícios else](#exercícios-else)
 
 # estruturas de repetição
 
@@ -784,5 +786,120 @@ while i < len(frutas):
 1. **remover todos os elementos duplicados de uma lista**: dada a lista `numeros = [1, 2, 2, 3, 4, 4, 5]`, crie e imprima uma nova lista sem elementos duplicados;
 1. **imprimir apenas os caracteres que são letras maiúsculas de uma string**: dada a string `texto = "Programação Em Python"`, imprima apenas as letras maiúsculas;
 1. **imprimir todos os elementos de uma lista de trás para frente**: dada a lista `numeros = [1, 2, 3, 4, 5]`, imprima os elementos começando do último até o primeiro;
+
+</details>
+
+## `else` em loops
+
+No Python, o bloco `else` pode ser usado em conjunto com os loops `for` e `while`, e seu comportamento é um pouco diferente do que se vê em outras linguagens de programação. O bloco `else` em um loop é executado quando o loop termina normalmente, ou seja, quando ele não é interrompido por um `break`.
+
+### `else` com `for`
+
+No contexto de um loop `for`, o bloco `else` é executado após o loop percorrer todos os elementos do iterável. Se o loop for interrompido por um comando `break`, o bloco `else` é ignorado.
+
+**exemplo 1 : loop `for` sem `break`**
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+for numero in numeros:
+    print(numero)
+else:
+    print("Loop completado sem interrupções.")
+```
+
+- o loop `for` percorre todos os números na lista `numeros`;
+- após o loop terminar, o bloco `else` é executado, imprimindo "Loop completado sem interrupções.";
+- como não há `break`, o `else` sempre será executado;
+
+**exemplo 2 : loop `for` com `break`**
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+for numero in numeros:
+    if numero == 3:
+        print("Número 3 encontrado, interrompendo o loop.")
+        break
+    print(numero)
+else:
+    print("Loop completado sem interrupções.")
+```
+
+- o loop `for` percorre os números até encontrar o número 3;
+- quando o número 3 é encontrado, o loop é interrompido com `break`;
+- neste caso, o bloco `else` não é executado porque o loop foi interrompido;
+
+### `else` com `while`
+
+O funcionamento do `else` em um loop `while` é semelhante ao do `for`. O bloco `else` é executado quando o loop termina normalmente, ou seja, quando a condição do `while` se torna falsa. Se o loop for interrompido por um `break`, o bloco `else` não é executado.
+
+**exemplo 3 : loop `while` sem `break`**
+
+```python
+contador = 0
+
+while contador < 5:
+    print(contador)
+    contador += 1
+else:
+    print("Loop `while` completado sem interrupções.")
+```
+
+- o loop `while` continua enquanto `contador` for menor que 5;
+- quando a condição `contador < 5` se torna falsa, o loop termina, e o bloco `else` é executado, imprimindo "Loop `while` completado sem interrupções.";
+
+**exemplo 4 : loop `while` com `break`**
+
+```python
+contador = 0
+
+while contador < 5:
+    if contador == 3:
+        print("Contador atingiu 3, interrompendo o loop.")
+        break
+    print(contador)
+    contador += 1
+else:
+    print("Loop `while` completado sem interrupções.")
+```
+
+- O loop `while` continua até `contador` atingir 3.
+- Quando `contador` é igual a 3, o loop é interrompido com `break`.
+- O bloco `else` não é executado porque o loop foi interrompido antes que a condição se tornasse falsa.
+
+### resumo
+
+- o `else` no `for` ou `while` é executado quando o loop termina naturalmente, sem ser interrompido por um `break`;
+- se o loop for interrompido com um `break`, o bloco `else` é ignorado;
+- o uso de `else` com loops pode ser útil para executar código que deve rodar apenas se o loop percorrer todos os elementos ou todas as iterações sem interrupções;
+
+Essa funcionalidade é especialmente útil em casos onde você está procurando um item em uma coleção. Se o item for encontrado e o loop for interrompido, você não deseja executar o bloco `else`, mas se o item não for encontrado e o loop terminar normalmente, o `else` pode ser usado para indicar que a busca não teve sucesso.
+
+## exercícios else
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Dada a lista `numeros = [1, 2, 3, 4, 5]`, crie um loop `for` que percorra a lista e imprima cada número. Use um bloco `else` para imprimir "Loop finalizado" após a conclusão do loop.
+1. Crie um loop `for` que percorra a string `"python"` e imprima cada caractere. No bloco `else`, imprima "Todos os caracteres foram exibidos".
+1. Dado o tuple `nomes = ("Alice", "Bob", "Carlos", "Diana")`, crie um loop `for` que pare quando encontrar o nome "Carlos". Use `else` para imprimir "Nome não encontrado" caso "Carlos" não esteja no tuple.
+1. Crie um loop `while` que continue enquanto o comprimento da lista `numeros = [2, 4, 6, 8, 10]` for maior que 0. Remova um elemento da lista a cada iteração e, quando o loop terminar, use `else` para imprimir "Todos os elementos foram removidos".
+1. Dado o set `letras = {'a', 'b', 'c', 'd'}`, crie um loop `for` que percorra o set e imprima cada letra. No bloco `else`, imprima "Loop completo sem interrupções".
+1. Dada a lista `numeros = [10, 20, 30, 40, 50]`, crie um loop `for` que interrompa a execução quando encontrar o número 30. Use `else` para imprimir "Número não encontrado" se o loop não for interrompido.
+1. Crie um loop `while` que continue a remover o último caractere da string `texto = "abcdef"` enquanto o comprimento da string for maior que 3. Use `else` para imprimir "Texto curto" ao final.
+1. Dado o tuple `pontos = (10, 20, 30, 40, 50)`, crie um loop `for` que pare quando o valor 60 for encontrado. Use `else` para imprimir "Valor não encontrado" se o loop terminar sem interrupção.
+1. Dado o set `numeros = {1, 2, 3, 4, 5}`, crie um loop `for` que percorra o set e imprima cada número. Use um `else` para indicar que todos os números foram exibidos.
+1. Crie um loop `while` que percorra a string `"palavra"` e interrompa o loop se encontrar o caractere `"w"`. Use `else` para imprimir "Caractere não encontrado" se o loop não for interrompido.
+1. Dado o tuple `numeros = (1, 2, 3, 4, 5)`, crie um loop `for` que imprima cada número. Use `else` para imprimir "Fim do loop" após o loop percorrer todos os números.
+1. Crie um loop `while` que continue removendo o primeiro elemento da lista `letras = ['a', 'b', 'c', 'd']` enquanto o comprimento da lista for maior que 1. Use `else` para imprimir "Apenas uma letra restante".
+1. Dado o set `vogais = {'a', 'e', 'i', 'o', 'u'}`, crie um loop `for` que pare quando a letra `"i"` for encontrada. Use `else` para imprimir "Letra não encontrada" se o loop não for interrompido.
+1. Crie um loop `while` que continue a iterar enquanto o número de elementos na lista `numeros = [10, 20, 30]` for maior que 2. Use `else` para imprimir "Quantidade de elementos suficiente".
+1. Dado o tuple `frutas = ("maçã", "banana", "laranja", "uva")`, crie um loop `for` que imprima cada fruta. Use `else` para imprimir "Todas as frutas foram exibidas" ao final.
+1. Crie um loop `while` que continue enquanto a string `"abcdefg"` contiver o caractere `"c"`. Remova `"c"` da string e use `else` para imprimir "Caractere removido com sucesso".
+1. Dado o set `numeros = {1, 2, 3, 4, 5}`, crie um loop `for` que interrompa quando encontrar o número 4. Use `else` para imprimir "Número não encontrado" caso o loop não seja interrompido.
+1. Crie um loop `while` que percorra a string `"looping"` e pare se encontrar o caractere `"p"`. Use `else` para imprimir "Nenhum caractere 'p' encontrado" se o loop não for interrompido.
+1. Dado o tuple `cores = ("vermelho", "azul", "verde", "amarelo")`, crie um loop `for` que imprima cada cor. Use `else` para imprimir "Fim das cores" após o loop.
+1. Crie um loop `while` que continue removendo elementos do set `numeros = {5, 10, 15, 20}` enquanto ele não estiver vazio. Use `else` para imprimir "Set vazio".
 
 </details>
