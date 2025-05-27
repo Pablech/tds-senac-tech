@@ -1,9 +1,15 @@
 Índice
 
 1. [print()](#print)
+1. [exercícios print()](#exercícios-print)
 1. [len()](#len)
+1. [type()](#type)
+1. [isinstance()](#isinstance)
 1. [input()](#input)
 1. [range()](#range)
+1. [exercícios range](#exercícios-range)
+1. [zip()](#zip)
+1. [exercícios zip](#exercícios-zip)
 
 # funções built-in
 
@@ -138,6 +144,29 @@ print(len(planetas[2]))  # saída (tamanho da palavra Terra) : 5
 print(len(sobrenome))  # saída : 14
 ```
 
+## `type()`
+
+A função `type()` retorna o tipo do objeto passado como argumento.
+
+```python
+print(type(10))          # saída : <class 'int'>
+print(type(3.14))        # saída : <class 'float'>
+print(type(False))       # saída : <class 'bool'>
+print(type("Python"))    # saída : <class 'str'>
+print(type([1, 2, 3]))   # saída : <class 'list'>
+```
+
+## `isinstance()`
+
+A função `isinstance()` verifica se um objeto é uma instância de uma classe ou de uma tupla de classes.
+
+```python
+print(isinstance(10, int))             # saída : True
+print(isinstance("Python", str))       # saída : True
+print(isinstance("Python", float))     # saída : False
+print(isinstance(3.14, (int, float)))  # saída : True
+```
+
 ## `input()`
 A função `input()` lê uma entrada do usuário e a retorna como uma string.
 
@@ -198,7 +227,6 @@ Veja alguns exemplos de uso
     # 5
     # 7
     # 9
-    >>>
     ```
 
 1. usando um `step` decrescente (step negativo) :
@@ -294,5 +322,108 @@ Veja alguns exemplos de uso
 1. Use `range()` para criar uma lista de números de 10 a 100, com passos de 10, e imprimi-la.
 1. Use `range()` para imprimir os números de -5 a 5.
 1. Use `range()` para criar uma lista com os números de 0 a 9 em ordem reversa e imprimi-la.
+
+</details>
+
+## `zip()`
+
+A função `zip()` em Python é usada para combinar dois ou mais iteráveis (como listas, tuplas, ou qualquer objeto que suporte iteração) em um único iterável de pares ou tuplas. Cada tupla gerada pelo `zip()` conterá os elementos correspondentes dos iteráveis fornecidos.
+
+```python
+# sintaxe básica
+zip(iterável1, iterável2, )
+```
+
+- **`iterável1, iterável2, `** : um ou mais iteráveis (listas, tuplas, strings, etc.) que deseja combinar;
+
+A função `zip()` retorna um iterador de tuplas, onde cada tupla contém um elemento de cada iterável. Se os iteráveis tiverem comprimentos diferentes, o `zip()` truncará ao comprimento do menor iterável.
+
+Veja exemplos de uso
+
+1. zip de duas listas :
+    ```python
+    nomes = ['Ana', 'João', 'Maria']
+    idades = [25, 30, 22]
+
+    combinados = zip(nomes, idades)
+    print(list(combinados))
+    # saída : [('Ana', 25), ('João', 30), ('Maria', 22)]
+    ```
+
+1. zip de três listas :
+    ```python
+    nomes = ['Ana', 'João', 'Maria']
+    idades = [25, 30, 22]
+    cidades = ['São Paulo', 'Rio de Janeiro', 'Curitiba']
+
+    combinados = zip(nomes, idades, cidades)
+    print(list(combinados))
+    # saída : [('Ana', 25, 'São Paulo'), ('João', 30, 'Rio de Janeiro'), ('Maria', 22, 'Curitiba')]
+    ```
+
+1. iterando com `zip()` em um loop `for` :
+    ```python
+    nomes = ['Ana', 'João', 'Maria']
+    idades = [25, 30, 22]
+
+    for nome, idade in zip(nomes, idades):
+        print(f'{nome} tem {idade} anos.')
+    # saída :
+    # Ana tem 25 anos.
+    # João tem 30 anos.
+    # Maria tem 22 anos.
+    ```
+
+1. quando os iteráveis passados para `zip()` têm tamanhos diferentes, o `zip()` para de emparelhar assim que o menor iterável é consumido :
+    ```python
+    nomes = ['Ana', 'João']
+    idades = [25, 30, 22]  # Uma lista mais longa
+
+    combinados = zip(nomes, idades)
+    print(list(combinados))
+    # saída : [('Ana', 25), ('João', 30)]
+    ```
+    No exemplo acima, o terceiro valor de `idades` (22) é ignorado porque `nomes` só tem dois elementos.
+
+1. zip com strings :
+    ```python
+    letras = 'abc'
+    numeros = [1, 2, 3]
+
+    combinados = zip(letras, numeros)
+    print(list(combinados))
+    # saída : [('a', 1), ('b', 2), ('c', 3)]
+    ```
+
+### exercícios zip
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Use `zip()` para combinar duas listas de números e imprimir os pares resultantes.
+1. Use `zip()` para combinar duas listas de palavras e imprimir os pares resultantes.
+1. Use `zip()` para combinar uma lista de números com uma lista de palavras e imprimir os pares.
+1. Crie duas listas de nomes e sobrenomes e use `zip()` para combiná-las em uma lista de nomes completos.
+1. Use `zip()` para combinar uma string e uma lista de números, imprimindo os pares resultantes.
+1. Crie duas listas de números e use `zip()` para somá-los em pares.
+1. Use `zip()` para combinar uma lista de palavras com seus respectivos comprimentos.
+1. Use `zip()` para iterar sobre duas listas de números e imprimir a multiplicação dos pares.
+1. Crie duas listas de cidades e estados e use `zip()` para combiná-las em uma lista de listas.
+1. Use `zip()` para combinar uma string e uma lista de índices, imprimindo os pares.
+1. Crie duas listas de produtos e preços e use `zip()` para imprimir os produtos com seus preços.
+1. Use `zip()` para combinar três listas de números e imprimir as listas resultantes.
+1. Use `zip()` para combinar duas strings e imprimir os pares de caracteres.
+1. Crie duas listas de números e use `zip()` para criar uma nova lista de listas e imprimir seus pares.
+1. Crie duas listas de palavras e use `zip()` para criar uma nova lista onde cada elemento é a concatenação das palavras nas duas listas.
+1. Use `zip()` para combinar uma lista de números com uma lista de booleanos e imprimir os pares.
+1. Crie duas listas de notas e use `zip()` para calcular a média de cada par de notas.
+1. Use `zip()` para combinar três listas de palavras e imprimir as listas resultantes.
+1. Crie duas listas de letras e use `zip()` para criar uma string onde as letras das duas listas estejam intercaladas.
+1. Use `zip()` para combinar uma lista de nomes com uma lista de idades e imprimir as listas resultantes.
+1. Crie duas listas de números e use `zip()` para subtrair os pares e imprimir os resultados.
+1. Use `zip()` para combinar uma lista de cidades com uma lista de países e imprimir os pares.
+1. Crie duas listas de números e use `zip()` para encontrar o maior número em cada par.
+1. Use `zip()` para combinar uma lista de palavras com uma lista de números e imprimir as palavras repetidas de acordo com os números.
+1. Crie três listas de strings e use `zip()` para combinar e imprimir as listas formadas pelos elementos correspondentes.
 
 </details>
