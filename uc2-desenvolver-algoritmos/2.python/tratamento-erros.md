@@ -497,6 +497,30 @@ print(f'{resultado = }')
     1. Modifique um código que realiza cálculos matemáticos complexos para verificar sempre se a divisão por zero pode ocorrer e trate o erro.
     1. Faça um programa que divida o total de vendas mensais por um número de meses. Verifique a possibilidade de divisão por zero no caso de meses iguais a zero.
     1. Crie uma função que calcule a média de números em uma lista, onde o denominador pode ser zero (caso a lista esteja vazia). Trate a divisão por zero.
+        ```python
+        import random
+
+        valores = []
+        for i in range(10):
+            valor = random.randint(0,100)
+            if valor == 42:
+                print("foi gerado 42")
+                break
+            valores.append(valor)
+        else:
+            print("a lista :", valores)
+
+        soma = 0
+        i = 0
+        while i < len(valores):
+            soma += valores[i]
+            i += 1
+
+        try:
+            print("a media eh :", soma/len(valores))
+        except ZeroDivisionError:
+            print("nao consigo fazer a media de uma lista vazia")
+        ```
 1. **Exercícios ValueError**
     1. Crie um programa que peça ao usuário para inserir um número inteiro e trate o **`ValueError`** caso o usuário insira um valor não numérico.
     1. Implemente uma função que converta uma string para um número. Trate o erro se a string não puder ser convertida.
@@ -538,6 +562,30 @@ print(f'{resultado = }')
     1. Crie um dicionário de produtos e preços. Peça ao usuário para inserir um nome de produto e exiba o preço. Trate **`KeyError`** se o produto não estiver no dicionário.
     1. Escreva uma função que busque informações de contato (nome, telefone) em um dicionário. Trate **`KeyError`** caso a chave inserida pelo usuário não esteja no dicionário.
     1. Faça um programa que permita que o usuário adicione e remova itens de um dicionário. Trate **`KeyError`** ao tentar remover uma chave inexistente.
+        ```python
+        import random
+
+        palavras = ['valor', 'pc', "pintinho amarelinho", 'sono']
+
+        dicionario = {}
+
+        for palavra in palavras:
+            dicionario[len(palavra)] = palavra
+
+        print(dicionario)
+
+        chave = input("digite um item para mostrar : ")
+
+        try:
+            chave = int(chave)
+        except ValueError:
+            print("digite apenas numeros")
+
+        try:
+            print(dicionario[chave])
+        except KeyError:
+            print("chave inexistente")
+        ```
     1. Crie uma função que percorra um dicionário de livros e retorne o preço de um livro específico. Trate **`KeyError`** se o livro não estiver no dicionário.
     1. Implemente um código que percorra um dicionário de alunos e verifique se determinadas chaves (nomes de alunos) existem. Trate **`KeyError`** adequadamente.
     1. Crie um programa que use um dicionário para armazenar notas de alunos. Peça ao usuário para inserir o nome de um aluno e exiba sua nota. Trate **`KeyError`** para alunos inexistentes.
