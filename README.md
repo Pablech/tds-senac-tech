@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 27 | 28/05/2025 | comandos [`import-from-as`](uc2-desenvolver-algoritmos/2.python/comandos-import-from-as.md)<br>[variável `__name__`](uc2-desenvolver-algoritmos/2.python/modulos.md#variável-__name__)<br>[compreensão de listas](uc2-desenvolver-algoritmos/2.python/compreensao-listas.md)<br>[operador ternário](uc2-desenvolver-algoritmos/2.python/operador-ternario.md)<br>[recursão](uc2-desenvolver-algoritmos/2.python/funcoes.md#recursão) |
 | 26 | 27/05/2025 | funções [`type`](uc2-desenvolver-algoritmos/2.python/built-in-funcoes.md#type), [`isinstance`](uc2-desenvolver-algoritmos/2.python/built-in-funcoes.md#isinstance) e [`zip`](uc2-desenvolver-algoritmos/2.python/built-in-funcoes.md#zip)<br>[empacotamento e desempacotamento](uc2-desenvolver-algoritmos/2.python/empac-desempac.md)<br>[tipo `set`](uc2-desenvolver-algoritmos/2.python/tipo-set.md) |
 | 25 | 26/05/2025 | [formatando strings](uc2-desenvolver-algoritmos/2.python/formantando-strings.md)<br>[funções](uc2-desenvolver-algoritmos/2.python/funcoes.md) |
 | 24 | 23/05/2025 | [`else` no `for` e `while`](uc2-desenvolver-algoritmos/2.python/estruturas-repeticao.md#else-em-loops)<br>[tratamento de erros](uc2-desenvolver-algoritmos/2.python/tratamento-erros.md)<br>[avaliação - etapa 8](uc2-desenvolver-algoritmos/avaliacao.md#etapa-8-dígito-2) |
