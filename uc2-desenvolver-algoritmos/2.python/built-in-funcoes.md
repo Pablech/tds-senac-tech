@@ -325,6 +325,119 @@ Veja alguns exemplos de uso
 
 </details>
 
+## `enumerate()`
+
+A função `enumerate()` em Python é usada para iterar sobre uma sequência (como uma lista, tupla ou string) e retornar tanto o índice quanto o valor dos elementos dessa sequência. Isso é particularmente útil quando é preciso de acesso ao índice do elemento dentro de um loop, sem precisar gerenciá-lo manualmente.
+
+```python
+# sintaxe básica
+enumerate(iterável, start=0)
+```
+
+- **`iterável`** : a sequência sobre a qual você deseja iterar (como uma lista, tupla, string, etc.);
+- **`start`** (opcional) : o valor inicial do índice (o valor padrão é 0);
+
+Quando usado dentro de um loop `for`, `enumerate()` retorna uma tupla que contém o índice e o valor do elemento na sequência. Esse índice começa no valor especificado pelo parâmetro `start`.
+
+Veja alguns exemplos
+
+1. iterando sobre uma lista com `enumerate()` :
+    ```python
+    frutas = ['maçã', 'banana', 'laranja']
+    for i, fruta in enumerate(frutas):
+        print(f'Índice {i}: {fruta}')
+
+    # saída :
+    # Índice 0: maçã
+    # Índice 1: banana
+    # Índice 2: laranja
+    ```
+
+1. especificando um valor inicial para o índice :
+    ```python
+    frutas = ['maçã', 'banana', 'laranja']
+    for i, fruta in enumerate(frutas, start=1):
+        print(f'Índice {i}: {fruta}')
+
+    # saída :
+    # Índice 1: maçã
+    # Índice 2: banana
+    # Índice 4: laranja
+    ```
+
+1. acessando índices ao iterar sobre strings :
+    ```python
+    palavra = 'Python'
+    for i, letra in enumerate(palavra):
+        print(f'Letra {letra} está na posição {i}')
+
+    # saída :
+    # Letra P está na posição 0
+    # Letra y está na posição 1
+    # Letra t está na posição 2
+    # Letra h está na posição 3
+    # Letra o está na posição 4
+    # Letra n está na posição 5
+    ```
+
+1. identificando posições de elementos específicos em uma lista :
+    ```python
+    numeros = list(range(10, 60, 10))
+    numeros
+    [10, 20, 30, 40, 50]
+    for i, num in enumerate(numeros):
+        if num == 30:
+            print(f'Encontrado {num} na posição {i}')
+
+    # Encontrado 30 na posição 2
+    ```
+
+1. se precisar modificar os elementos de uma lista com base em sua posição, `enumerate()` pode ser útil:
+    ```python
+    numeros = list(range(10, 60, 10))
+    print(numeros)
+    # saída : [10, 20, 30, 40, 50]
+
+    for i, num in enumerate(numeros):
+        numeros[i] = num * 2
+
+    pritn(numeros)
+    # saída : [20, 40, 60, 80, 100]
+    ```
+
+### exercícios enumerate
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Use `enumerate()` para imprimir cada elemento de uma lista de frutas, junto com seu índice.
+1. Use `enumerate()` para imprimir cada letra de uma string, junto com seu índice.
+1. Crie uma lista de números e use `enumerate()` para imprimir cada número junto com seu índice.
+1. Use `enumerate()` para iterar sobre uma lista de palavras e imprimir o índice das palavras que contêm a letra "a".
+1. Crie uma lista de nomes e use `enumerate()` para imprimir cada nome com seu respectivo índice.
+1. Use `enumerate()` para criar uma nova lista de lista, onde cada nova lista contém um índice e um valor de uma lista de números.
+1. Use `enumerate()` para imprimir os índices e elementos de uma lista de números pares.
+1. Use `enumerate()` para iterar sobre uma string e imprimir o índice das letras maiúsculas.
+1. Crie uma lista de cidades e use `enumerate()` para imprimir cada cidade com seu respectivo índice.
+1. Use `enumerate()` para contar quantos elementos em uma lista de números são maiores que 10.
+1. Use `enumerate()` para imprimir os índices e letras de uma string que começam com "p".
+1. Crie uma lista de palavras e use `enumerate()` para imprimir o índice das palavras que têm mais de 5 letras.
+1. Use `enumerate()` para somar os índices de todos os elementos de uma lista de números.
+1. Use `enumerate()` para criar uma nova lista com as letras de uma string, onde o índice é par.
+1. Use `enumerate()` para imprimir o índice e o valor de cada elemento em uma lista de números negativos.
+1. Use `enumerate()` para criar uma nova lista de strings, onde cada string contém o índice e o valor correspondente.
+1. Use `enumerate()` para imprimir os índices dos elementos em uma lista de números que são múltiplos de 3.
+1. Use `enumerate()` para iterar sobre uma lista de palavras e imprimir o índice das palavras que começam com "s".
+1. Use `enumerate()` para contar quantos elementos em uma lista de números são negativos.
+1. Use `enumerate()` para criar uma nova lista onde cada elemento é o dobro do índice original de uma lista de números.
+1. Use `enumerate()` para imprimir os índices das letras em uma string que são vogais.
+1. Use `enumerate()` para criar uma nova lista de listas, onde cada nova lista contém um índice e uma palavra de uma lista original.
+1. Use `enumerate()` para imprimir o índice e o valor dos elementos em uma lista de strings que contêm a letra "e".
+1. Use `enumerate()` para iterar sobre uma lista de números e imprimir o índice dos números que são pares.
+1. Use `enumerate()` para criar uma nova lista de strings, onde cada string contém o índice e o valor correspondente de uma lista de nomes.
+
+</details>
+
 ## `zip()`
 
 A função `zip()` em Python é usada para combinar dois ou mais iteráveis (como listas, tuplas, ou qualquer objeto que suporte iteração) em um único iterável de pares ou tuplas. Cada tupla gerada pelo `zip()` conterá os elementos correspondentes dos iteráveis fornecidos.

@@ -11,7 +11,7 @@
     1. [`write()`](#write)
     1. [`writelines()`](#writelines)
 1. [`close()`](#close)
-1. [exercícios de arquivos](#exercícios-de-arquivos)
+1. [exercícios](#exercícios)
 1. [`with`](#with)
     1. [funcionamento](#funcionamento)
     1. [vantagens](#vantagens)
@@ -622,6 +622,25 @@ Quando trabalha com arquivos grandes ou abre muitos arquivos em sequência, o fe
     1. Crie um arquivo `produtos.txt` com uma lista de produtos. Use `readlines()` para ler todos os produtos e depois exiba-os em ordem reversa.
     1. Escreva um programa que abre um arquivo `frases.txt`, leia todas as frases com `readlines()` e exiba apenas as frases que têm mais de 20 caracteres.
     1. Crie um arquivo `contatos.txt` com nomes e números de telefone, um por linha. Use `readlines()` para armazenar os contatos em uma lista.
+        ```python
+        # mode='r' encoding='utf-8'
+        arquivo = open('contatos.txt')
+
+        contatos = []
+        for linha in arquivo.readlines():
+            if linha.strip():
+                contato = {}
+                dados = linha.split()
+                # print(f'{linha.split() = }')
+                contato['nome'] = dados[0]
+                contato['fone'] = dados[1]
+                contatos.append(contato)
+                # contatos.append(linha.strip())
+
+        arquivo.close()
+        print(contatos)
+        print(*contatos, sep="\n@\n")
+        ```
     1. Abra o arquivo `livros.txt`, leia todas as linhas com `readlines()` e exiba o número total de linhas lidas.
     1. Crie um arquivo `dicionario.txt` com palavras e seus significados, uma por linha. Use `readlines()` para ler todas as palavras e exibi-las em formato de lista.
     1. Abra um arquivo `amigos.txt` e use `readlines()` para ler todos os nomes. Em seguida, exiba o primeiro e o último nome da lista.
@@ -640,6 +659,30 @@ Quando trabalha com arquivos grandes ou abre muitos arquivos em sequência, o fe
 1. Exercícios sobre o Método `writelines()`
     1. Crie um arquivo `nomes.txt` e use o método `writelines()` para escrever uma lista de nomes (cada nome em uma linha).
     1. Crie um arquivo `numeros.txt` e use `writelines()` para escrever os números de 1 a 10, cada um em uma linha separada.
+        ```python
+        import random
+
+        # valores = [f'{random.randint(0,100)}\n' for _ in range(10)]
+        valores = []
+        for _ in range(10):
+            valor = random.randint(0,100)
+            # valor = f"{valor}\n"
+            valores.append(valor)
+
+        valores.sort()
+        # print(f'{valores = }')
+        valores = [f'{v}\n' for v in valores if v % 2 == 0]
+
+        print(f'{valores = }')
+        print(" ! ", end="")
+        print(*valores, sep=' ! ')
+
+        arq = open('numeros.txt', mode='w', encoding='utf-8')
+        arq.writelines(valores)
+
+        # nao esquecer de fechar o arquivo
+        arq.close()
+        ```
     1. Crie um programa que abre ou cria um arquivo `agenda.txt` e usa `writelines()` para adicionar três compromissos, cada um em uma linha.
     1. Crie um arquivo `tarefas.txt` e use `writelines()` para adicionar cinco tarefas de uma lista, cada tarefa em uma linha separada.
     1. Escreva um programa que cria ou abre um arquivo `cidades.txt` e usa `writelines()` para adicionar o nome de três cidades, cada uma em uma linha.

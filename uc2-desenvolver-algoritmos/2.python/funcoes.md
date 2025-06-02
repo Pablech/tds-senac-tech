@@ -13,6 +13,15 @@
 1. [argumentos com valor padrão](#argumentos-com-valor-padrão)
 1. [argumentos nomeados](#argumentos-nomeados)
 1. [exercícios valor padrão e argumentos nomeados](#exercicios-valor-padrao-e-argumentos-nomeados)
+1. [empacotamento e desempacotamento nas funções](#empacotamento-e-desempacotamento-nas-funções)
+    1. [`*args`](#args)
+    1. [`**kwargs`](#kwargs)
+1. [exercícios `args` `kwargs`](#exercícios-args-kwargs)
+1. [exemplos](#exemplos)
+    1. [funções com parâmetros posicionais](#funções-com-parâmetros-posicionais)
+    1. [funções com parâmetros posicionais e parâmetros com valores padrão](#funções-com-parâmetros-posicionais-e-parâmetros-com-valores-padrão)
+    1. [funções com parâmetros posicionais, parâmetros com valores padrão e `*args`](#funções-com-parâmetros-posicionais-parâmetros-com-valores-padrão-e-args)
+    1. [funções com parâmetros posicionais, parâmetros com valores padrão, `*args` e `**kwargs`](#funções-com-parâmetros-posicionais-parâmetros-com-valores-padrão-args-e-kwargs)
 1. [recursão](#recursão)
 1. [exercícios recursão](#exercícios-recursão)
 
@@ -786,6 +795,467 @@ Conectando ao banco em localhost:5432 como admin com SSL=True e timeout=10
     1. Crie uma função `atualizar_configuracoes` que receba um dicionário de configurações e atualize valores usando argumentos nomeados com valores padrão. A função deve retornar o dicionário atualizado.
 
 </details>
+
+## empacotamento e desempacotamento nas funções
+
+No Python, o empacotamento e desempacotamento são técnicas essenciais para manipular argumentos em funções. Essas técnicas permitem criar funções flexíveis que podem aceitar um número variável de argumentos, facilitando a escrita de código reutilizável e dinâmico.
+
+### `*args`
+
+No Python, `*args` é utilizado em funções para permitir que elas recebam uma quantidade variável de argumentos posicionais. Isso é muito útil quando não se sabe de antemão quantos argumentos serão passados para a função.
+
+#### empacotamento com `*args`
+
+Quando se usa `*args` (nome usual) na definição de uma função, todos os argumentos posicionais passados para a função são empacotados em uma tupla. Essa tupla é então passada para a função, e pode-se acessá-la e iterar sobre seus elementos como faria com qualquer outra tupla.
+
+- exemplo 1 : empacotando argumentos com `*args`
+
+```python
+def soma_todos(*args):
+    total = 0
+    for numero in args:
+        total += numero
+    return total
+
+# Chamando a função com diferentes números de argumentos
+resultado1 = soma_todos(1, 2, 3)
+resultado2 = soma_todos(4, 5, 6, 7, 8)
+
+print(resultado1)
+# saída : 6
+print(resultado2)
+# saída : 30
+```
+
+1. **definição da função :** na função `soma_todos`, `*args` captura todos os argumentos posicionais em uma tupla chamada `args`;
+1. **iteração :** a função então itera sobre a tupla `args` e soma cada valor;
+1. **chamadas da função :** ao chamar `soma_todos(1, 2, 3)`, `args` é empacotado como `(1, 2, 3)`. para `soma_todos(4, 5, 6, 7, 8)`, `args` é empacotado como `(4, 5, 6, 7, 8)`;
+
+#### desempacotamento com `*args`
+
+O desempacotamento com `*args` permite que se passe uma coleção (como uma lista ou tupla) como argumentos para uma função. Os elementos da coleção são "desempacotados" e passados como argumentos individuais.
+
+- exemplo 2 : desempacotando argumentos com `*args`
+
+```python
+def mostra_argumentos(*args):
+    for i, valor in enumerate(args):
+        print(f"Argumento {i+1}: {valor}")
+
+# criando uma lista de argumentos
+valores = [10, 20, 30, 40]
+
+# desempacotando a lista e passando seus elementos como argumentos
+mostra_argumentos(*valores)
+# saída : Argumento 1: 10
+# saída : Argumento 2: 20
+# saída : Argumento 3: 30
+# saída : Argumento 4: 40
+```
+
+1. **desempacotamento :** na chamada `mostra_argumentos(*valores)`, a lista `valores` é desempacotada. Isso é equivalente a chamar `mostra_argumentos(10, 20, 30, 40)`;
+1. **iteração :** a função `mostra_argumentos` itera sobre os valores passados e os exibe com seu índice correspondente;
+
+#### empacotamento e desempacotamento juntos
+
+É possível combinar empacotamento e desempacotamento em funções, o que pode ser útil para repassar argumentos de uma função para outra.
+
+- exemplo 3 : combinando empacotamento e desempacotamento
+
+```python
+def soma_todos(*args):
+    total = sum(args)
+    return total
+
+def multiplica(valor_1, valor_2):
+    return valor_1 * valor_2
+
+def soma_e_multiplica(mult, *args):
+    soma = soma_todos(*args)  # desempacota args e repassa para soma_todos
+    resultado = multiplica(mult, soma)
+    return resultado
+
+# chamada da função com múltiplos argumentos
+resultado = soma_e_multiplica(2, 1, 2, 3, 4)
+
+print(resultado)
+# saída : 20
+```
+
+1. **função `soma_todos` :** recebe um número variável de argumentos, empacotados em `args`;
+1. **função `soma_e_multiplica` :** recebe um argumento `mult` e um número variável de argumentos posicionais. Esses argumentos são desempacotados e repassados para a função `soma_todos`;
+1. **função `multiplica` :** recebe dois valores (o mult e o resultado da soma) e os retorna multiplicados;
+1. **resultado :** a soma dos valores (`1 + 2 + 3 + 4 = 10`) é multiplicada por `mult` (2), resultando em `20`;
+
+### `**kwargs`
+
+No Python, `**kwargs` (abreviação de "keyword arguments") é utilizado em funções para permitir que elas recebam uma quantidade variável de argumentos nomeados. Esses argumentos são passados para a função como um dicionário, onde as chaves são os nomes dos argumentos e os valores são os respectivos valores passados.
+
+#### empacotamento com `**kwargs`
+
+Quando se usa `**kwargs` na definição de uma função, todos os argumentos nomeados (ou seja, passados como `chave=valor`) são empacotados em um dicionário. Este dicionário pode ser utilizado dentro da função para acessar e manipular esses valores.
+
+- exemplo 1 : empacotando argumentos nomeados com `**kwargs`
+
+```python
+def exibir_informacoes(**kwargs):
+    for chave, valor in kwargs.items():
+        print(f"{chave}: {valor}")
+
+# Chamando a função com diferentes argumentos nomeados
+exibir_informacoes(nome="Alice", idade=30, profissao="Engenheira")
+# saída :
+# nome: Alice
+# idade: 30
+# profissao: Engenheira
+
+exibir_informacoes(marca="Toyota", modelo="Corolla", ano=2020)
+# saída :
+# marca: Toyota
+# modelo: Corolla
+# ano: 2020
+```
+
+1. **definição da função :** na função `exibir_informacoes`, `**kwargs` captura todos os argumentos nomeados passados para a função e os empacota em um dicionário chamado `kwargs`;
+1. **iteração :** a função itera sobre os pares `chave, valor` do dicionário `kwargs` usando o método `.items()`;
+1. **chamadas da função :** cada chamada da função passa um conjunto diferente de argumentos nomeados, e eles são todos empacotados no dicionário `kwargs`;
+
+#### desempacotamento com `**kwargs`
+
+O desempacotamento com `**kwargs` permite que se passe um dicionário de argumentos nomeados para uma função. O dicionário é "desempacotado" e seus pares `chave=valor` são passados como argumentos nomeados.
+
+- exemplo 2 : desempacotando argumentos nomeados com `**kwargs`
+
+```python
+def mostrar_caracteristicas(**kwargs):
+    for chave, valor in kwargs.items():
+        print(f"{chave.capitalize()}: {valor}")
+
+# Criando um dicionário de argumentos
+dados_pessoais = {
+    "nome": "Carlos",
+    "idade": 28,
+    "cidade": "Porto Alegre"
+}
+
+# desempacotando o dicionário e passando seus pares como argumentos nomeados
+mostrar_caracteristicas(**dados_pessoais)
+# saída :
+# Nome: Carlos
+# Idade: 28
+# Cidade: Porto Alegre
+```
+
+1. **desempacotamento :** na chamada `mostrar_caracteristicas(**dados_pessoais)`, o dicionário `dados_pessoais` é desempacotado. isso é equivalente a chamar `mostrar_caracteristicas(nome="Carlos", idade=28, cidade="Porto Alegre")`;
+2. **iteração :** a função `mostrar_caracteristicas` então itera sobre os pares `chave=valor` e os exibe;
+
+#### empacotamento e desempacotamento juntos
+
+É possível combinar empacotamento e desempacotamento em funções para repassar um dicionário de argumentos nomeados de uma função para outra.
+
+- exemplo 3 : combinando empacotamento e desempacotamento
+
+```python
+def registrar_usuario(**kwargs):
+    print("Registrando usuário com as seguintes informações:")
+    for chave, valor in kwargs.items():
+        print(f"{chave.capitalize()}: {valor}")
+
+def criar_usuario_padrao():
+    info_padrao = {
+        "nome": "Usuário Padrão",
+        "email": "padrao@example.com",
+        "nivel": "iniciante"
+    }
+    registrar_usuario(**info_padrao)
+
+
+# chamada da função para criar um usuário padrão
+criar_usuario_padrao()
+# saída :
+# Registrando usuário com as seguintes informações:
+# Nome: Usuário Padrão
+# Email: padrao@example.com
+# Nivel: iniciante
+```
+
+1. **função `registrar_usuario` :** recebe os argumentos nomeados empacotados em `**kwargs`;
+1. **função `criar_usuario_padrao` :** define um dicionário `info_padrao` com as informações padrão do usuário;
+1. **desempacotamento :** o dicionário `info_padrao` é desempacotado e repassado para `registrar_usuario` usando `**info_padrao`;
+
+#### modificando `**kwargs` antes de repassar
+
+É também possível modificar o dicionário `kwargs` antes de repassá-lo para outra função, o que pode ser útil em situações onde se deseja adicionar, remover ou alterar argumentos.
+
+- exemplo 4 : modificando `**kwargs`
+
+```python
+def registrar_usuario(**kwargs):
+    print("Registrando usuário com as seguintes informações:")
+    for chave, valor in kwargs.items():
+        print(f"{chave.capitalize()}: {valor}")
+
+def criar_usuario_personalizado(**kwargs):
+    # adicionando um campo de registro
+    kwargs['registro_completo'] = True
+    registrar_usuario(**kwargs)
+
+
+# chamada da função para criar um usuário personalizado
+criar_usuario_personalizado(nome="Maria", email="maria@example.com", nivel="avançado")
+# saída :
+# Registrando usuário com as seguintes informações:
+# Nome: Maria
+# Email: maria@example.com
+# Nivel: Avançado
+# Registro_completo: True
+```
+
+1. **modificação de `kwargs` :** na função `criar_usuario_personalizado`, o dicionário `kwargs` é modificado ao adicionar um novo par `chave=valor`;
+2. **repassando `kwargs` :** o dicionário modificado é desempacotado e passado para a função `registrar_usuario`;
+
+## exercícios `args` `kwargs`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios com `*args`
+    1. **Função Soma:** Crie uma função que receba um número variável de argumentos e retorne a soma de todos eles.
+    1. **Multiplicação de Números:** Crie uma função que receba vários números como argumentos e retorne o produto deles.
+    1. **Contagem de Argumentos:** Crie uma função que receba um número variável de argumentos e retorne a quantidade de argumentos recebidos.
+    1. **Listagem de Argumentos:** Crie uma função que receba vários argumentos e os imprima, um por linha.
+    1. **Concatenação de Strings:** Crie uma função que receba várias strings como argumentos e as concatene em uma única string.
+    1. **Média de Números:** Crie uma função que receba vários números e retorne a média aritmética.
+    1. **Maior Número:** Crie uma função que receba vários números e retorne o maior número entre eles.
+    1. **Menor Número:** Crie uma função que receba vários números e retorne o menor número entre eles.
+    1. **Primeiro Argumento:** Crie uma função que receba vários argumentos e retorne o primeiro argumento recebido.
+    1. **Último Argumento:** Crie uma função que receba vários argumentos e retorne o último argumento recebido.
+    1. **Soma de Argumentos Positivos:** Crie uma função que receba vários números e retorne a soma dos números positivos.
+    1. **Argumentos Ordenados:** Crie uma função que receba vários argumentos numéricos e retorne uma lista com os argumentos ordenados.
+    1. **Contagem de Strings:** Crie uma função que receba vários argumentos e retorne a quantidade de argumentos que são strings.
+    1. **Função Potência:** Crie uma função que receba um número base e vários expoentes como argumentos, retornando uma lista com os resultados das potências.
+    1. **Combinação de Listas:** Crie uma função que receba várias listas como argumentos e retorne uma única lista contendo todos os elementos das listas recebidas.
+    1. **Repetição de String:** Crie uma função que receba uma string e um número variável de números como argumentos, e retorne a string repetida de acordo com cada número.
+    1. **Imprimir Índice e Argumento:** Crie uma função que receba vários argumentos e imprima o índice e o valor de cada argumento.
+    1. **Argumentos Pares:** Crie uma função que receba vários números e retorne uma lista contendo apenas os números pares.
+    1. **Somar Listas:** Crie uma função que receba várias listas de números como argumentos e retorne a soma de todos os números em todas as listas.
+    1. **Concatenar com Separador:** Crie uma função que receba uma string separadora e um número variável de strings como argumentos, e retorne uma única string onde as strings são concatenadas utilizando o separador.
+1. Exercícios com `**kwargs`
+    1. **Função de Boas-vindas:** Crie uma função que receba `**kwargs` com as chaves `nome` e `idade`, e imprima uma mensagem de boas-vindas utilizando esses valores.
+    1. **Informações de Produto:** Crie uma função que receba `**kwargs` com chaves como `nome`, `preço`, `categoria` e `disponibilidade`, e imprima uma descrição formatada do produto.
+    1. **Contagem de Chaves:** Crie uma função que receba `**kwargs` e retorne a quantidade de chaves no dicionário `kwargs`.
+    1. **Imprimir Valores:** Crie uma função que receba `**kwargs` e imprima apenas os valores dos argumentos nomeados recebidos.
+    1. **Verificar Chave:** Crie uma função que receba `**kwargs` e uma chave específica, retornando se a chave está presente em `kwargs`.
+    1. **Adicionar Chave:** Crie uma função que receba `**kwargs` e adicione uma chave `status` com o valor `ativo`, retornando o dicionário atualizado.
+    1. **Combinar Dicionários:** Crie uma função que receba dois dicionários como `**kwargs` e combine-os em um único dicionário.
+    1. **Filtrar Chaves:** Crie uma função que receba `**kwargs` e retorne um dicionário contendo apenas as chaves que começam com a letra "a".
+    1. **Imprimir Chaves e Valores:** Crie uma função que receba `**kwargs` e imprima cada chave e valor, um por linha.
+    1. **Chaves como Lista:** Crie uma função que receba `**kwargs` e retorne uma lista contendo todas as chaves do dicionário `kwargs`.
+    1. **Concatenar Strings:** Crie uma função que receba `**kwargs` com várias strings e retorne uma única string concatenando todas elas.
+    1. **Multiplicar Valores Numéricos:** Crie uma função que receba `**kwargs` e retorne o produto de todos os valores numéricos (inteiros ou floats) contidos em `kwargs`.
+    1. **Filtrar Números:** Crie uma função que receba `**kwargs` e retorne um dicionário contendo apenas os pares `chave:valor` onde o valor seja um número.
+    1. **Combinar com Defaults:** Crie uma função que receba `**kwargs` e combine os valores recebidos com um dicionário padrão de valores, retornando o dicionário final.
+    1. **Ordenar por Valor:** Crie uma função que receba `**kwargs` e retorne um dicionário onde os pares `chave:valor` estejam ordenados pelo valor.
+    1. **Verificar Tipos:** Crie uma função que receba `**kwargs` e retorne um dicionário onde as chaves são os nomes dos argumentos e os valores são os tipos dos argumentos.
+    1. **Soma de Valores:** Crie uma função que receba `**kwargs` com valores numéricos e retorne a soma desses valores.
+    1. **Alterar Valor:** Crie uma função que receba `**kwargs` e uma chave específica, alterando o valor dessa chave para um novo valor, e retornando o dicionário atualizado.
+    1. **Remover Chave:** Crie uma função que receba `**kwargs` e uma chave específica, removendo essa chave do dicionário `kwargs` e retornando o dicionário final.
+    1. **Contagem de Tipos:** Crie uma função que receba `**kwargs` e retorne um dicionário onde as chaves são os tipos dos valores em `kwargs` e os valores são a quantidade de vezes que cada tipo apareceu.
+
+</details>
+
+## exemplos
+
+### funções com parâmetros posicionais
+
+**exemplo 1 : soma de dois números**
+
+```python
+def soma(a, b):
+    resultado = a + b
+    return resultado
+
+# chamando a função
+print(soma(10, 20))
+# saída : 30
+```
+
+**explicação :**
+- **declaração da função :** `def soma(a, b):` define uma função chamada `soma` que aceita dois parâmetros posicionais, `a` e `b`;
+- **parâmetros posicionais :** quando a função `soma` é chamada, os valores são passados na ordem definida. No exemplo, `a` recebe `10` e `b` recebe `20`;
+- **cálculo e retorno :** dentro da função, somamos `a` e `b` e armazenamos o resultado na variável `resultado`, que é então retornada;
+- **chamada da função :** ao chamar `soma(10, 20)`, a função retorna `30`;
+
+**exemplo 2 : calcular a área de um retângulo**
+
+```python
+def calcular_area_comprimento(comprimento, largura):
+    area = comprimento * largura
+    return area
+
+# chamando a função
+print(calcular_area_comprimento(5, 3))  # saída : 15
+# saída : 15
+```
+
+**explicação :**
+- **declaração da função :** `def calcular_area_comprimento(comprimento, largura):` define uma função que calcula a área de um retângulo;
+- **parâmetros posicionais :** a função recebe dois parâmetros: `comprimento` e `largura`. No exemplo, `comprimento` recebe `5` e `largura` recebe `3`;
+- **cálculo e retorno :** multiplicamos `comprimento` por `largura` para obter a área, que é então retornada;
+- **chamada da função :** ao chamar `calcular_area_comprimento(5, 3)`, a função retorna `15`;
+
+### funções com parâmetros posicionais e parâmetros com valores padrão
+
+**exemplo 1 : saudação personalizada**
+
+```python
+def saudacao(nome, saudacao="Olá"):
+    return f"{saudacao}, {nome}!"
+
+# chamando a função com o valor padrão
+print(saudacao("João"))
+# saída : Olá, João!
+
+# chamando a função com um valor diferente do padrão
+print(saudacao("Maria", "Bem-vinda"))
+# saída : Bem-vinda, Maria!
+```
+
+**explicação :**
+- **declaração da função :** `def saudacao(nome, saudacao="olá"):` define uma função que faz uma saudação. O parâmetro `nome` é posicional, enquanto `saudacao` tem um valor padrão, `olá`;
+- **parâmetro com valor padrão :** se o argumento para `saudacao` não for fornecido, a função usará "olá";
+- **chamada da função (valor padrão) :** ao chamar `saudacao("joão")`, a função usa o valor padrão `olá` e retorna `"olá, joão!"`;
+- **chamada da função (novo valor) :** ao chamar `saudacao("maria", "bem-vinda")`, o valor padrão é substituído por `"bem-vinda"`, retornando `"bem-vinda, maria!"`;
+
+**exemplo 2 : cálculo do preço com desconto**
+
+```python
+def calcular_preco_com_desconto(preco, desconto=10):
+    preco_final = preco - (preco * desconto / 100)
+    return preco_final
+
+# chamando a função com o valor padrão
+print(calcular_preco_com_desconto(100))
+# saída : 90.0
+
+# chamando a função com um valor diferente do padrão
+print(calcular_preco_com_desconto(100, 20))
+# saída : 80.0
+```
+
+**explicação :**
+- **declaração da função :** `def calcular_preco_com_desconto(preco, desconto=10):` define uma função que calcula o preço final após aplicar um desconto. `preco` é um parâmetro posicional e `desconto` tem um valor padrão de 10%;
+- **parâmetro com valor padrão :** se o desconto não for especificado, a função aplicará um desconto de 10%;
+- **chamada da função (valor padrão) :** ao chamar `calcular_preco_com_desconto(100)`, a função usa o desconto padrão de 10%, retornando `90.0`;
+- **chamada da função (novo valor) :** ao chamar `calcular_preco_com_desconto(100, 20)`, o desconto é de 20%, retornando `80.0`;
+
+### funções com parâmetros posicionais, parâmetros com valores padrão e `*args`
+
+**exemplo 1 : calculando o total de vendas**
+
+```python
+def calcular_vendas(base_vendas, bonus=0, *extras):
+    total = base_vendas + bonus
+    for extra in extras:
+        total += extra
+    return total
+
+# chamando a função sem extras
+print(calcular_vendas(1000, 200))
+# saída : 1200
+
+# chamando a função com extras
+print(calcular_vendas(1000, 200, 50, 30, 20))
+# saída : 1300
+```
+
+**explicação :**
+- **declaração da função :** `def calcular_vendas(base_vendas, bonus=0, *extras):` define uma função que calcula o total de vendas. O parâmetro `base_vendas` é posicional, `bonus` tem um valor padrão de `0`, e `*extras` captura argumentos adicionais;
+- **parâmetros posicionais e valor padrão :** `base_vendas` é obrigatório e `bonus` é opcional (com valor padrão);
+- **uso de `*args`:** `*extras` permite que a função aceite um número variável de argumentos adicionais. Eles são armazenados como uma tupla e somados ao `total`;
+- **chamada da função (sem extras) :** `calcular_vendas(1000, 200)` retorna `1200`, somando `base_vendas` e `bonus`;
+- **chamada da função (com extras) :** `calcular_vendas(1000, 200, 50, 30, 20)` retorna `1300`, somando `base_vendas`, `bonus` e os valores em `*extras`;
+
+**exemplo 2 : criando uma mensagem com várias palavras**
+
+```python
+def criar_mensagem(inicio, separador=" ", *palavras):
+    mensagem = inicio
+    for palavra in palavras:
+        mensagem += separador + palavra
+    return mensagem
+
+# chamando a função com um separador padrão
+print(criar_mensagem("Olá"))
+# saída : Olá
+
+# chamando a função com várias palavras e um separador personalizado
+print(criar_mensagem("Olá", "-", "mundo", "como", "vai", "você"))
+# saída : Olá-mundo-como-vai-você
+```
+
+**explicação :**
+- **declaração da função :** `def criar_mensagem(inicio, separador=" ", *palavras):` define uma função que cria uma mensagem concatenando várias palavras. `inicio` é um parâmetro posicional, `separador` tem um valor padrão de `" "`, e `*palavras` captura argumentos adicionais;
+- **parâmetros posicionais e valor padrão :** `inicio` é obrigatório e `separador` é opcional;
+- **uso de `*args` :** `*palavras` permite adicionar um número variável de palavras que serão concatenadas usando o `separador`;
+- **chamada da função (sem `*args`) :** `criar_mensagem("olá")` retorna `"olá"`, já que não há palavras adicionais;
+- **chamada da função (com `*args`) :** `criar_mensagem("olá", "-", "mundo", "como", "vai", "você")` retorna `"olá-mundo-como-vai-você"`, concatenando as palavras com o separador `"-"`;
+
+### funções com parâmetros posicionais, parâmetros com valores padrão, `*args` e `**kwargs`
+
+**exemplo 1 : configurando um pedido de comida**
+
+```python
+def configurar_pedido(prato_principal, bebida="água", *acompanhamentos, **detalhes):
+    pedido = f"Prato principal: {prato_principal}, Bebida: {bebida}"
+    if acompanhamentos:
+        pedido += ", Acompanhamentos: " + ", ".join(acompanhamentos)
+    if detalhes:
+        pedido += ", Detalhes: " + ", ".join([f"{k}={v}" for k, v in detalhes.items()])
+    return pedido
+
+# chamando a função sem detalhes adicionais
+print(configurar_pedido("bife", "suco", "arroz", "batata"))
+# saída : Prato principal: bife, Bebida: suco, Acompanhamentos: arroz, batata
+
+# chamando a função com detalhes adicionais
+print(configurar_pedido("bife", "suco", "arroz", "batata", sem_sal=True, ao_ponto="mal"))
+# saída : Prato principal: bife, Bebida: suco, Acompanhamentos: arroz, batata, Detalhes: sem_sal=True, ao_ponto=mal
+```
+
+**explicação :**
+- **declaração da função :** `def configurar_pedido(prato_principal, bebida="água", *acompanhamentos, **detalhes):` define uma função para configurar um pedido de comida;
+- **parâmetros posicionais e valor padrão :** `prato_principal` é obrigatório e `bebida` é opcional;
+- **uso de `*args` e `**kwargs` :** `*acompanhamentos` captura acompanhamentos adicionais, e `**detalhes` captura detalhes adicionais como pares chave-valor;
+- **chamada da função (sem `**kwargs`) :** `configurar_pedido("bife", "suco", "arroz", "batata")` retorna uma string descrevendo o prato principal, a bebida e os acompanhamentos;
+- **chamada da função (com `**kwargs`) :** `configurar_pedido("bife", "suco", "arroz", "batata", sem_sal=true, ao_ponto="mal")` inclui detalhes adicionais no pedido;
+
+**exemplo 2 : criando uma conta de usuário**
+
+```python
+def criar_usuario(nome, sobrenome, idade=18, *interesses, **detalhes_adicionais):
+    usuario = f"Nome: {nome} {sobrenome}, Idade: {idade}"
+    if interesses:
+        usuario += ", Interesses: " + ", ".join(interesses)
+    if detalhes_adicionais:
+        usuario += ", Detalhes Adicionais: " + ", ".join([f"{k}={v}" for k, v in detalhes_adicionais.items()])
+    return usuario
+
+# chamando a função sem detalhes adicionais
+print(criar_usuario("João", "Silva", 25, "programação", "leitura"))
+# saída : Nome: João Silva, Idade: 25, Interesses: programação, leitura
+
+# chamando a função com detalhes adicionais
+print(criar_usuario("João", "Silva", 25, "programação", "leitura", cidade="Porto Alegre", profissão="Engenheiro"))
+# saída : Nome: João Silva, Idade: 25, Interesses: programação, leitura, Detalhes Adicionais: cidade=Porto Alegre, profissão=Engenheiro
+```
+
+**explicação :**
+- **declaração da função :** `def criar_usuario(nome, sobrenome, idade=18, *interesses, **detalhes_adicionais):` define uma função para criar uma conta de usuário;
+- **parâmetros posicionais e valor padrão :** `nome` e `sobrenome` são obrigatórios, `idade` é opcional;
+- **uso de `*args` e `**kwargs` :** `*interesses` captura uma lista de interesses do usuário, e `**detalhes_adicionais` captura informações adicionais como pares chave-valor;
+- **chamada da função (sem `**kwargs`) :** `criar_usuario("joão", "silva", 25, "programação", "leitura")` retorna uma string descrevendo o nome, a idade e os interesses do usuário;
+- **chamada da função (com `**kwargs`) :** `criar_usuario("joão", "silva", 25, "programação", "leitura", cidade="porto alegre", profissão="engenheiro")` inclui detalhes adicionais na descrição;
 
 ## recursão
 
