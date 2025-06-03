@@ -2,7 +2,12 @@ programa
 {
   funcao inicio()
   {
-    escreva("111.444.777-35")
+    inteiro cpf1, cpf2, cpf3, cpf4
+    cpf1 = 111
+    cpf2 = 444
+    cpf3 = 777
+    cpf4 = 35
+    escreva(cpf1,".",cpf2,".",cpf3,"-",cpf4)
   }
 }
 
