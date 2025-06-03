@@ -174,11 +174,11 @@ Valide para que os números digitados sejam maiores que zero.
 Receba um CPF completo (com pontos e traço) e mostre ele separado em 2 partes.
 
 ### Tarefas
-- [ ] Coloque o nome dos integrantes estar na parte inicial do README.md.
-- [ ] Todos os integrantes devem ter suas contas no GitHub.
-- [ ] Leia um CPF completo do usuário (`XXX.XXX.XXX-YY`).
-- [ ] Separe os 9 números do CPF dos 2 Dígitos Verificadores em duas variáveis.
-- [ ] Exiba as duas variáveis separadamente.
+- [x] Coloque o nome dos integrantes estar na parte inicial do README.md.
+- [x] Todos os integrantes devem ter suas contas no GitHub.
+- [x] Leia um CPF completo do usuário (`XXX.XXX.XXX-YY`).
+- [x] Separe os 9 números do CPF dos 2 Dígitos Verificadores em duas variáveis.
+- [x] Exiba as duas variáveis separadamente.
 
 ## Etapa 6: Validando Entrada
 

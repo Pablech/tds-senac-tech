@@ -1,6 +1,6 @@
 /*
 Etapa 1
-Exibir um CPF usando o comando escreva.
+- Exibir um CPF usando o comando escreva.
 */
 programa
 {
