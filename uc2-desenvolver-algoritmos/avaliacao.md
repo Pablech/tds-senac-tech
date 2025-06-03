@@ -165,8 +165,8 @@ Permitir a entrada de dados pelo usuário e exibir o CPF formatado.
 Valide para que os números digitados sejam maiores que zero.
 
 ### Tarefas
-- [ ] Ler apenas valores maiores que zero.
-- [ ] Exibir o CPF formatado a partir dos valores lidos.
+- [x] Ler apenas valores maiores que zero.
+- [x] Exibir o CPF formatado a partir dos valores lidos.
 
 ## Etapa 5: Entrando Texto
 

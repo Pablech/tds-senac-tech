@@ -1,3 +1,8 @@
+/*
+Etapa 3
+- Ler valores digitados para quatro variáveis inteiras.
+- Exibir o CPF formatado a partir dos valores lidos.
+*/
 programa
 {
   funcao inicio()
@@ -14,4 +19,5 @@ programa
     escreva(cpf1,".",cpf2,".",cpf3,"-",cpf4)
   }
 }
+
 
