@@ -156,8 +156,8 @@ Armazenar e exibir o CPF formatado utilizando variáveis.
 Permitir a entrada de dados pelo usuário e exibir o CPF formatado.
 
 ### Tarefas
-- [ ] Ler valores digitados para **quatro variáveis inteiras**.
-- [ ] Exibir o CPF formatado a partir dos valores lidos.
+- [x] Ler valores digitados para **quatro variáveis inteiras**.
+- [x] Exibir o CPF formatado a partir dos valores lidos.
 
 ## Etapa 4: Validando Positivos
 

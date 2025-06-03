@@ -3,10 +3,14 @@ programa
   funcao inicio()
   {
     inteiro cpf1, cpf2, cpf3, cpf4
-    cpf1 = 111
-    cpf2 = 444
-    cpf3 = 777
-    cpf4 = 35
+    escreva("digite a primeira parte do CPF : ")
+    leia(cpf1)
+    escreva("digite a segunda parte do CPF : ")
+    leia(cpf2)
+    escreva("digite a terceira parte do CPF : ")
+    leia(cpf3)
+    escreva("digite a ultima parte do CPF : ")
+    leia(cpf4)
     escreva(cpf1,".",cpf2,".",cpf3,"-",cpf4)
   }
 }
