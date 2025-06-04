@@ -195,14 +195,14 @@ Receba um CPF completo e valide ele.
 Calcular e encontrar o Primeiro Dígito Verificador - PDV.
 
 ### Tarefas
-- [ ] Receba um CPF válido do usuário (formatos suportados `XXX.XXX.XXX-YY` ou `XXXXXXXXXYY`).
-- [ ] Se o formato não for válido, encerre o programa.
-- [ ] Calcule o [Primeiro Dígito Verificador](#cálculo-do-primeiro-dígito) conforme especificado.
+- [x] Receba um CPF válido do usuário (formatos suportados `XXX.XXX.XXX-YY` ou `XXXXXXXXXYY`).
+- [x] Se o formato não for válido, encerre o programa.
+- [x] Calcule o [Primeiro Dígito Verificador](#cálculo-do-primeiro-dígito) conforme especificado.
 - Ao final, mostre :
-    - [ ] O CPF conforme foi digitado;
-    - [ ] O Primeiro Dígito Verificador encontrado;
-    - [ ] O resultado da comparação do PDV encontrado com o PDV do CPF digitado;
-- [ ] A atualização do código tem que ser feito por um integrante que ainda não realizou um [`Pull Request`](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork);
+    - [x] O CPF conforme foi digitado;
+    - [x] O Primeiro Dígito Verificador encontrado;
+    - [x] O resultado da comparação do PDV encontrado com o PDV do CPF digitado;
+- [x] A atualização do código tem que ser feito por um integrante que ainda não realizou um [`Pull Request`](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork);
 
 ## Etapa 8: Dígito 2
 
