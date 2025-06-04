@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 30 | 03/06/2025 | [agenda](uc2-desenvolver-algoritmos/2.python/agenda/) |
 | 29 | 02/06/2025 | [`*args` e `**kwargs` nas funções](uc2-desenvolver-algoritmos/2.python/funcoes.md#empacotamento-e-desempacotamento-nas-funções)<br>[`enumerate`](uc2-desenvolver-algoritmos/2.python/built-in-funcoes.md#enumerate)|
 | 28 | 29/05/2025 | [arquivos](uc2-desenvolver-algoritmos/2.python/arquivos.md)<br>[avaliação - etapa 9](uc2-desenvolver-algoritmos/avaliacao.md#etapa-9-converter-para-python) |
 | 27 | 28/05/2025 | comandos [`import-from-as`](uc2-desenvolver-algoritmos/2.python/comandos-import-from-as.md)<br>[variável `__name__`](uc2-desenvolver-algoritmos/2.python/modulos.md#variável-__name__)<br>[compreensão de listas](uc2-desenvolver-algoritmos/2.python/compreensao-listas.md)<br>[operador ternário](uc2-desenvolver-algoritmos/2.python/operador-ternario.md)<br>[recursão](uc2-desenvolver-algoritmos/2.python/funcoes.md#recursão) |
