@@ -186,8 +186,8 @@ Receba um CPF completo (com pontos e traço) e mostre ele separado em 2 partes.
 Receba um CPF completo e valide ele.
 
 ### Tarefas
-- [ ] Leia um CPF completo do usuário.
-- [ ] Valide para que o CPF esteja nos formatos `XXX.XXX.XXX-YY` ou `XXXXXXXXXYY`.
+- [x] Leia um CPF completo do usuário.
+- [x] Valide para que o CPF esteja nos formatos `XXX.XXX.XXX-YY` ou `XXXXXXXXXYY`.
 
 ## Etapa 7: Dígito 1
 
