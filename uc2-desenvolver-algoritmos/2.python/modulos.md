@@ -6,6 +6,8 @@
     - [exercícios módulo `time`](#exercícios-módulo-time)
 1. [módulo `string`](#módulo-string)
     - [exercícios módulo `string`](#exercícios-módulo-string)
+1. [módulo `json`](#módulo-json)
+    - [exercícios módulo `json`](#exercícios-módulo-json)
 1. [variável `__name__`](#variável-__name__)
     1. [exercícios `__name__`](#exercícios-name)
 
@@ -861,6 +863,193 @@ print(frase_capitalizada)  # Saída: 'Python É Uma Linguagem Incrível'
 1. Gerando um Código de Desconto Aleatório. Crie uma função que gere um código de desconto de 8 caracteres, utilizando letras maiúsculas e números, com `string.ascii_uppercase` e `string.digits`.
 1. Validando um Nome de Usuário. Crie uma função que valide um nome de usuário, verificando se contém apenas letras, números e underscores, utilizando `string.ascii_letters` e `string.digits`.
 1. Contando Caracteres de Espaçamento. Crie uma função que conte quantos caracteres de espaçamento existem em uma string, utilizando `string.whitespace`.
+
+</details>
+
+## módulo `json`
+
+O módulo `json` do Python é utilizado para trabalhar com dados no formato JSON (JavaScript Object Notation). O JSON é um formato de intercâmbio de dados amplamente utilizado, especialmente em APIs web, porque é simples e fácil de ler para humanos e máquinas. Com o módulo `json`, é possível converter dados entre objetos Python e strings JSON, o que é conhecido como **serialização** e **desserialização**.
+
+1. [dumping e loading](#dumping-e-loading)
+1. [`json.dumps()`](#jsondumps)
+1. [`json.loads()`](#jsonloads)
+1. [`json.dump()`](#jsondump)
+1. [`json.load()`](#jsonload)
+1. [índice](#índice)
+
+### dumping e loading
+
+- **serialização (dumping)** : converte objetos Python (listas, dicionários, etc.) em uma string JSON;
+- **desserialização (loading)** : converte uma string JSON em objetos Python (tipicamente dicionários e listas);
+
+### `json.dumps()`
+
+Essa função **serializa** um objeto Python em uma string JSON. É usada quando se deseja converter um objeto Python (como um dicionário) em uma string JSON que pode ser armazenada ou enviada para uma API.
+
+- **sintaxe** : `json.dumps(obj, *, skipkeys=False, ensure_ascii=True, indent=None, separators=None, default=None, sort_keys=False)`
+
+    - `obj` : o objeto Python a ser convertido;
+    - `skipkeys` : se `True`, chaves não suportadas (como tuplas) são ignoradas;
+    - `ensure_ascii` : se `True`, a string resultante conterá apenas caracteres ASCII;
+    - `indent` : especifica o número de espaços usados para formatar a saída (em formato indentado);
+    - `sort_keys` : se `True`, as chaves dos dicionários serão ordenadas;
+
+**Exemplo**
+```python
+import json
+
+dados = {
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": ["Python", "C++", "JavaScript"]
+}
+
+json_string = json.dumps(dados, indent=4)  # serializa e adiciona indentação
+print(json_string)
+```
+
+**Saída**
+```json
+{
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": [
+        "Python",
+        "C++",
+        "JavaScript"
+    ]
+}
+```
+
+### `json.loads()`
+
+Essa função **desserializa** uma string JSON em um objeto Python. É usada para interpretar dados JSON (geralmente recebidos de uma API) como dicionários, listas e outros objetos Python.
+
+- **sintaxe** : `json.loads(s, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None)`
+
+    - `s`: a string JSON que será convertida;
+    - `object_hook`: uma função que pode ser usada para modificar o comportamento da desserialização;
+
+**Exemplo**
+```python
+import json
+
+json_string = '{"nome": "João", "idade": 30, "cidade": "São Paulo", "habilidades": ["Python", "C++", "JavaScript"]}'
+dados = json.loads(json_string)
+
+print(dados)
+```
+
+**Saída**
+```python
+{
+    'nome': 'João',
+    'idade': 30,
+    'cidade': 'São Paulo',
+    'habilidades': ['Python', 'C++', 'JavaScript']
+}
+```
+
+### `json.dump()`
+
+Essa função é semelhante a `json.dumps()`, mas em vez de converter um objeto em uma string JSON, ela grava o JSON diretamente em um arquivo.
+
+- **sintaxe** : `json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False)`
+
+    - `obj` : o objeto Python que será convertido;
+    - `fp` : o objeto de arquivo onde os dados JSON serão gravados;
+
+**Exemplo**
+```python
+import json
+
+dados = {
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": ["Python", "C++", "JavaScript"]
+}
+
+with open('dados.json', 'w') as arquivo:
+    json.dump(dados, arquivo, indent=4)
+```
+
+Nesse exemplo, o dicionário `dados` é gravado em um arquivo chamado `dados.json` com formatação indentada.
+
+### `json.load()`
+
+Essa função lê dados JSON de um arquivo e os converte em um objeto Python.
+
+- **sintaxe** : `json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None)`
+
+    - `fp` : o arquivo contendo os dados JSON;
+
+**Exemplo**
+```python
+import json
+
+with open('dados.json', 'r') as arquivo:
+    dados = json.load(arquivo)
+
+print(dados)
+```
+
+Aqui, o conteúdo do arquivo `dados.json` será carregado em um dicionário Python.
+
+---
+
+## exercícios módulo `json`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios para o Método `json.dumps()`
+    1. **Serialização Simples** : Converta um dicionário Python simples contendo informações de uma pessoa (nome, idade, cidade) em uma string JSON usando `json.dumps()`.
+    1. **Lista de Números** : Converta uma lista de números inteiros em uma string JSON usando `json.dumps()`.
+    1. **Indentação na Serialização** : Serialize um dicionário Python com o parâmetro `indent=4` para formatar o JSON de maneira legível.
+    1. **Serializar com Chaves Ordenadas** : Serialize um dicionário e utilize o parâmetro `sort_keys=True` para garantir que as chaves fiquem em ordem alfabética no JSON.
+    1. **Serializar com Caracteres Especiais** : Serialize um dicionário que contém caracteres especiais (acentos, símbolos) e use o parâmetro `ensure_ascii=False` para manter os caracteres como estão.
+    1. **Serialização de Tupla** : Tente serializar uma tupla de números e veja como ela é convertida para JSON.
+    1. **Ignorar Chaves Inválidas** : Tente serializar um dicionário que contenha uma chave inválida (como uma tupla) e use o parâmetro `skipkeys=True` para ignorar as chaves inválidas.
+    1. **Serializar Objetos Aninhados** : Serialize um dicionário que contenha outros dicionários e listas aninhados, usando `json.dumps()`.
+    1. **Serializar com Separadores Personalizados** : Use o parâmetro `separators` em `json.dumps()` para personalizar os separadores entre os elementos (exemplo: `', '` para separar os itens da lista e `': '` para separar chaves e valores).
+1. Exercícios para o Método `json.loads()`
+    1. **Desserializar uma String JSON Simples** : Dada uma string JSON contendo informações de um produto (nome, preço, quantidade), use `json.loads()` para convertê-la em um dicionário Python.
+    1. **Desserializar Lista** : Converta uma string JSON contendo uma lista de números em uma lista Python usando `json.loads()`.
+    1. **Desserializar uma Lista de Dicionários** : Dada uma string JSON contendo uma lista de dicionários com informações de vários estudantes, use `json.loads()` para convertê-la em uma lista de dicionários Python.
+    1. **Erro ao Desserializar** : Dada uma string JSON com erro de sintaxe, tente usá-la com `json.loads()` e capture o erro `JSONDecodeError` adequadamente.
+    1. **Desserializar Números com Vírgula Flutuante** : Converta uma string JSON contendo números decimais (como `2.5`, `3.14`) em uma lista de números Python.
+    1. **Verificar Tipo após Desserializar** : Após desserializar uma string JSON, verifique o tipo dos dados retornados (exemplo: verificar se é um dicionário ou lista).
+    1. **Desserializar Booleanos** : Converta uma string JSON que contenha valores booleanos (`true`, `false`) em um dicionário Python usando `json.loads()`.
+    1. **Desserializar Null** : Use `json.loads()` para converter uma string JSON que contenha `null` e verifique como o Python representa esse valor.
+1. Exercícios para o Método `json.dump()`
+    1. **Serialização para Arquivo** : Converta um dicionário Python para JSON e grave o resultado em um arquivo `dados.json` usando `json.dump()`.
+    1. **Salvar Lista em Arquivo** : Salve uma lista de strings como JSON em um arquivo usando `json.dump()`.
+    1. **Gravar JSON Formatado** : Converta um dicionário Python em JSON e grave no arquivo `formatado.json` com indentação de 4 espaços para facilitar a leitura.
+    1. **Serializar com Separadores Personalizados** : Use o parâmetro `separators` ao gravar JSON em um arquivo para ajustar os separadores entre chaves e valores.
+    1. **Ignorar Chaves Inválidas em Arquivo** : Grave um dicionário em um arquivo, ignorando chaves inválidas (como tuplas), utilizando o parâmetro `skipkeys=True`.
+    1. **Serializar com Ordenação de Chaves** : Grave um dicionário em um arquivo JSON, ordenando as chaves de forma alfabética com o parâmetro `sort_keys=True`.
+    1. **Escrever Múltiplos Objetos em um Arquivo** : Serialize e grave dois objetos Python em um único arquivo JSON (por exemplo, dois dicionários separados por linhas).
+    1. **Gravação de JSON com Unicode** : Grave um dicionário com caracteres Unicode em um arquivo, sem que eles sejam escapados, utilizando o parâmetro `ensure_ascii=False`.
+    1. **Gravar JSON em Modo de Acrescentar (Append)** : Abra um arquivo JSON existente e adicione mais dados (um novo dicionário) ao final do arquivo, sem sobrescrever o conteúdo original.
+1. Exercícios para o Método `json.load()`
+    1. **Ler um Arquivo JSON Simples** : Crie um arquivo JSON com informações de uma pessoa e use `json.load()` para carregá-lo como um dicionário Python.
+    1. **Ler Lista de Números** : Crie um arquivo JSON contendo uma lista de números inteiros e use `json.load()` para carregá-los em uma lista Python.
+    1. **Ler Arquivo JSON Formatado** : Abra um arquivo JSON que contenha dados com indentação e carregue-o usando `json.load()`.
+    1. **Tratar Erro ao Ler Arquivo JSON Inválido** : Tente ler um arquivo com JSON inválido e trate o erro `JSONDecodeError` corretamente.
+    1. **Ler JSON de Arquivo Grande** : Crie um arquivo JSON com milhares de linhas e use `json.load()` para carregá-lo. Verifique o tempo de execução.
+    1. **Modificar e Regravar JSON Lido** : Após carregar um arquivo JSON como um dicionário Python, modifique os valores e grave as mudanças de volta no arquivo usando `json.dump()`.
+    1. **Ler Arquivo com Booleanos** : Crie um arquivo JSON que contenha valores booleanos (`true`, `false`) e carregue-o em um dicionário Python.
+    1. **Ler Arquivo com Valor Nulo** : Crie um arquivo JSON com valores `null` e use `json.load()` para carregá-lo e verificar como esses valores são representados em Python.
+    1. **Ler Dados JSON Aninhados** : Crie um arquivo JSON que contenha um dicionário com outros dicionários e listas aninhadas, e use `json.load()` para carregá-lo.
+    1. **Ler e Comparar Tipos** : Após carregar um arquivo JSON com `json.load()`, verifique se o tipo dos dados lidos corresponde ao tipo esperado (exemplo: lista, dicionário).
+1. Exercícios Combinando `json.dumps()`, `json.loads()`, `json.dump()`, `json.load()`
+    1. **Serializar e Desserializar Ciclo** : Converta um dicionário em JSON usando `json.dumps()`, depois use `json.loads()` para reverter a string JSON de volta para um dicionário.
+    1. **Gravar e Ler de Arquivo** : Use `json.dump()` para gravar um dicionário em um arquivo e, em seguida, use `json.load()` para ler esse arquivo de volta para um objeto Python.
+    1. **Manipulação Completa de JSON em Arquivo** : Serialize um objeto Python com `json.dumps()`, grave-o em um arquivo usando `json.dump()`, depois carregue-o do arquivo usando `json.load()` e faça uma alteração no objeto, finalizando com a regravação do arquivo.
+    1. **Conversão e Verificação** : Converta uma lista de números em JSON, grave em um arquivo, leia novamente com `json.load()` e verifique se a lista lida é idêntica à original.
 
 </details>
 
