@@ -1,5 +1,6 @@
 /*
-Etapa 1
+Etapa 1: Configuração Inicial
+
 - Exibir um CPF usando o comando escreva.
 */
 programa
@@ -9,5 +10,3 @@ programa
     escreva("111.444.777-35")
   }
 }
-
-

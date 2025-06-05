@@ -1,5 +1,6 @@
 /*
-Etapa 2
+Etapa 2: Uso de Variáveis
+
 - Criar quatro variáveis inteiras.
 - Atribuir valores a essas variáveis (valores fixos).
 - Exibir o CPF formatado a partir dessas variáveis.
@@ -16,5 +17,3 @@ programa
     escreva(cpf1,".",cpf2,".",cpf3,"-",cpf4)
   }
 }
-
-

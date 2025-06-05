@@ -1,5 +1,6 @@
 /*
-Etapa 5
+Etapa 5: Entrando Texto
+
 - Leia um CPF completo do usuário (XXX.XXX.XXX-YY).
 - Separe os 9 números do CPF dos 2 Dígitos Verificadores em duas variáveis.
 - Exiba as duas variáveis separadamente.
@@ -39,4 +40,3 @@ programa
     escreva("\ndígitos do CPF : ",cpf_digitos)
   }
 }
-

@@ -1,5 +1,5 @@
 /*
-Etapa 7
+Etapa 7: Dígito 1
 
 - Receba um CPF válido do usuário (formatos suportados XXX.XXX.XXX-YY ou XXXXXXXXXYY).
 - Se o formato não for válido, encerre o programa.
@@ -143,4 +143,3 @@ programa
     }
   }
 }
-

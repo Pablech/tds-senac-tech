@@ -1,5 +1,5 @@
 /*
-Etapa 6
+Etapa 6: Validando Entrada
 
 - Leia um CPF completo do usuário.
 - Valide para que o CPF esteja nos formatos XXX.XXX.XXX-YY ou XXXXXXXXXYY.
@@ -53,4 +53,3 @@ programa
     }
   }
 }
-

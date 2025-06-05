@@ -1,5 +1,6 @@
 /*
-Etapa 4
+Etapa 4: Validando Positivos
+
 - Ler apenas valores maiores que zero.
 - Exibir o CPF formatado a partir dos valores lidos.
 */
@@ -31,4 +32,3 @@ programa
     escreva(cpf1,".",cpf2,".",cpf3,"-",cpf4)
   }
 }
-
