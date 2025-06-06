@@ -8,6 +8,7 @@ Curso com duração de 96 horas (32 aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 32 | 05/06/2025 | [tkinter](uc2-desenvolver-algoritmos/2.python/tkinter.md) |
 | 31 | 04/06/2025 | [web scraping](uc2-desenvolver-algoritmos/2.python/web-scraping.md) |
 | 30 | 03/06/2025 | [agenda](uc2-desenvolver-algoritmos/2.python/agenda/)<br>[json](uc2-desenvolver-algoritmos/2.python/javascript-object-notation.md)<br>[módulo `json`](uc2-desenvolver-algoritmos/2.python/modulos.md#módulo-json) |
 | 29 | 02/06/2025 | [`*args` e `**kwargs` nas funções](uc2-desenvolver-algoritmos/2.python/funcoes.md#empacotamento-e-desempacotamento-nas-funções)<br>[`enumerate`](uc2-desenvolver-algoritmos/2.python/built-in-funcoes.md#enumerate)|
