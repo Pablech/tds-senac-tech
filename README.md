@@ -3,6 +3,18 @@ Este repositório será usado para compartilhar o material das aulas que serão 
 
 ---
 
+## UC3 - Planejar e Administrar Banco de Dados
+Curso com duração de xx horas (.. aulas).
+
+| Aula | Dia | Arquivo |
+| :----: | :----: | :----: |
+| 01 | 09/06/2025 | [o que é banco de dados](uc3-planejar-administrar-banco-dados/o-que-eh-bd.md)<br>[tipos de sql](uc3-planejar-administrar-banco-dados/tipos-sql.md)<br>[ddl - `create` e `drop` `table` / `database`](uc3-planejar-administrar-banco-dados/data-definition-language-ddl.md)<br>[tipo inteiro](uc3-planejar-administrar-banco-dados/tipos.md#integer)<br>[tipo varchar](uc3-planejar-administrar-banco-dados/tipos.md#varchar) |
+
+Bônus : [instalando PostgreSQL](uc3-planejar-administrar-banco-dados/instalando-postgresql.md)
+
+<details>
+<summary>UC2 - Desenvolver Algoritmos</summary>
+
 ## UC2 - Desenvolver Algoritmos
 Curso com duração de 96 horas (32 aulas).
 
@@ -40,6 +52,8 @@ Curso com duração de 96 horas (32 aulas).
 | 03 | 16/04/2025 | [resolução de exercícios](uc2-desenvolver-algoritmos/1.portugol/tipos.md#exercícios-completos)<br>[função `limpa`](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#limpa) |
 | 02 | 15/04/2025 | [tipo `caracter`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-caracter)<br>[tipo `cadeia`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-cadeia)<br>[operadores aritméticos](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md)<br>[`+`](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-adição) [`-`](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-subtração) [`*`](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-multiplicação) [`/`](uc2-desenvolver-algoritmos/1.portugol/operadores-aritmeticos.md#operação-de-divisão)<br>[função `leia`](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#leia) |
 | 01 | 14/04/2025 | [linguagem portugol](uc2-desenvolver-algoritmos/1.portugol/linguagem-portugol.md)<br>[tipo `inteiro`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-inteiro)<br>[variáveis](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#declaração-de-variáveis)<br>[atribuições](uc2-desenvolver-algoritmos/1.portugol/variaveis-constantes.md#atribuicoes)<br>[função `escreva`](uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#escreva)<br>[tipo `real`](uc2-desenvolver-algoritmos/1.portugol/tipos.md#tipo-real) |
+
+</details>
 
 ## UC6 - Projeto Integrador
 Curso com duração de 30 horas (10 aulas).
