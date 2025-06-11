@@ -1,363 +1,437 @@
 # data definition language - ddl
 
-## `create`
+## `CREATE`
+
+O `CREATE` é usado para criar diferentes estruturas no servidor MySQL.
 
 ### `CREATE DATABASE`
 
-Cria um **novo banco de dados vazio**, que atuará como um "container" para armazenar todas as tabelas, índices, funções e outros objetos relacionados a uma aplicação específica.
+Usado para criar um novo banco de dados.
 
-Sintaxe :
-
+**Sintaxe Completa:**
 ```sql
-CREATE DATABASE nome_do_banco
-    [ WITH ]
-    [ OWNER [=] nome_usuario ]
-    [ ENCODING [=] codificação ]
-    [ LC_COLLATE [=] collation ]
-    [ LC_CTYPE [=] ctype ]
-    [ TEMPLATE [=] template ]
-    [ ALLOW_CONNECTIONS [=] permitir_conexoes ]
-    [ CONNECTION LIMIT [=] limite_conexoes ]
-    [ IS_TEMPLATE [=] eh_template ];
+CREATE DATABASE [IF NOT EXISTS] nome_do_banco
+    [CHARACTER SET charset_name]
+    [COLLATE collation_name];
 ```
 
-#### **Parâmetros Explicados:**
-1. **`OWNER`**
-    - Define o usuário proprietário do banco.
-    - Padrão: usuário que executou o comando.
-    ```sql
-    CREATE DATABASE vendas OWNER = joao_silva;
-    ```
+**Parâmetros Chave:**
+- **`IF NOT EXISTS`**: Evita erros se o banco já existir
+- **`CHARACTER SET`**: Define o conjunto de caracteres (ex: `utf8mb4`)
+- **`COLLATE`**: Define as regras de comparação (ex: `utf8mb4_unicode_ci`)
 
-2. **`ENCODING`**
-    - Especifica a codificação de caracteres (ex: `UTF8` para suporte a múltiplos idiomas).
-    ```sql
-    CREATE DATABASE vendas ENCODING = 'UTF8';
-    ```
+---
 
-3. **`LC_COLLATE` e `LC_CTYPE`**
-    - Controlam ordenação de texto e classificação de caracteres.
-    - Exemplo para português brasileiro:
-    ```sql
-    CREATE DATABASE vendas
-        LC_COLLATE = 'pt_BR.UTF-8'
-        LC_CTYPE = 'pt_BR.UTF-8';
-    ```
+**Exemplos Práticos:**
 
-4. **`TEMPLATE`**
-    - Clona a estrutura de outro banco existente.
-    - Padrão: `template1` (banco modelo do PostgreSQL).
-    ```sql
-    CREATE DATABASE vendas_dev TEMPLATE = vendas;
-    ```
+**Exemplo 1: Banco simples**
+```sql
+CREATE DATABASE ecommerce;
+```
 
-5. **`CONNECTION LIMIT`**
-    - Limita conexões simultâneas (útil para evitar sobrecarga).
-    ```sql
-    CREATE DATABASE vendas CONNECTION LIMIT = 50;
-    ```
+**Exemplo 2: Banco com charset específico (recomendado para português)**
+```sql
+CREATE DATABASE IF NOT EXISTS escola
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+```
 
-#### **Funcionamento Interno:**
-- O PostgreSQL cria uma **cópia física** do banco modelo (`template1`) no diretório `PGDATA/base`.
-- Gera um **OID único** (Object Identifier) para o novo banco.
-- Registra metadados na tabela de catálogo `pg_database`.
+**Exemplo 3: Verificar criação**
+```sql
+SHOW DATABASES; -- Lista todos os bancos
+USE escola;     -- Seleciona o banco para uso
+```
 
 ---
 
 ### `CREATE TABLE`
 
-Cria uma nova tabela com colunas pré-definidas, tipos de dados, e restrições. É o "esqueleto" onde os dados serão armazenados.
+Define a estrutura de uma nova tabela no banco selecionado.
 
-Sintaxe :
+**Sintaxe Completa:**
 ```sql
-CREATE TABLE [ IF NOT EXISTS ] nome_tabela (
-    nome_coluna tipo_dado [ RESTRIÇÕES ],
+CREATE TABLE [IF NOT EXISTS] nome_da_tabela (
+    coluna1 tipo_de_dado [restricoes],
+    coluna2 tipo_de_dado [restricoes],
     ...
-);
+    [restricoes_de_tabela]
+) [ENGINE=storage_engine] [DEFAULT CHARSET=charset_name];
 ```
-
-#### Tipos de Dados Usados
-
-| Tipo         | Descrição                                  | Exemplo                |
-|--------------|--------------------------------------------|------------------------|
-| **`INT`**    | Números inteiros (-2,147,483,648 a 2,147,483,647) | `id INT` |
-| **`VARCHAR(n)`** | Texto de comprimento variável (max `n` caracteres) | `nome VARCHAR(50)` |
-
-#### Restrições Comuns
-
-| Restrição      | Descrição                               | Exemplo                     |
-|----------------|-----------------------------------------|-----------------------------|
-| **`PRIMARY KEY`** | Identificador único da linha            | `id INT PRIMARY KEY`        |
-| **`NOT NULL`**   | Valor obrigatório (não pode ser vazio)  | `nome VARCHAR(50) NOT NULL` |
-| **`UNIQUE`**     | Valor único na tabela                   | `email VARCHAR(100) UNIQUE` |
-| **`CHECK`**      | Validação personalizada                 | `idade INT CHECK (idade >= 18)` |
 
 ---
 
-### Exemplo Completo com Funcionamento Passo a Passo
+#### Componentes Principais
 
-#### 1. Criando o Banco de Dados
+**A. Tipos de Dados**
+
+- **Inteiros**: `INT`, `TINYINT`, `BIGINT`
+- **Decimais**: `DECIMAL(10,2)`, `FLOAT`
+- **Texto**: `VARCHAR(255)`, `TEXT`, `CHAR(10)`
+- **Data/Hora**: `DATE`, `DATETIME`, `TIMESTAMP`
+- **Binários**: `BLOB`, `JSON`
+
+**B. Restrições de Coluna**
+
+| Restrição      | Descrição                          | Exemplo                     |
+|----------------|-----------------------------------|----------------------------|
+| `PRIMARY KEY`  | Chave primária única              | `id INT PRIMARY KEY`       |
+| `AUTO_INCREMENT`| Valor automático (inteiros)       | `id INT AUTO_INCREMENT`    |
+| `UNIQUE`       | Valores exclusivos                | `email VARCHAR(100) UNIQUE`|
+| `NOT NULL`     | Impede valores nulos              | `nome VARCHAR(50) NOT NULL`|
+| `DEFAULT`      | Valor padrão                     | `status TINYINT DEFAULT 1` |
+| `CHECK`        | Validação personalizada (MySQL 8.0+)| `preco DECIMAL(10,2) CHECK (preco > 0)` |
+| `FOREIGN KEY`  | Chave estrangeira                 | `cliente_id INT REFERENCES clientes(id)` |
+
+**C. Restrições de Tabela**
+
 ```sql
--- Cria um banco com codificação UTF-8 e limite de 30 conexões
-CREATE DATABASE escola;
+PRIMARY KEY (col1, col2),
+FOREIGN KEY (col) REFERENCES outra_tabela(col),
+UNIQUE (email),
+CHECK (salario > 0)
 ```
 
-#### 2. Criando uma Tabela de Alunos
+---
+
+#### Exemplos Práticos
+
+**Exemplo 1: Tabela simples de usuários**
 ```sql
-CREATE TABLE alunos (
-    id INT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    matricula VARCHAR(20) NOT NULL,
-    idade INT NOT NULL,
-    turma VARCHAR(10)
-);
-```
-
-#### O Que Acontece nos Bastidores?
-1. **Alocação de Espaço:**
-    - O PostgreSQL cria um arquivo físico em `PGDATA/base/escola/` (ex: `16543`) para armazenar os dados.
-
-2. **Registro de Metadados:**
-    - Armazena a estrutura da tabela no catálogo `pg_class`.
-    - Grava informações das colunas em `pg_attribute`.
-
-3. **Criação de Índices:**
-    - Automaticamente cria um índice **B-tree** para a `PRIMARY KEY` (`id`).
-
----
-
-### Boas Práticas
-1. **Nomenclatura Clara:**
-    ```sql
-    -- Ruim
-    CREATE TABLE t1 (f1 INT, f2 VARCHAR);
-
-    -- Bom
-    CREATE TABLE funcionarios (id INT, nome VARCHAR);
-    ```
-
----
-
-### Erros Comuns
-
-1. **Banco já existe:**
-    ```sql
-    CREATE DATABASE escola; -- ERRO! se "escola" já existir
-    CREATE DATABASE IF NOT EXISTS escola; -- Ignora se existir
-    ```
-
-2. **Tabela sem chave primária:**
-    - Sem `PRIMARY KEY`, não há como identificar registros únicos.
-
-3. **`VARCHAR` sem tamanho:**
-    ```sql
-    CREATE TABLE errada (nome VARCHAR); -- Permitirá textos de QUALQUER tamanho!
-    ```
-
----
-
-## `Primary Key` (Chave Primária)
-
-A chave primária é um **conceito fundamental** em bancos de dados relacionais que garante que cada registro em uma tabela seja **único e identificável de forma inequívoca**. É como o CPF de uma pessoa ou o número de série de um produto: não pode haver duplicatas!
-
-### Características Essenciais
-
-| Propriedade         | Descrição                                                                 |
-|----------------------|---------------------------------------------------------------------------|
-| **Unicidade**        | Cada valor deve ser **exclusivo** na tabela (nunca repetido).             |
-| **Não Nulidade**     | **Não pode ser `NULL`** (valor ausente).                                  |
-| **Identificação**    | Atua como "endereço" para referenciar o registro em outras tabelas.       |
-| **Índice Automático**| O SGBD cria um **índice otimizado** para buscas rápidas (ex: B-tree).     |
-
-### Por Que Usar uma Chave Primária?
-
-1. **Evitar Duplicatas**
-    - Garante que não existam dois registros idênticos (ex: dois clientes com mesmo ID).
-
-2. **Criar Relacionamentos**
-    - Permite ligar tabelas através de **chaves estrangeiras** (*foreign keys*).
-    - Exemplo:
-        ```sql
-        -- Tabela PEDIDOS referencia CLIENTES via chave primária (id)
-        CREATE TABLE pedidos (
-            id INT PRIMARY KEY,
-            cliente_id INT REFERENCES clientes(id), -- Chave estrangeira
-            total DECIMAL
-        );
-        ```
-
-3. **Acelerar Consultas**
-    - Buscar um registro pela chave primária é **extremamente rápido** (uso de índice).
-    ```sql
-    SELECT * FROM clientes WHERE id = 100; -- Busca instantânea!
-   ```
-
-### Tipos de Chaves Primárias Comuns
-
-| Tipo                | Descrição                                     | Exemplo                      |
-|---------------------|-----------------------------------------------|------------------------------|
-| **Coluna Única**    | Uma única coluna como identificador.          | `id INT PRIMARY KEY`         |
-| **Chave Natural**   | Dado existente com unicidade garantida (ex: CPF). | `cpf VARCHAR(11) PRIMARY KEY` |
-| **Chave Surrogada** | Valor artificial (gerado automaticamente).    | `id SERIAL PRIMARY KEY`      |
-| **Chave Composta**  | Combinação de 2+ colunas para formar a chave. | `PRIMARY KEY (pais, cidade)` |
-
-### Exemplo Prático: Funcionamento
-
-**Tabela sem Chave Primária:**
-```
-| nome     | departamento |
-|----------|--------------|
-| João     | Vendas       |
-| Maria    | TI           |
-| João     | Vendas       |  -- Registro duplicado!
-```
-**Problema:** Não é possível distinguir os dois "João" da Vendas.
-
-**Tabela com Chave Primária:**
-```sql
-CREATE TABLE funcionarios (
-    id SERIAL PRIMARY KEY,         -- Chave artificial única
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
-    departamento VARCHAR(20)
+    email VARCHAR(100) NOT NULL UNIQUE,
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ativo TINYINT(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+**Exemplo 2: Tabela com chave estrangeira e composição**
+```sql
+CREATE TABLE pedidos (
+    pedido_id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    data_pedido DATE NOT NULL,
+    total DECIMAL(10,2) CHECK (total > 0),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 );
 ```
-**Resultado:**
+
+**Exemplo 3: Tabela com chave primária composta**
+```sql
+CREATE TABLE matriculas (
+    aluno_id INT,
+    curso_id INT,
+    data_matricula DATE DEFAULT (CURRENT_DATE),
+    PRIMARY KEY (aluno_id, curso_id),
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id),
+    FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
 ```
-| id | nome     | departamento |
-|----|----------|--------------|
-| 1  | João     | Vendas       |
-| 2  | Maria    | TI           |
-| 3  | João     | Vendas       |  -- Registro válido! ID diferente.
+
+---
+
+#### Erros Comuns e Soluções
+
+1. **Esquecer o `USE database`**:
+    ```sql
+    -- Erro: No database selected
+    CREATE TABLE teste (id INT);
+
+    -- Solução:
+    USE meu_banco;
+    CREATE TABLE teste (id INT);
+    ```
+
+2. **Chave estrangeira sem tabela pai**:
+    ```sql
+    -- Erro: Cannot add foreign key constraint
+    CREATE TABLE pedidos (
+        cliente_id INT REFERENCES clientes(id) -- Tabela clientes não existe!
+    );
+    ```
+
+3. **Nome de tabela reservado**:
+    ```sql
+    -- Erro com palavras reservadas
+    CREATE TABLE order (id INT); -- "order" é palavra-chave
+
+    -- Solução: Usar backticks
+    CREATE TABLE `order` (id INT);
+    ```
+
+---
+
+#### `PRIMARY KEY` Chave Primária
+
+A chave primária é um identificador único e obrigatório para cada registro em uma tabela. Suas características fundamentais:
+
+| Característica         | Descrição                                                                 |
+|------------------------|---------------------------------------------------------------------------|
+| **Unicidade**          | Cada valor deve ser exclusivo na tabela                                   |
+| **Não nula (NOT NULL)**| Não pode conter valores `NULL`                                            |
+| **Identificação única**| Usada para identificar inequivocamente cada linha                         |
+| **Índice clusterizado**| Os dados são fisicamente ordenados pela PK (InnoDB)                       |
+
+**Propósitos principais:**
+1. Garantir integridade dos dados
+2. Permitir relacionamentos entre tabelas (via chaves estrangeiras)
+3. Otimizar buscas (cria índice automático)
+
+---
+
+##### Tipos de Chaves Primárias
+
+a) Simples (coluna única):
+```sql
+CREATE TABLE clientes (
+    id INT PRIMARY KEY,  -- Chave primária simples
+    nome VARCHAR(50)
+);
 ```
 
-### Regras de Implementação
-1. **Sintaxe:**
-    ```sql
-    -- Opção 1: Direto na coluna
-    CREATE TABLE tabela (
-        id INT PRIMARY KEY
-    );
+---
 
-    -- Opção 2: Declaração explícita
-    CREATE TABLE tabela (
-        id INT,
-        CONSTRAINT pk_tabela PRIMARY KEY (id)
+#### `AUTO_INCREMENT` (Auto Incremento)
+
+Mecanismo que gera valores sequenciais automaticamente para uma coluna, normalmente usada com chaves primárias surrogate.
+
+**Características:**
+| Propriedade             | Descrição                                                                 |
+|-------------------------|---------------------------------------------------------------------------|
+| **Exclusivo para números** | Funciona com `INT`, `SMALLINT`, `BIGINT`                                |
+| **Gerenciamento automático** | MySQL controla a sequência                                              |
+| **Início padrão**       | 1                                                                        |
+| **Incremento padrão**   | 1                                                                        |
+| **Desconsidera deleções** | Valores excluídos não são reutilizados                                  |
+
+---
+
+##### Sintaxe Completa:
+```sql
+CREATE TABLE tabela (
+    id INT [UNSIGNED] AUTO_INCREMENT PRIMARY KEY,
+    ...
+) AUTO_INCREMENT=100;  -- Valor inicial personalizado
+```
+
+---
+
+##### Exemplos Práticos:
+
+**Exemplo 1: Uso básico**
+```sql
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE
+);
+
+-- Inserções:
+INSERT INTO usuarios (email) VALUES ('maria@exemplo.com');  -- id=1
+INSERT INTO usuarios (email) VALUES ('joao@exemplo.com');   -- id=2
+```
+
+**Exemplo 2: Valor inicial personalizado**
+```sql
+CREATE TABLE departamentos (
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50)
+) AUTO_INCREMENT = 1000;
+
+-- Primeiro registro terá codigo=1000
+INSERT INTO departamentos (nome) VALUES ('TI');
+```
+
+**Exemplo 3: Com BIGINT**
+```sql
+CREATE TABLE transacoes (
+    transacao_id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    valor DECIMAL(10,2)
+);
+```
+
+---
+
+#### Comportamento em Ações
+
+a) Inserção:
+```sql
+-- Atribui automaticamente o próximo valor
+INSERT INTO tabela (campo) VALUES ('valor');
+
+-- Pode inserir manualmente (desabilita autoincremento temporário)
+INSERT INTO tabela (id, campo) VALUES (100, 'valor');
+```
+
+b) Atualização (não permitida):
+```sql
+-- ERRO! Não pode alterar uma coluna AUTO_INCREMENT
+UPDATE usuarios SET id = 10 WHERE id = 1;
+```
+
+c) Exclusão:
+```sql
+DELETE FROM usuarios WHERE id = 2;
+-- Próximo INSERT terá id=3 (não reutiliza 2)
+```
+
+---
+
+#### Gerenciamento Avançado
+
+**1. Verificar próximo valor:**
+```sql
+SHOW TABLE STATUS LIKE 'nome_tabela';
+-- Verificar coluna 'Auto_increment'
+```
+
+**2. Alterar próximo valor:**
+```sql
+ALTER TABLE tabela AUTO_INCREMENT = 50;
+```
+
+**3. Reiniciar contagem:**
+```sql
+-- Apagar todos os dados e reiniciar contagem
+TRUNCATE TABLE tabela;
+```
+
+---
+
+#### Boas Práticas
+
+1. **Sempre use com `PRIMARY KEY` ou `UNIQUE`**
+    ```sql
+    -- RUIM (permite duplicatas)
+    CREATE TABLE errada (
+        id INT AUTO_INCREMENT  -- Falta PRIMARY KEY!
     );
     ```
 
-2. **Geração Automática (Chave Surrogada):**
-    Use `SERIAL` ou `IDENTITY` para IDs incrementais:
+2. **Combine com `UNSIGNED` para dobrar a faixa positiva**
     ```sql
-    CREATE TABLE produtos (
-        id SERIAL PRIMARY KEY,          -- Auto-incremento (1, 2, 3...)
-        nome VARCHAR(100)
+    CREATE TABLE exemplo (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
     );
     ```
 
-3. **Chave Composta:**
+3. **Prefira `BIGINT` para tabelas com crescimento exponencial**
     ```sql
-    CREATE TABLE matriculas (
-        aluno_id INT,
-        disciplina_id INT,
-        PRIMARY KEY (aluno_id, disciplina_id)
+    CREATE TABLE grande_tabela (
+        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY
     );
     ```
 
-### Impacto no Desempenho
+---
 
-- **Vantagem:** Consultas por chave primária são as **mais rápidas** do banco de dados.
-- **Cuidado:** Chaves primárias longas (ex: UUIDs) ocupam mais espaço e podem reduzir performance em índices.
+#### Limitações e Armadilhas
 
-### Erros Comuns
+**1. Máximo valor possível:**
+- `INT`: 2,147,483,647
+- `BIGINT`: 9,223,372,036,854,775,807
 
-1. **Não definir chave primária:**
-    - Torna o banco propenso a dados duplicados e inviabiliza relacionamentos.
+**2. Duplicatas em inserções manuais:**
+```sql
+INSERT INTO usuarios (id, email) VALUES (10, 'teste@exemplo.com');
+-- Inserção automática posterior pode tentar usar id=10 novamente!
+```
 
-2. **Usar dados mutáveis:**
-    - Evite colunas que podem mudar (ex: email). Prefira IDs estáveis.
+---
 
-3. **Chave composta complexa:**
-    - Muitas colunas na chave dificultam consultas e relacionamentos.
+#### Exemplo Completo: Sistema de Vendas
 
-### Boas Práticas
+```sql
+CREATE TABLE clientes (
+    cliente_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) UNIQUE
+) AUTO_INCREMENT = 1000;
 
-1. **Prefira chaves surrogadas:**
-    - `SERIAL` ou `IDENTITY` simplificam o gerenciamento.
-2. **Nomes intuitivos:**
-    - Use `id` ou sufixos como `_id` (ex: `produto_id`).
-3. **Sempre defina uma PK:**
-    - Mesmo em tabelas pequenas!
+CREATE TABLE pedidos (
+    pedido_id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT UNSIGNED NOT NULL,
+    data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(cliente_id)
+);
 
-> **Resumo Final:** A chave primária é o alicerce da integridade e eficiência de um banco de dados relacional. Sem ela, os dados perdem confiabilidade e as relações entre tabelas tornam-se impossíveis.
+-- Inserções
+INSERT INTO clientes (nome, cpf) VALUES ('Ana Silva', '12345678901');
+INSERT INTO pedidos (cliente_id) VALUES (1000); -- ID automático
+```
+
+---
 
 ## exercícios
 
 <details>
 <summary>Lista de Exercícios</summary>
 
-### **Exercício 1: Tabela Básica de Usuários**
+**Exercício 1**
 Crie uma tabela `usuarios` com:
 - ID inteiro auto-incrementado (chave primária)
 - Nome (texto, máx 50 caracteres, obrigatório)
-- Email (texto, máx 100 caracteres, único)
+- Email (texto, máx 100 caracteres)
 - Idade (inteiro opcional)
 
-### **Exercício 2: Tabela de Produtos com Validação**
+**Exercício 2**
 Crie uma tabela `produtos` com:
 - Código (chave primária inteira)
 - Nome (texto, máx 80 caracteres, obrigatório)
 - Preço (inteiro positivo)
-- Categoria (texto, máx 30 caracteres, padrão "Geral")
+- Categoria (texto, máx 30 caracteres)
 
-### **Exercício 3: Tabela de Pedidos com Chave Composta**
+**Exercício 3**
 Crie uma tabela `pedidos` com chave primária composta por:
 - Número do pedido (inteiro)
 - Item (inteiro)
 - Produto (texto, máx 50 caracteres)
-- Quantidade (inteiro, mínimo 1)
+- Quantidade (inteiro)
 
-### **Exercício 4: Tabela com Restrição de Domínio**
-Crie uma tabela `funcionarios` com:
-- Matrícula (texto, formato "FUNC-000", único)
-- Nome (texto, máx 100 caracteres)
-- Departamento (texto, só aceita "TI", "RH" ou "Vendas")
-
-### **Exercício 5: Tabela com Chave Natural**
+**Exercício 4**
 Crie uma tabela `cidades` usando como chave primária:
 - CEP (texto, 8 caracteres)
 - Nome (texto, máx 50 caracteres)
-- População (inteiro, não negativo)
+- População (inteiro)
 
-### **Exercício 6: Tabela com Auto-Incremento Personalizado**
+**Exercício 5**
 Crie uma tabela `logs` onde:
 - ID começa em 1000 e incrementa de 5 em 5
 - Mensagem (texto, máx 200 caracteres)
-- Nível (inteiro entre 1 e 3)
+- Nível (inteiro)
 
-### **Exercício 7: Tabela com Valores Obrigatórios**
+**Exercício 6**
 Crie uma tabela `contatos` onde:
 - ID (auto-incrementado)
 - Telefone (texto, 11 caracteres, obrigatório)
-- Tipo (texto, máx 10 caracteres, padrão "Celular")
+- Tipo (texto, máx 10 caracteres, obrigatório)
 
-### **Exercício 8: Tabela com Múltiplas Restrições**
+**Exercício 7**
 Crie uma tabela `estoque` com:
 - Produto_ID (inteiro, chave primária)
-- Nome (texto, máx 50 caracteres, único)
+- Nome (texto, máx 50 caracteres)
 - Quantidade (inteiro, não negativo)
-- Localização (texto, máx 10 caracteres, padrão "A001")
+- Localização (texto, máx 10 caracteres)
 
-### **Exercício 9: Tabela com Chave e Dados Combinados**
+**Exercício 8**
 Crie uma tabela `matriculas` com chave primária composta por:
 - Aluno_ID (inteiro)
 - Disciplina (texto, máx 30 caracteres)
 E uma coluna:
-- Nota (inteiro entre 0 e 10)
+- Nota (inteiro)
 
-### **Exercício 10: Tabela com Validação Complexa**
+**Exercício 9**
 Crie uma tabela `veiculos` com:
-- Placa (texto, 7 caracteres, formato "ABC1D23", chave primária)
+- Placa (texto, 7 caracteres, chave primária)
 - Modelo (texto, máx 40 caracteres, obrigatório)
-- Ano (inteiro entre 1886 e 2024)
+- Ano (inteiro)
 
 </details>
+
+## `DROP`
+
+Comando usado para apagar um banco de dados ou uma tabela.
+
+```sql
+DROP TABLE alunos;
+DROP DATABASE escola;
+```

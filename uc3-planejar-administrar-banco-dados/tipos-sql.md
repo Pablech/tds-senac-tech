@@ -2,6 +2,8 @@
 
 Embora o SQL seja uma linguagem, ela é dividida em tipos de acordo com a finalidade dos comandos.
 
+---
+
 ## DDL (Data Definition Language)
 
 **Finalidade:** Definir/modificar a **estrutura** do banco de dados (esquema).
@@ -111,8 +113,9 @@ Embora o SQL seja uma linguagem, ela é dividida em tipos de acordo com a finali
     ROLLBACK TO ponto1; -- Volta ao estado após SAVEPOINT
     ```
 
+> [!NOTE]
 > Também pode ser chamada de DTL (Data Transaction Language), embora não seja correto.
-> Isso provavelmente foi adotado para se manter as siglas parecidas.
+> Isso provavelmente foi adotado para manter as siglas parecidas.
 
 ---
 
@@ -148,11 +151,3 @@ Embora o SQL seja uma linguagem, ela é dividida em tipos de acordo com a finali
     ```sql
     SELECT * FROM Produtos WHERE preço > 100;
     ```
-
----
-
-### **Importância Prática**
-- **Sem DDL**: Não há onde armazenar dados.
-- **Sem DML**: Dados estáticos (sem atualizações).
-- **Sem TCL**: Risco de inconsistência (ex.: transferência bancária falha).
-- **Sem DCL**: Segurança comprometida (qualquer usuário pode apagar tabelas!).

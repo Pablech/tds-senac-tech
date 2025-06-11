@@ -1,8 +1,9 @@
-# banco de dados
+# Banco de Dados
 
 Um **banco de dados (BD)** é um sistema organizado para armazenar, gerenciar e recuperar informações de forma eficiente. Ele funciona como um "repositório digital" estruturado, permitindo que dados sejam persistidos, consultados, atualizados e protegidos.
 
 ## o que é um banco de dados?
+
 1. **estrutura organizada**:
     - dados são armazenados em formatos padronizados (tabelas, documentos, grafos, etc.).
     - exemplo: em um bd **relacional**, dados são organizados em **tabelas** com linhas (registros) e colunas (atributos).
@@ -22,6 +23,7 @@ Um **banco de dados (BD)** é um sistema organizado para armazenar, gerenciar e 
     - **hierárquico** ou **orientado a objetos**: menos comuns, usados em casos específicos.
 
 ### para que serve? principais objetivos
+
 1. **armazenamento persistente**:
     - mantém dados mesmo após desligar o sistema (diferente da memória ram).
 
@@ -46,6 +48,7 @@ Um **banco de dados (BD)** é um sistema organizado para armazenar, gerenciar e 
     - Lida desde pequenos apps (SQLite) até sistemas globais (Facebook usa bancos distribuídos).
 
 ### aplicações práticas
+
 - **E-commerce**: Estoque, pedidos, perfil de clientes.
 - **Redes Sociais**: Posts, amigos, mensagens (NoSQL para alta velocidade).
 - **Saúde**: Prontuários eletrônicos com histórico de pacientes.
@@ -53,11 +56,13 @@ Um **banco de dados (BD)** é um sistema organizado para armazenar, gerenciar e 
 - **IoT**: Armazena milhões de dados de sensores por segundo.
 
 ### componentes chave
+
 - **Esquema (Schema)**: "Plantilha" que define a estrutura (ex.: campos da tabela `Clientes`).
 - **Índices**: Agilizam buscas (como um índice de livro).
 - **Stored Procedures**: Códigos armazenados no BD (ex.: calcular imposto automaticamente).
 
 ### vantagens vs. arquivos simples
+
 | **Critério**       | **Banco de Dados**                     | **Arquivo TXT/Planilha**       |
 |---------------------|----------------------------------------|--------------------------------|
 | **Busca**           | Consultas complexas em milissegundos   | Leitura sequencial lenta       |
@@ -66,18 +71,20 @@ Um **banco de dados (BD)** é um sistema organizado para armazenar, gerenciar e 
 | **Concorrência**    | Múltiplos acessos sem corromper dados  | Risco alto de sobrescrita     |
 
 ### exemplo de funcionamento
+
 1. **Aplicação** (site de compras) envia comando:
     ```sql
     INSERT INTO Pedidos (Cliente_ID, Produto, Quantidade) VALUES (1, 'Smartphone', 2);
-   ```
+    ```
 2. **SGBD** valida os dados, atualiza tabelas relacionadas (ex.: reduz estoque) e salva em disco.
 3. **Usuário** recebe confirmação, e dados ficam disponíveis para relatórios futuros.
 
 ## bancos de dados relacional vs. nosql
 
 ### 1. banco de dados relacional (sql)
+
 **O que é?**
-Organiza dados em **tabelas** (linhas e colunas) com relacionamentos definidos por chaves primárias/estrangeiras. Segue o modelo ACID (*Atomicidade, Consistência, Isolamento, Durabilidade*).
+Organiza dados em **tabelas** (linhas e colunas) com relacionamentos definidos por chaves primárias/estrangeiras. Segue o modelo ACID (*Atomicidade*, *Consistência*, *Isolamento*, *Durabilidade*).
 
 **Características:**
 - **Esquema rígido:** Estrutura fixa pré-definida (ex.: tipo de dados, relações).
@@ -96,6 +103,7 @@ Organiza dados em **tabelas** (linhas e colunas) com relacionamentos definidos p
 - **Oracle:** Bancos como Itaú (sistemas transacionais).
 
 ### 2. banco de dados nosql
+
 **O que é?**
 Armazena dados **não estruturados/semiestruturados** com esquema flexível. Foca em escalabilidade horizontal e desempenho.
 
@@ -120,6 +128,7 @@ Armazena dados **não estruturados/semiestruturados** com esquema flexível. Foc
 - **Neo4j (Grafos):** LinkedIn (recomendações de conexões).
 
 ## comparação direta: quando escolher cada um
+
 #### cenário 1: sistema bancário
 - **Relacional (SQL):**
     - Transações precisam de **ACID**. Exemplo: transferência entre contas deve ser atômica.
@@ -146,7 +155,8 @@ Armazena dados **não estruturados/semiestruturados** com esquema flexível. Foc
     - Dados altamente estruturados (estoque, fornecedores, notas fiscais).
     - Relatórios com múltiplos JOINs (ex.: faturamento por filial/mês).
 
-### Resumo: Vantagens e Desvantagens
+### resumo: vantagens e desvantagens
+
 | **Critério**         | **Relacional (SQL)**                  | **NoSQL**                     |
 |----------------------|---------------------------------------|-------------------------------|
 | **Esquema**          | Rígido (exige planejamento)           | Flexível (adaptável)          |
@@ -159,12 +169,14 @@ Armazena dados **não estruturados/semiestruturados** com esquema flexível. Foc
 
 O SQL (*Structured Query Language*) é a linguagem padrão para gerenciar bancos de dados relacionais. Sua história é marcada por inovações que moldaram a computação moderna.
 
-### 1. Anos 1970: As Origens
+### 1. anos 1970: as origens
+
 - **1970**: O cientista **Edgar F. Codd** (IBM) publica o artigo *"A Relational Model of Data for Large Shared Data Banks"*, introduzindo o **modelo relacional**;
 - **1974**: **Donald Chamberlin** e **Raymond Boyce** (IBM) criam a primeira versão do SQL, inicialmente chamada de **SEQUEL** (*Structured English Query Language*), para operar o protótipo de BD relacional **System R**;
 - **Objetivo**: Substituir linguagens complexas por uma sintaxe acessível, baseada em álgebra relacional;
 
-### 2. Anos 1980: Padronização e Mercado
+### 2. anos 1980: padronização e mercado
+
 - **1979**: A *Oracle Corporation* (fundada por Larry Ellison) lança o **Oracle V2**, o primeiro banco de dados relacional comercial baseado em SQL.
 - **1981-1986**: Surgem concorrentes:
     - **IBM DB2** (1983)
@@ -172,12 +184,14 @@ O SQL (*Structured Query Language*) é a linguagem padrão para gerenciar bancos
     - **PostgreSQL** (1986, como projeto acadêmico *Ingres*)
 - **1986**: O SQL torna-se padrão internacional (**ANSI SQL** : American National Standards Institute Structured Query Language), consolidando sua sintaxe.
 
-### 3. Anos 1990: Dominância Global
+### 3. anos 1990: dominância global
+
 - **MySQL** (1995): Criado por Michael Widenius, torna-se o BD **open-source** mais popular para aplicações web.
 - **PostgreSQL** (1996): Evolui do projeto *Ingres* com suporte a tipos de dados complexos.
 - **Adoção em massa**: Grandes empresas (bancos, varejo) migram de sistemas hierárquicos para SQL.
 
-### 4. Anos 2000-Presente: Expansão e Adaptação
+### 4. anos 2000-presente: expansão e adaptação
+
 - **Desafios do Big Data**: Surgem bancos **NoSQL** (MongoDB, Cassandra), mas o SQL mantém relevância.
 - **SQL em ambientes híbridos**:
     - *Ferramentas como Amazon Redshift, Google BigQuery e Snowflake usam SQL para análise de grandes volumes*.
@@ -185,18 +199,18 @@ O SQL (*Structured Query Language*) é a linguagem padrão para gerenciar bancos
     - **SQL:1999** (suporte a JSON, programação procedural).
     - **SQL:2016** (machine learning e grafos).
 
-## **Curiosidades Históricas**
+## curiosidades históricas
 
-🔹 **Por que "SEQUEL" virou "SQL"?**
+- **Por que "SEQUEL" virou "SQL"?**
 Um problema de marca registrada forçou a mudança para "SQL" (pronuncia-se "és-kiú-el").
 
-🔹 **A Guerra dos Bancos de Dados**:
+- **A Guerra dos Bancos de Dados**:
 Nos anos 1980, a Oracle venceu a IBM ao comercializar agressivamente o SQL para governos e empresas, mesmo sem ter um produto pronto.
 
-🔹 **Linus Torvalds e o PostgreSQL**:
+- **Linus Torvalds e o PostgreSQL**:
 O criador do Linux usou o PostgreSQL para gerenciar o controle de versões do kernel antes do Git existir!
 
-## Impacto do SQL na Tecnologia
+## impacto do sql na tecnologia
 
 | **Área**         | **Contribuição do SQL**                                                                 |
 |------------------|----------------------------------------------------------------------------------------|
@@ -205,7 +219,7 @@ O criador do Linux usou o PostgreSQL para gerenciar o controle de versões do ke
 | **Nuvem**        | Serviços como AWS Aurora e Azure SQL Database oferecem SQL como serviço gerenciado.    |
 | **Mobile**       | Bancos locais (SQLite) estão em todos os smartphones (Android/iOS).                    |
 
-## SQL vs. Outras Linguagens
+## sql vs. outras linguagens
 
 ```sql
 -- Exemplo de SQL (simplicidade):
@@ -214,7 +228,8 @@ SELECT nome, salário FROM funcionários WHERE departamento = 'TI' ORDER BY sal�
 - **Vantagem**: Sintaxe intuitiva (próxima do inglês), diferente de linguagens procedurais como COBOL.
 - **Flexibilidade**: Funciona em qualquer BD relacional (com pequenas variações de dialeto).
 
-## O Futuro do SQL
+## o futuro do sql
+
 - **SQL + NoSQL**: Bancos como **PostgreSQL** agora aceitam JSON (NoSQL) e consultas SQL.
 - **SQL em streaming**: Ferramentas como **Apache Flink** usam SQL para processar dados em tempo real.
 - **Inteligência Artificial**: Bancos modernos (Oracle, Microsoft) integram modelos de ML via comandos SQL.
@@ -223,18 +238,19 @@ SELECT nome, salário FROM funcionários WHERE departamento = 'TI' ORDER BY sal�
 
 Um **Sistema de Gerenciamento de Banco de Dados (SGBD)** é o software responsável por **controlar, organizar e proteger** os dados armazenados em um banco de dados. Ele age como um **intermediário** entre o banco de dados físico (arquivos em disco) e os usuários/aplicações.
 
-### Principais Componentes de um SGBD
+### principais componentes de um sgbd
 
 | Componente               | Função                                                                 | Exemplo Prático                                  |
-|--------------------------|------------------------------------------------------------------------|--------------------------------------------------|
-| **Motor de Armazenamento** | Gerencia leitura/gravação em disco                                     | InnoDB (MySQL), WAL (PostgreSQL)                 |
-| **Processador de Consultas** | Interpreta e executa comandos (ex: SQL)                                | Otimiza `SELECT JOIN` para resposta rápida       |
-| **Gerenciador de Transações** | Garante ACID (atomicidade, consistência, etc.)                         | Rollback se falhar em `UPDATE Saldo + DELETE Registro` |
-| **Gerenciador de Concorrência** | Controla acesso simultâneo (ex: bloqueios)                            | Evita que 2 usuários editem o mesmo pedido       |
-| **Gerenciador de Índices**  | Acelera buscas (ex: índice em coluna "CPF")                            | Índice B-tree para `WHERE id = 100` em 1ms       |
-| **Mecanismo de Segurança**  | Autentica usuários e define permissões                                 | "Apenas RH pode ver tabela `Salários`"           |
+|--------------------------|---------------------------------------|--------------------------------------------------|
+| **Motor de Armazenamento** | Gerencia leitura/gravação em disco  | InnoDB (MySQL), WAL (PostgreSQL)                 |
+| **Processador de Consultas** | Interpreta e executa comandos (ex: SQL)  | Otimiza `SELECT JOIN` para resposta rápida       |
+| **Gerenciador de Transações** | Garante ACID (atomicidade, consistência, etc.)  | Rollback se falhar em `UPDATE Saldo + DELETE Registro` |
+| **Gerenciador de Concorrência** | Controla acesso simultâneo (ex: bloqueios)  | Evita que 2 usuários editem o mesmo pedido       |
+| **Gerenciador de Índices**  | Acelera buscas (ex: índice em coluna "CPF")  | Índice B-tree para `WHERE id = 100` em 1ms       |
+| **Mecanismo de Segurança**  | Autentica usuários e define permissões  | "Apenas RH pode ver tabela `Salários`"           |
 
-### Para Que Serve um SGBD?
+### para que serve um sgbd?
+
 1. **Abstração de Dados**
     - Esconde complexidade do armazenamento físico: você usa `SELECT * FROM clientes`, não lê bytes brutos em disco.
 
@@ -254,7 +270,8 @@ Um **Sistema de Gerenciamento de Banco de Dados (SGBD)** é o software responsá
 5. **Backup e Replicação**
     - Cria cópias automáticas e sincroniza servidores secundários (ex: réplica na AWS).
 
-### Tipos de SGBDs
+### tipos de sgbds
+
 | Tipo                | Características                                         | Exemplos de Software        |
 |---------------------|--------------------------------------------------------|-----------------------------|
 | **Relacional (SQL)**  | Esquema rígido, ACID, SQL                               | PostgreSQL, MySQL, Oracle   |
@@ -262,7 +279,7 @@ Um **Sistema de Gerenciamento de Banco de Dados (SGBD)** é o software responsá
 | **Orientado a Objetos** | Armazena objetos (classes, herança)                   | db4o, Versant               |
 | **Em Memória**      | Dados na RAM (ultra-rápido, volátil)                   | Redis, MemSQL               |
 
-### Exemplos Práticos de Uso
+### exemplos práticos de uso
 
 #### Cenário 1: E-commerce (PostgreSQL como SGBD)
 - **Transação:**
@@ -290,7 +307,7 @@ Um **Sistema de Gerenciamento de Banco de Dados (SGBD)** é o software responsá
     - Armazena JSON flexível (sem esquema fixo).
     - Replica dados para 3 servidores automaticamente.
 
-### SGBDs vs. Bancos de Dados: A Diferença
+### sgbds vs. bancos de dados: a diferença
 
 | **Banco de Dados (BD)**       | **SGBD**                                  |
 |-------------------------------|-------------------------------------------|

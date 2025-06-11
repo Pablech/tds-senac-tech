@@ -1,41 +1,5 @@
 # tipos de dados
 
-## `INTEGER`
-
-Um tipo numérico que armazena **valores inteiros** (números sem parte decimal). Ideal para quantidades, IDs, idades, ou qualquer dado numérico discreto.
-
-### Características Técnicas
-| Propriedade       | Valor no PostgreSQL                  |
-|-------------------|--------------------------------------|
-| **Faixa**         | -2.147.483.648 a +2.147.483.647     |
-| **Armazenamento** | 4 bytes (32 bits)                   |
-| **Sinônimos**     | `INT`, `INT4`                       |
-| **Valor Padrão**  | `NULL` (se não especificado)        |
-
-### Subtipos Relacionados
-| Tipo         | Faixa                           | Armazenamento | Uso Típico                |
-|--------------|---------------------------------|---------------|---------------------------|
-| `SMALLINT`   | -32.768 a 32.767               | 2 bytes       | Idades, pequenas quantidades |
-| `BIGINT`     | ±9.2 quintilhões               | 8 bytes       | Sistemas financeiros, Big Data |
-| `SERIAL`     | 1 a 2.147.483.647 (auto-inc.)  | 4 bytes       | Chaves primárias automáticas |
-
-### Exemplos de Uso
-```sql
--- Tabela de produtos
-CREATE TABLE produtos (
-    id SERIAL PRIMARY KEY,      -- INTEGER automático
-    estoque INT NOT NULL,        -- Quantidade em estoque
-    preco_custo INTEGER          -- Em centavos (ex: R$10,00 = 1000)
-);
-```
-
-### Comportamento em Operações
-```sql
-SELECT 5 / 2; -- Resultado: 2 (divisão inteira!)
-```
-> ⚠️ **Cuidado!** Para divisões decimais, use `NUMERIC` ou converta: `SELECT 5.0 / 2` → `2.5`.
-
-
 ## `VARCHAR`
 
 Um tipo de texto de **comprimento variável**. Armazena strings de caracteres com tamanho máximo pré-definido, ocupando apenas o espaço necessário.
