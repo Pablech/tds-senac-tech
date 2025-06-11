@@ -8,6 +8,7 @@ Curso com duração de xx horas (.. aulas).
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 03 | 11/06/2025 | [`char` e `varchar`](uc3-planejar-administrar-banco-dados/data-type-string.md)<br>[`like`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#buscas-com-like)<br>[funções agregadoras](uc3-planejar-administrar-banco-dados/funcoes-e-comandos.md#funções-de-agregação) |
 | 02 | 10/06/2025 | [`integer`](uc3-planejar-administrar-banco-dados/data-type-numeric.md)<br>[comandos `IN` e `BETWEEN`](uc3-planejar-administrar-banco-dados/funcoes-e-comandos.md#in)<br>[`INSERT`](uc3-planejar-administrar-banco-dados/data-manipulation-language-dml.md#insert)<br>[operadores aritméticos, lógicos, algébricos](uc3-planejar-administrar-banco-dados/operacoes.md)<br>[`SELECT`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#select) |
 | 01 | 09/06/2025 | [o que é banco de dados](uc3-planejar-administrar-banco-dados/o-que-eh-bd.md)<br>[tipos de sql](uc3-planejar-administrar-banco-dados/tipos-sql.md)<br>[ddl - `create` e `drop` `table` / `database`](uc3-planejar-administrar-banco-dados/data-definition-language-ddl.md)<br>[tipo inteiro](uc3-planejar-administrar-banco-dados/tipos.md#integer)<br>[tipo varchar](uc3-planejar-administrar-banco-dados/tipos.md#varchar) |
 

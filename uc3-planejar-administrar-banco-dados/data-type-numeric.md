@@ -248,7 +248,7 @@ O MySQL suporta os tipos de dados inteiros padrão do SQL, como `INTEGER` e `SMA
 4. **Tabela de Configurações do Sistema**
    Crie uma tabela `configuracoes` com:
    - `id` (PK, AUTO_INCREMENT)
-   - `modo_escuro` (TINYINT(1) NOT NULL DEFAULT 0)
+   - `modo_escuro` (TINYINT(1) NOT NULL)
    - `notificacoes` (TINYINT(1) NULL)
 
 5. **Tabela de Prioridades de Tarefas**
@@ -394,3 +394,193 @@ O MySQL suporta os tipos de dados inteiros padrão do SQL, como `INTEGER` e `SMA
    - `transportadora` (VARCHAR(20) NULL)
 
 </details>
+
+---
+
+## `DECIMAL` e `NUMERIC`
+
+No MySQL, **`DECIMAL`** e **`NUMERIC`** são tipos de dados de **precisão exata** usados para valores monetários, cálculos financeiros e qualquer cenário que exija exatidão decimal. Eles armazenam valores **exatamente como são definidos**, sem arredondamentos (diferente de `FLOAT` e `DOUBLE`, que são de precisão aproximada).
+
+### Características Comuns
+
+| Característica               | Descrição                                                                 |
+|------------------------------|---------------------------------------------------------------------------|
+| **Sinonímia**                | `DECIMAL` e `NUMERIC` são **idênticos** no MySQL (podem ser usados intercambiavelmente) |
+| **Precisão Exata**           | Armazenam valores exatos sem erros de arredondamento                      |
+| **Sintaxe**                  | `DECIMAL(M, D)` ou `NUMERIC(M, D)`<br>- `M`: Precisão total (1-65)<br>- `D`: Casas decimais (0-30) |
+| **Armazenamento**            | Variável: 4-16 bytes (depende de `M`)<br>- Ex: `DECIMAL(5,2)` = 3 bytes |
+| **Uso Típico**               | Valores monetários, porcentagens, medidas críticas                       |
+
+---
+
+### Estrutura de Armazenamento
+
+O MySQL armazena valores `DECIMAL` como **strings binárias**, preservando cada dígito:
+- **Parte inteira**: Dígitos antes da vírgula
+- **Parte decimal**: Dígitos após a vírgula
+- **Sinal**: Positivo/Negativo
+
+#### Cálculo de Bytes
+
+| Dígitos Totais (M) | Bytes Necessários |
+|---------------------|-------------------|
+| 1-9                 | 4 bytes           |
+| 10-18               | 7 bytes           |
+| 19-27               | 10 bytes          |
+| 28-36               | 13 bytes          |
+| 37-45               | 16 bytes          |
+| 46-65               | 20 bytes          |
+
+---
+
+### Definição de Precisão (M) e Escala (D)
+
+- **`M` (Precisão)**: Número total de dígitos (ex: `123.45` tem `M=5`)
+- **`D` (Escala)**: Número de dígitos decimais (ex: `123.45` tem `D=2`)
+
+#### Regras
+
+1. `D` deve ser ≤ `M`
+2. Se `D=0`, o valor é inteiro (sem parte decimal)
+3. Valores padrão:
+    - `M` padrão = 10
+    - `D` padrão = 0
+    - Ex: `DECIMAL` = `DECIMAL(10,0)`
+
+---
+
+### exemplos práticos
+
+#### Exemplo 1: DECIMAL(5,2)
+```sql
+CREATE TABLE produtos (
+    id INT,
+    preco DECIMAL(5,2)  -- 5 dígitos totais, 2 decimais (ex: 999.99)
+);
+
+INSERT INTO produtos VALUES
+(1, 299.99),   -- Válido
+(2, -150.50),  -- Válido (negativo)
+(3, 1000.00);  -- Erro! Excede precisão (6 dígitos)
+```
+
+#### Exemplo 2: DECIMAL(10,4) para Alta Precisão
+```sql
+CREATE TABLE transacoes (
+    id BIGINT,
+    valor DECIMAL(10,4)  -- Ex: 999999.9999
+);
+
+INSERT INTO transacoes VALUES
+(1, 12345.6789),     -- Válido
+(2, 0.1000),         -- Válido
+(3, 123456.7891);    -- Erro! Excede precisão (11 dígitos)
+```
+
+#### Exemplo 3: Sem Decimais (D=0)
+```sql
+CREATE TABLE estoque (
+    item VARCHAR(50),
+    unidades DECIMAL(6,0)  -- 6 dígitos inteiros (ex: 999999)
+);
+
+INSERT INTO estoque VALUES
+('Camiseta', 100000),  -- Válido
+('Calça', 1500.75);    -- Conversão para 1501 (arredondamento!)
+```
+
+---
+
+### Comportamento de Arredondamento
+
+- Se inserir mais decimais que `D`, o MySQL **arredonda** o valor:
+    ```sql
+    CREATE TABLE teste (valor DECIMAL(4,2));
+    INSERT INTO teste VALUES (10.499);  -- Armazenado como 10.50
+    INSERT INTO teste VALUES (10.501);  -- Armazenado como 10.50 (modo padrão)
+    ```
+- Use `STRICT_ALL_TABLES` para gerar erros em vez de arredondar.
+
+---
+
+### Casos de Uso Recomendados
+1. **Sistemas financeiros**:
+    ```sql
+    CREATE TABLE contas (
+        conta_id INT,
+        saldo DECIMAL(15,2)  -- Suporta até 999.999.999.999,99
+    );
+    ```
+2. **Impostos e porcentagens**:
+    ```sql
+    CREATE TABLE impostos (
+        produto_id INT,
+        aliquota DECIMAL(5,4)  -- Ex: 0.1750 (17.50%)
+    );
+    ```
+3. **Medições industriais**:
+    ```sql
+    CREATE TABLE sensores (
+        leitura_id INT,
+        precisao DECIMAL(8,6)  -- Ex: 123.456789
+    );
+    ```
+
+---
+
+### Limitações Importantes
+
+1. **Operações matemáticas**: Mais lentas que com inteiros.
+2. **Armazenamento**: Consome mais espaço que `FLOAT`/`DOUBLE`.
+3. **Valores padrão**: Não use valores não-inteiros como chaves primárias.
+4. **Máxima precisão**: `DECIMAL(65,30)` é o limite.
+
+---
+
+### Boas Práticas
+1. **Defina precisão explicitamente**:
+    ```sql
+    -- Ruim
+    total DECIMAL
+
+    -- Bom
+    total DECIMAL(10,2)
+    ```
+2. **Use `UNSIGNED` para valores não negativos**:
+    ```sql
+    desconto DECIMAL(5,2) UNSIGNED  -- Não aceita negativos
+    ```
+3. **Evite arredondamentos indesejados**:
+    ```sql
+    SET SESSION sql_mode = 'STRICT_ALL_TABLES';  -- Gera erro em overflow
+    ```
+4. **Prefira `DECIMAL` sobre `FLOAT` para dinheiro**:
+    ```sql
+    -- Perigoso
+    preco FLOAT
+
+    -- Seguro
+    preco DECIMAL(10,2)
+    ```
+
+---
+
+### Resumo Final
+| Parâmetro          | DECIMAL/NUMERIC                                     |
+|--------------------|-----------------------------------------------------|
+| **Precisão**       | Exata                                               |
+| **Faixa Típica**   | Até 65 dígitos (30 decimais)                        |
+| **Armazenamento**  | Eficiente para precisão definida                    |
+| **Overflow**       | Erro ou arredondamento (depende do modo SQL)        |
+| **Melhor Para**    | Dinheiro, onde exatidão é essencial                 |
+
+```sql
+-- Exemplo completo
+CREATE TABLE financeiro (
+    id BIGINT AUTO_INCREMENT,
+    valor DECIMAL(15,2) UNSIGNED,  -- Até 999.999.999.999,99
+    taxa DECIMAL(5,4),             -- Ex: 0.0250 (2.50%)
+    saldo DECIMAL(20,2),           -- Para grandes corporações
+    PRIMARY KEY (id)
+);
+```

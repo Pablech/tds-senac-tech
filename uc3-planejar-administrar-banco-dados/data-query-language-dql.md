@@ -71,3 +71,16 @@ SELECT * FROM produtos WHERE preco BETWEEN 50 AND 200;
 -- Lista de valores
 SELECT * FROM clientes WHERE estado IN ('SP', 'RJ', 'MG');
 ```
+
+### Buscas com `LIKE`
+
+```sql
+-- Nomes que começam com 'A'
+SELECT * FROM clientes WHERE nome LIKE 'A%';
+
+-- Emails que contêm '@gmail'
+SELECT * FROM clientes WHERE email LIKE '%@gmail%';
+
+-- Emails que têm a como segundo caracter e contêm '@gmail'
+SELECT * FROM clientes WHERE email LIKE '_a%@gmail%';
+```
