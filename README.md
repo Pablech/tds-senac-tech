@@ -4,7 +4,9 @@ Este repositório será usado para compartilhar o material das aulas que serão 
 ---
 
 ## UC3 - Planejar e Administrar Banco de Dados
-Curso com duração de xx horas (.. aulas).
+Curso com duração de 84 horas (28 aulas).
+
+Material Jogos : [tabelas](uc3-planejar-administrar-banco-dados/queries/tabela.sql) e [dados](uc3-planejar-administrar-banco-dados/queries/dados.sql)
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
