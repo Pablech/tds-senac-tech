@@ -307,6 +307,78 @@ WHERE (categoria = 'Eletronic' OR estoque > 20)
 |--------|---------------|
 | Mesa   | 19778         |
 
+### `LIKE`
+
+O comando `LIKE` no MySQL é um operador de comparação usado em cláusulas `WHERE` para buscar padrões específicos em colunas de texto. Ele é particularmente útil quando você precisa encontrar registros que contenham determinadas sequências de caracteres, sem precisar de uma correspondência exata.
+
+Sintaxe :
+
+```sql
+SELECT coluna1, coluna2, ...
+FROM tabela
+WHERE coluna LIKE padrão;
+```
+
+#### Caracteres Coringa (Wildcards)
+
+O `LIKE` utiliza dois caracteres coringa principais:
+
+- **1. `%` - Representa zero, um ou múltiplos caracteres**
+    - `'a%'`: Encontra qualquer valor que comece com "a"
+    - `'%a'`: Encontra qualquer valor que termine com "a"
+    - `'%a%'`: Encontra qualquer valor que tenha "a" em qualquer posição
+    - `'a%b'`: Encontra valores que começam com "a" e terminam com "b"
+
+- **2. `_` - Representa um único caractere**
+    - `'_a'`: Encontra valores onde "a" é o segundo caractere
+    - `'a_'`: Encontra valores que começam com "a" e têm pelo menos 2 caracteres
+    - `'a__b'`: Encontra valores que começam com "a" e terminam com "b" com exatamente 4 caracteres
+
+Exemplos :
+
+- Buscando nomes que começam com "Mar":
+    ```sql
+    SELECT * FROM clientes WHERE nome LIKE 'Mar%';
+    ```
+    Isso retornaria "Maria", "Marcos", "Mariana", etc.
+
+- Buscando emails que terminam com "@gmail.com":
+    ```sql
+    SELECT * FROM usuarios WHERE email LIKE '%@gmail.com';
+    ```
+
+- Buscando produtos com "teclado" em qualquer posição:
+    ```sql
+    SELECT * FROM produtos WHERE descricao LIKE '%teclado%';
+    ```
+
+- Buscando códigos com formato específico (ex: A seguido de 3 caracteres):
+    ```sql
+    SELECT * FROM itens WHERE codigo LIKE 'A___';
+    ```
+
+#### `LIKE` com `ESCAPE`
+
+Quando você precisa pesquisar pelos próprios caracteres `%` ou `_`, use a cláusula `ESCAPE`:
+
+```sql
+SELECT * FROM documentos WHERE conteudo LIKE '%50\%%' ESCAPE '\';
+```
+Isso busca textos contendo "50%", onde a barra invertida define que o próximo % é um caractere literal.
+
+#### `LIKE` vs. `=`
+
+- `=` busca correspondência exata
+- `LIKE` permite padrões com wildcards e é case-insensitive em collations padrão
+
+#### Performance
+
+O uso de `LIKE` pode impactar a performance, especialmente com:
+- Padrões que começam com `%` (ex: `%palavra`) - não usam índices
+- Padrões muito amplos
+
+Para melhor performance, quando possível, use padrões que começam com caracteres específicos (ex: `palavra%`).
+
 ---
 
 ## Casos Especiais e Armadilhas
