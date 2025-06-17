@@ -326,6 +326,14 @@ DELETE FROM nome_da_tabela
 11. Remova os 5 jogos mais antigos da franquia "Call of Duty".
 12. Delete jogos duplicados (mesmo `nome` e `plataforma`), mantendo apenas o de maior `id`.
 13. Exclua jogos com nota Metascore mais baixa que a média geral de notas.
+    ```sql
+    select avg(nota_metascore) from jogos;
+    select nome, plataforma, nota_metascore
+        from jogos
+        where nota_metascore < 84.7510;
+    delete from jogos
+        where nota_metascore < 84.7510;
+    ```
 14. Remova todos os jogos da Ubisoft exceto os da franquia "Assassin's Creed".
 15. Delete jogos lançados em feriados (ex: 25/12) entre 2005 e 2015.
 

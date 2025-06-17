@@ -10,6 +10,7 @@ Material Jogos : [tabelas](uc3-planejar-administrar-banco-dados/queries/tabela.s
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 06 | 16/06/2025 | [`FOREIGN KEY`](uc3-planejar-administrar-banco-dados/constraints.md#foreign-key)<br>[`INNER JOIN`](uc3-planejar-administrar-banco-dados/juncoes.md#inner-join) |
 | 05 | 13/06/2025 | :skull:<br>[`UPDATE`](uc3-planejar-administrar-banco-dados/data-manipulation-language-dml.md#update)<br>[`DELETE`](uc3-planejar-administrar-banco-dados/data-manipulation-language-dml.md#delete)<br>[`PRIMARY KEY`](uc3-planejar-administrar-banco-dados/constraints.md#primary-key)<br>:skull: |
 | 04 | 12/06/2025 | :heart:<br>[tipos `DATETIME`, `DATE`, `TIME`](uc3-planejar-administrar-banco-dados/data-type-datetime.md)<br>[`LIMIT`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#limit)[`OFFSET`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#offset) [`ORDER BY`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#order-by)<br>:heart: |
 | 03 | 11/06/2025 | [`char` e `varchar`](uc3-planejar-administrar-banco-dados/data-type-string.md)<br>[`like`](uc3-planejar-administrar-banco-dados/data-query-language-dql.md#buscas-com-like)<br>[funções agregadoras](uc3-planejar-administrar-banco-dados/funcoes-e-comandos.md#funções-de-agregação) |

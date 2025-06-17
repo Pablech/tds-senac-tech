@@ -599,3 +599,20 @@ INSERT INTO jogos (nome, franquia, genero1, genero2, plataforma, publicadora, nr
 ('Doom: The Dark Ages', 'Doom', 'FPS', 'Ação', 'Xbox Series X', 'id Software', 1, NULL, NULL, '2025-01-01'),
 ('Marvel''s Blade', 'Marvel', 'Ação', 'Aventura', 'Xbox Series X', 'Arkane', 1, NULL, NULL, '2025-12-31'),
 ('Project Mara', NULL, 'Survival Horror', 'Psicológico', 'Xbox Series X', 'Ninja Theory', 1, NULL, NULL, '2025-06-30');
+
+insert into generos (nome) values
+('Ação'), ('Animal'), ('Arcade'), ('Arte'), ('Aventura'),
+('Battle Royale'), ('Beat ''em up'), ('Bullet Hell'), ('Cartas'), ('Comédia'),
+('Compilação'), ('Cooperativo'), ('Corrida'), ('Criação'), ('Cross-over'),
+('Dedução'), ('Detetive'), ('Drama'), ('Educativo'), ('Espaço'),
+('Esporte'), ('Estratégia'), ('Exploração'), ('Ferramenta'), ('Ficção Científica'),
+('Fitness'), ('FPS'), ('Futurista'), ('Grande Estratégia'), ('Hack and Slash'),
+('Histórico'), ('Horror'), ('Kart'), ('Lógica'), ('Luta'),
+('Metroidvania'), ('Minijogos'), ('MMO'), ('MMORPG'), ('MOBA'),
+('Multijogador'), ('Mundo Aberto'), ('Musical'), ('Narrativo'), ('Negócios'),
+('Party'), ('Pinball'), ('Plataforma'), ('Psicológico'), ('Puzzle'),
+('Quebra-cabeça'), ('Rail Shooter'), ('Relaxante'), ('Ritmo'), ('Roguelike'),
+('RPG'), ('RTS'), ('Run and Gun'), ('Sandbox'), ('Simulação'),
+('Sobrevivência'), ('Social'), ('Souls-like'), ('Stealth'), ('Survival Horror'),
+('Tático'), ('Tiro'), ('Turn-based'), ('Vida'), ('Voo'),
+('VR'), ('Zumbi');
