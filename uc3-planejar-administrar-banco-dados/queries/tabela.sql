@@ -1,4 +1,11 @@
 drop table jogos;
+drop table generos;
+
+create table generos
+(
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(32) NOT NULL
+);
 
 create table jogos
 (
@@ -13,11 +20,6 @@ create table jogos
     nota_metascore TINYINT NULL, -- nota do jogo na plataforma no metacritic (geralmente de 0 a 99)
     nota_ign NUMERIC(3, 1) NULL, -- nota do jogo na plataforma IGN (de 0.0 a 10.0)
     data_lancamento DATE NOT NULL, -- data de lançamento do jogo
-    FOREIGN KEY (id_genero1) REFERENCES generos (id)
-    FOREIGN KEY (id_genero2) REFERENCES generos (id)
-);
-create table generos
-(
-    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(32) NOT NULL
+    FOREIGN KEY (id_genero1) REFERENCES generos (id), -- chave estrangeira para a tabela e campo generos.id
+    FOREIGN KEY (id_genero2) REFERENCES generos (id) -- chave estrangeira para a tabela e campo generos.id
 );
