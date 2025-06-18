@@ -1,6 +1,5 @@
-delete from jogos;
 
-INSERT INTO jogos (nome, franquia, genero1, genero2, plataforma, publicadora, nr_jogadores, nota_metascore, nota_ign, data_lancamento) VALUES
+INSERT INTO jogos (nome, id_franquia, id_genero1, id_genero2, id_plataforma, id_publicadora, nr_jogadores, nota_metascore, nota_ign, data_lancamento) VALUES
 ('The Witcher 3: Wild Hunt', 'The Witcher', 'RPG', 'Ação', 'PC', 'CD Projekt Red', 1, 93, 9.3, '2015-05-19'),
 ('Red Dead Redemption 2', 'Red Dead', 'Ação', 'Aventura', 'PlayStation 4', 'Rockstar Games', 1, 97, 10.0, '2018-10-26'),
 ('The Legend of Zelda: Breath of the Wild', 'The Legend of Zelda', 'Aventura', 'RPG', 'Nintendo Switch', 'Nintendo', 1, 97, 10.0, '2017-03-03'),
@@ -599,20 +598,3 @@ INSERT INTO jogos (nome, franquia, genero1, genero2, plataforma, publicadora, nr
 ('Doom: The Dark Ages', 'Doom', 'FPS', 'Ação', 'Xbox Series X', 'id Software', 1, NULL, NULL, '2025-01-01'),
 ('Marvel''s Blade', 'Marvel', 'Ação', 'Aventura', 'Xbox Series X', 'Arkane', 1, NULL, NULL, '2025-12-31'),
 ('Project Mara', NULL, 'Survival Horror', 'Psicológico', 'Xbox Series X', 'Ninja Theory', 1, NULL, NULL, '2025-06-30');
-
-insert into generos (nome) values
-('Ação'), ('Animal'), ('Arcade'), ('Arte'), ('Aventura'),
-('Battle Royale'), ('Beat ''em up'), ('Bullet Hell'), ('Cartas'), ('Comédia'),
-('Compilação'), ('Cooperativo'), ('Corrida'), ('Criação'), ('Cross-over'),
-('Dedução'), ('Detetive'), ('Drama'), ('Educativo'), ('Espaço'),
-('Esporte'), ('Estratégia'), ('Exploração'), ('Ferramenta'), ('Ficção Científica'),
-('Fitness'), ('FPS'), ('Futurista'), ('Grande Estratégia'), ('Hack and Slash'),
-('Histórico'), ('Horror'), ('Kart'), ('Lógica'), ('Luta'),
-('Metroidvania'), ('Minijogos'), ('MMO'), ('MMORPG'), ('MOBA'),
-('Multijogador'), ('Mundo Aberto'), ('Musical'), ('Narrativo'), ('Negócios'),
-('Party'), ('Pinball'), ('Plataforma'), ('Psicológico'), ('Puzzle'),
-('Quebra-cabeça'), ('Rail Shooter'), ('Relaxante'), ('Ritmo'), ('Roguelike'),
-('RPG'), ('RTS'), ('Run and Gun'), ('Sandbox'), ('Simulação'),
-('Sobrevivência'), ('Social'), ('Souls-like'), ('Stealth'), ('Survival Horror'),
-('Tático'), ('Tiro'), ('Turn-based'), ('Vida'), ('Voo'),
-('VR'), ('Zumbi');
