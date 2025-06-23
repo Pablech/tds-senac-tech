@@ -10,6 +10,7 @@ Material Jogos : [tabelas](uc3-planejar-administrar-banco-dados/queries/tabela.s
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 08 | 23/06/2025 | [revisão](uc3-planejar-administrar-banco-dados/revisao.md) |
 | 07 | 17/06/2025 | [praticando FKs](uc3-planejar-administrar-banco-dados/queries/) |
 | 06 | 16/06/2025 | [`FOREIGN KEY`](uc3-planejar-administrar-banco-dados/constraints.md#foreign-key)<br>[`INNER JOIN`](uc3-planejar-administrar-banco-dados/juncoes.md#inner-join) |
 | 05 | 13/06/2025 | :skull:<br>[`UPDATE`](uc3-planejar-administrar-banco-dados/data-manipulation-language-dml.md#update)<br>[`DELETE`](uc3-planejar-administrar-banco-dados/data-manipulation-language-dml.md#delete)<br>[`PRIMARY KEY`](uc3-planejar-administrar-banco-dados/constraints.md#primary-key)<br>:skull: |
