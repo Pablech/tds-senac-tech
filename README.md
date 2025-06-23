@@ -63,7 +63,7 @@ Curso com duração de 96 horas (32 aulas).
 
 </details>
 
-## UC6 - Projeto Integrador
+## UC6 - [Projeto Integrador](uc6-projeto-integrador/)
 Curso com duração de 30 horas (10 aulas).
 
 | Aula | Dia | Arquivo |
