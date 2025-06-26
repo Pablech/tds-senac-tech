@@ -317,3 +317,248 @@ SELECT * FROM jogos WHERE id_console = 4;
 - Quando precisa rastrear edições especiais por plataforma
 
 Nestes casos, a tabela associativa (N:M) será mais eficiente, mesmo com maior complexidade.
+
+### Abordagem da Tabela Associativa (N:M)
+
+#### Conceito Fundamental
+Esta abordagem resolve o problema de relacionamentos **muitos-para-muitos (N:M)**:
+- Um jogo pode ser lançado em **múltiplos consoles**
+- Um console pode ter **múltiplos jogos**
+
+A tabela associativa (`jogo_console`) age como uma "ponte" entre as duas tabelas, armazenando combinações de pares de IDs.
+
+```mermaid
+erDiagram
+    jogos ||--o{ jogo_console : "relacionados"
+    consoles ||--o{ jogo_console : "relacionados"
+    jogos {
+        int id_jogo PK
+        varchar nome
+    }
+    consoles {
+        int id_console PK
+        varchar nome
+    }
+    jogo_console {
+        int id_jogo FK
+        int id_console FK
+        PK (id_jogo, id_console)
+    }
+```
+
+#### Implementação Prática
+**Estrutura SQL:**
+```sql
+-- Tabela de consoles
+CREATE TABLE consoles (
+    id_console INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL
+);
+
+-- Tabela de jogos
+CREATE TABLE jogos (
+    id_jogo INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+);
+
+-- Tabela associativa
+CREATE TABLE jogo_console (
+    id_jogo INT,
+    id_console INT,
+    PRIMARY KEY (id_jogo, id_console), -- Chave primária composta
+    FOREIGN KEY (id_jogo) REFERENCES jogos(id_jogo)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (id_console) REFERENCES consoles(id_console)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- Inserção de dados
+INSERT INTO consoles (nome) VALUES
+('PlayStation 5'),
+('Xbox Series X'),
+('Nintendo Switch'),
+('PC');
+
+INSERT INTO jogos (nome) VALUES
+('The Witcher 3: Wild Hunt'),
+('Grand Theft Auto V'),
+('Minecraft');
+
+-- Associando jogos a consoles
+INSERT INTO jogo_console (id_jogo, id_console) VALUES
+(1, 1), -- The Witcher 3 no PS5
+(1, 2), -- The Witcher 3 no Xbox
+(1, 3), -- The Witcher 3 no Switch
+(1, 4), -- The Witcher 3 no PC
+(2, 1), -- GTA V no PS5
+(2, 2), -- GTA V no Xbox
+(2, 4), -- GTA V no PC
+(3, 1), -- Minecraft no PS5
+(3, 2), -- Minecraft no Xbox
+(3, 3), -- Minecraft no Switch
+(3, 4); -- Minecraft no PC
+```
+
+#### Vantagens
+
+1. **Flexibilidade Total para Multiplataforma:**
+    ```sql
+    -- Adicionar nova plataforma para um jogo existente
+    INSERT INTO jogo_console (id_jogo, id_console) VALUES (2, 3); -- GTA V no Switch
+    ```
+
+2. **Normalização de Dados:**
+    - Cada entidade existe uma única vez em sua tabela
+    - Sem duplicação de informações de jogos ou consoles
+
+3. **Atributos Específicos do Relacionamento:**
+    Pode armazenar metadados sobre o lançamento em cada plataforma:
+    ```sql
+    ALTER TABLE jogo_console ADD COLUMN data_lancamento DATE;
+    ALTER TABLE jogo_console ADD COLUMN edicao_especial BOOLEAN DEFAULT FALSE;
+
+    UPDATE jogo_console
+    SET data_lancamento = '2022-12-14', edicao_especial = TRUE
+    WHERE id_jogo = 1 AND id_console = 3; -- The Witcher 3 edição especial no Switch
+    ```
+
+4. **Consultas Complexas sem Ambiguidade:**
+    ```sql
+    -- Encontrar todos os consoles para um jogo específico
+    SELECT c.nome
+    FROM consoles c
+    JOIN jogo_console jc ON c.id_console = jc.id_console
+    WHERE jc.id_jogo = (SELECT id_jogo FROM jogos WHERE nome = 'Minecraft');
+    ```
+    **Resultado:**
+    | nome            |
+    |-----------------|
+    | PlayStation 5   |
+    | Xbox Series X   |
+    | Nintendo Switch |
+    | PC              |
+
+5. **Manutenção Simplificada:**
+    - Remover um jogo de uma plataforma:
+        ```sql
+        DELETE FROM jogo_console
+        WHERE id_jogo = 3 AND id_console = 1; -- Minecraft não está mais no PS5
+        ```
+    - Não afeta outros consoles ou o registro principal do jogo
+
+#### Desvantagens
+
+1. **Complexidade de Consultas:**
+    ```sql
+    -- Consulta para listar jogos por console
+    SELECT c.nome AS console, j.nome AS jogo
+    FROM consoles c
+    JOIN jogo_console jc ON c.id_console = jc.id_console
+    JOIN jogos j ON jc.id_jogo = j.id_jogo
+    ORDER BY c.nome, j.nome;
+    ```
+
+2. **Overhead de Desempenho:**
+    - Em grandes bases (ex: 50.000 jogos × 100 consoles = 5M+ combinações)
+    - Necessidade de índices adicionais:
+        ```sql
+        CREATE INDEX idx_jc_console ON jogo_console(id_console);
+        CREATE INDEX idx_jc_jogo ON jogo_console(id_jogo);
+        ```
+
+3. **Armazenamento Adicional:**
+    - Cada associação consome ~16 bytes (2 INTs)
+    - Exemplo: Minecraft em 4 plataformas = 64 bytes extra
+
+#### Cenários Ideais
+
+1. **Jogos Multiplataforma:**
+    - `The Witcher 3` disponível em 7 plataformas
+    - `Fortnite` com lançamentos simultâneos
+
+2. **Sistemas de Catálogo:**
+    - Banco de dados da Steam (PC + consoles)
+    - Sites comparativos como Metacritic
+
+3. **Edições Especiais:**
+    ```sql
+    -- Edição física exclusiva para PS5
+    INSERT INTO jogo_console (id_jogo, id_console, edicao_especial)
+    VALUES (4, 1, TRUE); -- Horizon Forbidden West edição colecionador
+    ```
+
+4. **Lançamentos Temporais:**
+    ```sql
+    -- Staggered releases
+    UPDATE jogo_console
+    SET data_lancamento = '2023-10-20'
+    WHERE id_jogo = 5 AND id_console = 1; -- Final Fantasy XVI no PS5
+
+    UPDATE jogo_console
+    SET data_lancamento = '2024-03-21'
+    WHERE id_jogo = 5 AND id_console = 4; -- FFXVI no PC 6 meses depois
+    ```
+
+#### Boas Práticas
+
+1. **Chave Primária Composta:**
+    ```sql
+    PRIMARY KEY (id_jogo, id_console) -- Impede duplicatas
+    ```
+
+2. **Índices Otimizados:**
+    ```sql
+    CREATE INDEX idx_console_jogo ON jogo_console(id_console, id_jogo);
+    ```
+
+3. **Restrições Adicionais:**
+    ```sql
+    -- Garantir que uma plataforma não seja adicionada duas vezes
+    ALTER TABLE jogo_console
+    ADD CONSTRAINT unique_jogo_console UNIQUE (id_jogo, id_console);
+    ```
+
+4. **Tabela de Metadados:**
+    ```sql
+    -- Para informações complexas sobre o lançamento
+    CREATE TABLE lancamento_plataforma (
+        id_jogo INT,
+        id_console INT,
+        data_lancamento DATE,
+        midia_fisica BOOLEAN,
+        resolucao_max VARCHAR(10),
+        PRIMARY KEY (id_jogo, id_console),
+        FOREIGN KEY (id_jogo, id_console)
+            REFERENCES jogo_console(id_jogo, id_console)
+    );
+    ```
+
+#### Exemplo: GTA V
+```sql
+-- Registrar todas as plataformas
+INSERT INTO jogo_console (id_jogo, id_console) VALUES
+(2, 1), -- PS5
+(2, 2), -- Xbox
+(2, 4), -- PC
+(2, 5); -- Adicionar PS4 (id=5)
+
+-- Consulta: Em quais plataformas GTA V está disponível?
+SELECT c.nome, jc.data_lancamento
+FROM jogo_console jc
+JOIN consoles c ON jc.id_console = c.id_console
+WHERE jc.id_jogo = 2;
+```
+
+**Resultado:**
+| nome          | data_lancamento |
+|---------------|-----------------|
+| PlayStation 5 | 2022-03-15      |
+| Xbox Series X | 2022-03-15      |
+| PC            | 2015-04-14      |
+| PlayStation 4 | 2014-11-18      |
+
+### Exercícios
+
+Usando as queries de [4.tabela-associativa](queries/4.tabela-associativa.sql), faça a atualização do modelo para os campos id_plataforma e id_generos 1 e 2.

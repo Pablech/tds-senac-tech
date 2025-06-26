@@ -6,10 +6,15 @@ Este repositório será usado para compartilhar o material das aulas que serão 
 ## UC3 - Planejar e Administrar Banco de Dados
 Curso com duração de 84 horas (28 aulas).
 
-Material Jogos : [tabelas](uc3-planejar-administrar-banco-dados/queries/tabela.sql) e [dados](uc3-planejar-administrar-banco-dados/queries/dados.sql)
+Material Jogos :
+- [tabelas](uc3-planejar-administrar-banco-dados/queries/tabela.sql)
+- [dados](uc3-planejar-administrar-banco-dados/queries/dados.sql)
+- [atualizações](uc3-planejar-administrar-banco-dados/queries/3.alteracoes.sql)
+- [tabela associativa](uc3-planejar-administrar-banco-dados/queries/4.tabela-associativa.sql)
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 09 | 25/06/2025 | [tabelas associativas](uc3-planejar-administrar-banco-dados/constraints.md#abordagem-da-tabela-associativa-nm) |
 | 08 | 23/06/2025 | [revisão](uc3-planejar-administrar-banco-dados/revisao.md) |
 | 07 | 17/06/2025 | [praticando FKs](uc3-planejar-administrar-banco-dados/queries/) |
 | 06 | 16/06/2025 | [`FOREIGN KEY`](uc3-planejar-administrar-banco-dados/constraints.md#foreign-key)<br>[`INNER JOIN`](uc3-planejar-administrar-banco-dados/juncoes.md#inner-join) |
