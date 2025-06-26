@@ -14,7 +14,7 @@ Material Jogos :
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 09 | 25/06/2025 | [tabelas associativas](uc3-planejar-administrar-banco-dados/constraints.md#abordagem-da-tabela-associativa-nm) |
+| 09 | 25/06/2025 | [tabelas associativas](uc3-planejar-administrar-banco-dados/constraints.md#abordagem-da-tabela-associativa-nm)<br>[diagramas](uc3-planejar-administrar-banco-dados/queries/diagramas.md) |
 | 08 | 23/06/2025 | [revisão](uc3-planejar-administrar-banco-dados/revisao.md) |
 | 07 | 17/06/2025 | [praticando FKs](uc3-planejar-administrar-banco-dados/queries/) |
 | 06 | 16/06/2025 | [`FOREIGN KEY`](uc3-planejar-administrar-banco-dados/constraints.md#foreign-key)<br>[`INNER JOIN`](uc3-planejar-administrar-banco-dados/juncoes.md#inner-join) |
